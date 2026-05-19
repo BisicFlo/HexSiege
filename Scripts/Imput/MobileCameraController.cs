@@ -19,13 +19,13 @@ public class MobileCameraController : MonoBehaviour {
 
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 3f; // Degrees per screen pixel dragged
-    
+
     [SerializeField] private Transform cameraPivot;
 
     // --------------------------------------------------------------
     //   Private 
     // --------------------------------------------------------------
-    
+
     private Camera cam;
 
     private InputAction clickAction;       // Click one finger
@@ -87,7 +87,7 @@ public class MobileCameraController : MonoBehaviour {
         // ------------------------------------------------
         //                     Translation
         // ------------------------------------------------
-        Vector3 move = new Vector3(-deltaFinger1.x * translationSpeed * 0.1f , 0, -deltaFinger1.y * translationSpeed * 0.1f); // -> Removed "* Time.deltaTime"
+        Vector3 move = new Vector3(-deltaFinger1.x * translationSpeed * 0.1f, 0, -deltaFinger1.y * translationSpeed * 0.1f); // -> Removed "* Time.deltaTime"
 
         cameraPivot.transform.Translate(move, Space.Self);
     }
@@ -108,13 +108,6 @@ public class MobileCameraController : MonoBehaviour {
     private void Delta2Performed(InputAction.CallbackContext context) {
         // No need to verify twoFingersOneScreen because Delta2Performed() is called when there are 2 fingers
         deltaFinger2 = context.ReadValue<Vector2>();
-        // ------------------------------------------------
-        //                     Rotation
-        // ------------------------------------------------
-        float avgDeltaX = (deltaFinger1.x + deltaFinger2.x) * 0.5f;
-
-        float rotateAmount = avgDeltaX * rotationSpeed; 
-        cameraPivot.transform.Rotate(0f, rotateAmount, 0f, Space.World);
 
         if (skipNextDelta2) {
             skipNextDelta2 = false;
@@ -122,6 +115,16 @@ public class MobileCameraController : MonoBehaviour {
             // Still update deltaFinger1 so it's fresh for next frame
             return;
         }
+
+        // ------------------------------------------------
+        //                     Rotation
+        // ------------------------------------------------
+        float avgDeltaX = (deltaFinger1.x + deltaFinger2.x) * 0.5f;
+
+        float rotateAmount = avgDeltaX * rotationSpeed;
+        cameraPivot.transform.Rotate(0f, rotateAmount, 0f, Space.World);
+
+
         // ------------------------------------------------
         //                      Zoom
         // ------------------------------------------------
@@ -135,19 +138,20 @@ public class MobileCameraController : MonoBehaviour {
         sqrCurrentMagnitude = offsetFingers.SqrMagnitude();
 
         //Debug.Log("sqrPreviousMagnitude : " + sqrPreviousMagnitude + "| sqrCurrentMagnitude : " + sqrCurrentMagnitude);
-        if (sqrPreviousMagnitude > 0.01f) { 
+        if (sqrPreviousMagnitude > 0.01f) {
 
             float delta = sqrPreviousMagnitude - sqrCurrentMagnitude;
 
-            if (true) {
-                if (delta > 5000 || delta < -5000) Debug.Log("Delta : " + delta + "     [-!-]");
-                else Debug.Log("Delta : " + delta);
-                // Perspective camera
-                delta = Mathf.Clamp(delta, -5000f, 5000f); // spike guard // New
 
-                float newFOV = cam.fieldOfView + (delta * zoomSpeed * 0.001f);// -> Removed "* Time.deltaTime"
-                cam.fieldOfView = Mathf.Clamp(newFOV, minFOV, maxFOV);
-            }
+            //if (delta > 5000 || delta < -5000) Debug.Log("Delta : " + delta + "     [-!-]");
+            //else Debug.Log("Delta : " + delta);
+            // Perspective camera
+
+            //delta = Mathf.Clamp(delta, -5000f, 5000f); // spike guard // New 
+
+            float newFOV = cam.fieldOfView + (delta * zoomSpeed * 0.001f);// -> Removed "* Time.deltaTime"
+            cam.fieldOfView = Mathf.Clamp(newFOV, minFOV, maxFOV);
+
         }
 
         sqrPreviousMagnitude = sqrCurrentMagnitude;

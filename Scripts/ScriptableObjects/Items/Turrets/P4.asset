@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
+  m_Name: P4
+  m_EditorClassIdentifier: Assembly-CSharp::TurretData
+  Icon: {fileID: 0}
+  ID: 8
+  UIModel: {fileID: 8213277018137704315, guid: 9a59cf3d19833fe489fb151d0168e5e3, type: 3}
+  WorldModel: {fileID: 870277613180494476, guid: c9042a25280d15a409089490dc4e88a5, type: 3}
+  NameItem: Plant 4
+  Price: 4
+  Rarity: 4
+  TypeOfItem: 0
+  Description: 
+  turretType: 2
+  AttackDamage: 4
+  AttackSpeed: 80
+  ProjectileSpeed: 10
+  CriticalChance: 5
+  CriticalDamage: 140
+  CurseChance: 1
+  Range: 30

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
+  m_Name: C1
+  m_EditorClassIdentifier: Assembly-CSharp::TurretData
+  Icon: {fileID: 0}
+  ID: 1
+  UIModel: {fileID: 202484480923106433, guid: a35d53bf334d90242b20d9a37435f7f4, type: 3}
+  WorldModel: {fileID: 202484480923106433, guid: ab62aa7b540f5b04aaad0b0f61432599, type: 3}
+  NameItem: Cristal Turret N1
+  Price: 1
+  Rarity: 1
+  TypeOfItem: 0
+  Description: 
+  turretType: 1
+  AttackDamage: 1
+  AttackSpeed: 100
+  ProjectileSpeed: 10
+  CriticalChance: 5
+  CriticalDamage: 140
+  CurseChance: 0
+  Range: 15

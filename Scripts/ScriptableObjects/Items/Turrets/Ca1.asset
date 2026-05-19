@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
+  m_Name: Ca1
+  m_EditorClassIdentifier: Assembly-CSharp::TurretData
+  Icon: {fileID: 0}
+  ID: 1
+  UIModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
+  WorldModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
+  NameItem: Canon 1
+  Price: 1
+  Rarity: 1
+  TypeOfItem: 0
+  Description: 
+  turretType: 0
+  AttackDamage: 2
+  AttackSpeed: 10
+  ProjectileSpeed: 10
+  CriticalChance: 5
+  CriticalDamage: 140
+  CurseChance: 0
+  Range: 15

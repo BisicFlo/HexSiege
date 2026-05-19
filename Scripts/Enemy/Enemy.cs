@@ -5,27 +5,31 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     [HideInInspector] public WaveSpawner waveSpawner = null; // set by WaveSpawner itself
-    public GameObject DeathEffectPrefab = null;    
 
-    [SerializeField] private Color deathColor ;    
+    [SerializeField] private EnemyData enemyData;
 
-    [SerializeField] private Transform Visual;
+    [SerializeField] private Transform Visual; // Part holding the renderer
 
-    [SerializeField] private int startingSpeed = 3;
-    [SerializeField] private int startingLife = 4;
-    [SerializeField] private int damageToPlayer = 4;
-    [SerializeField] private int moneyWhenKilled = 1;
-    [SerializeField] private int xpWhenKilled = 1;
-    [SerializeField] private bool isInvinsible = false;
+    private EnemyHitFlash enemyHitFlash; // For visual Feedback // Setup automatically
 
-    private EnemyHitFlash enemyHitFlash;
+    #region SetByEnemyData
+    private GameObject DeathEffectPrefab = null;
+    private Color deathColor;
 
-    private GameObject deathEffect = null;
+    private int startingSpeed = 3;
+    private int startingLife = 4;
+    private int damageToPlayer = 4;
+    private int moneyWhenKilled = 1;
+    private int xpWhenKilled = 1;
+    #endregion
+    private bool isInvinsible = false;
+
+    private GameObject deathEffect = null; //instance of deathEffectPrefab
     private int currentWaypointIndex = 0;
     private Transform target;
     private int currentLife;
     private int currentSpeed;
-    private float precision = 0.2f; // Area used to detect 
+    private float precision = 0.2f; // Area used to detect waypoints
     Vector3 direction;
 
     private ParticleSystem.MainModule main; // 
@@ -37,9 +41,9 @@ public class Enemy : MonoBehaviour {
     void Update() {
 
         direction = (target.position - transform.position).normalized;
-        
+
         transform.Translate(0.1f * currentSpeed * Time.deltaTime * direction, Space.World);
-    
+
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 10f);
 
         // Reached waypoint?
@@ -55,30 +59,42 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    private void InitValues() {
+        this.currentLife = enemyData.startingLife;
+        this.currentSpeed = enemyData.startingSpeed;
+        this.damageToPlayer = enemyData.damageToPlayer;
+        this. moneyWhenKilled = enemyData.moneyWhenKilled;
+        this.xpWhenKilled = enemyData.xpWhenKilled;
+
+        this.DeathEffectPrefab = enemyData.DeathEffectPrefab;
+        this.deathColor = enemyData.deathColor;
+    }
+
     public void Spawn() {
+        InitValues();
         enemyHitFlash = GetComponent<EnemyHitFlash>();
 
-        target = Waypoints.points[0];
+        target = Waypoints.points[1]; // target = Waypoints.points[0];
         currentLife = startingLife;
         currentSpeed = startingSpeed;
 
         if (waveSpawner != null) {
             waveSpawner.EnemiesList.Add(this);
-            this.transform.position = waveSpawner.transform.position;
+            this.transform.position = Waypoints.points[0].position;
         }
-
         StartCoroutine(PrepareDeathEffect());
     }
 
     public bool TakeDamage(int damage) {
-        
+
         if (isInvinsible) return false;
 
         currentLife -= damage; // Lower Life
         if (currentLife <= 0) {
             Die();
             return true;
-        } else {
+        }
+        else {
             enemyHitFlash.TriggerFlash(); // Visual Feedback | should not be called if enemy dies
             return false;
         }
@@ -113,7 +129,7 @@ public class Enemy : MonoBehaviour {
             //GameObject deathEffect = Instantiate(_DeathEffectPrefab);
 
             deathEffect.transform.position = Visual.position;
-            deathEffect.SetActive(true);     
+            deathEffect.SetActive(true);
 
             Destroy(deathEffect, 3);
         }

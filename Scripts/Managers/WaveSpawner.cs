@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner instance { get; private set; } // Singleton
 
     public List<GameObject> EnemiesPrefabsList = new List<GameObject>(); // -> scriptable Object 
 
-    public List<Enemy> EnemiesList = new List<Enemy>(); // All Enemies on the board 
+    [SerializeField] private List<Waypoints> waypointsList = new List<Waypoints>(); // One "Waypoints" per Path 
+
+    [HideInInspector] public List<Enemy> EnemiesList = new List<Enemy>(); // All Enemies on the board 
 
     //private List<Turret> TurretsList = new List<Turret>(); // ?
 
@@ -79,11 +80,18 @@ public class WaveSpawner : MonoBehaviour {
     private void SpawnOneEnemyFromPower(int power) {
         Transform myEnemy = Instantiate(EnemiesPrefabsList[power].transform, spawnPoint.position, spawnPoint.rotation);
         myEnemy.gameObject.name = "Enemy " + spawnIndex;
-        myEnemy.GetComponent<Enemy>().waveSpawner = this;
+        //myEnemy.GetComponent<Enemy>().waveSpawner = this;
+        myEnemy.GetComponent<Enemy>().SetReferences(this , GetRandomPath()); // each enemy choose a random path 
 
         spawnIndex++;
         //EnemiesList.Add(enemyPrefab.GetComponent<Enemy>());
     }
+
+    private Waypoints GetRandomPath() {
+        int randomIndex = Random.Range(0, waypointsList.Count); // inclusiv / exclusiv 
+        return waypointsList[randomIndex];
+    }
+
     private IEnumerator SpawnAllWaves(int[,] waves) {
 
         int waveNumber = waves.GetLength(0);
@@ -101,6 +109,7 @@ public class WaveSpawner : MonoBehaviour {
                     SpawnOneEnemyFromPower(poolIndex);
                 }
                 // Time Between Pool
+                yield return waitBetweenSpawn; // New
             }
             yield return waitBetweenWaves;
             currentWave++;

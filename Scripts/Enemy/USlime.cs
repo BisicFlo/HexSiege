@@ -13,9 +13,15 @@ using UnityEngine;
 public class USlime : MonoBehaviour {
     public bool activated;
 
+    [SerializeField] private Enemy enemy; 
+
     [SerializeField] private Transform target; // The target (Position B) > Enemy
-    [SerializeField] private float jumpTime = 1;
+    [SerializeField] private float baseJumpTime = 1;
+    [SerializeField] private float baseWaitTime = 1;
     [SerializeField] private float gravity = -9.81f; // Simulated gravity
+
+     private float speedInfluence = 1f;
+     private int referenceSpeed = 4;
 
 
     [Header("Jiggle")]
@@ -27,7 +33,8 @@ public class USlime : MonoBehaviour {
 
     private void Start() {
         originalScale = this.transform.localScale;
-    
+        if (enemy == null ) enemy = this.transform.root.GetComponent<Enemy>();
+
         StartCoroutine(UpdateSlime());
     }
 
@@ -35,12 +42,18 @@ public class USlime : MonoBehaviour {
         while (true) {
             if (activated) {
 
-                yield return StartCoroutine(FlattenBeforeJump(1f));
-                StartCoroutine(JiggleWithoutBlendShape(2f, -1));
-                StartCoroutine(LerpPosition(this.transform.position, target.position, jumpTime, 1));
-                yield return StartCoroutine(LerpRotation(this.transform.rotation, target.rotation, jumpTime, 2));
-                StartCoroutine(JiggleWithoutBlendShape(2f, 2));
-                yield return StartCoroutine(DontMove(this.transform.position, this.transform.rotation, Random.Range(0.5f, 2f)));
+                // Option 1: Multiplicative (most common & intuitive)
+                float speedRatio = enemy.currentSpeed / referenceSpeed;
+                float adjustedWaitTime = baseWaitTime / (1f + speedInfluence * (speedRatio - 1f));
+                float adjustedJumpTime = baseJumpTime / (1f + speedInfluence * (speedRatio - 1f));
+
+
+                yield return StartCoroutine(FlattenBeforeJump(adjustedWaitTime));
+                StartCoroutine(JiggleWithoutBlendShape(adjustedWaitTime*2, -1));
+                StartCoroutine(LerpPosition(this.transform.position, target.position, adjustedJumpTime, 1));
+                yield return StartCoroutine(LerpRotation(this.transform.rotation, target.rotation, adjustedJumpTime, 2));
+                StartCoroutine(JiggleWithoutBlendShape(adjustedWaitTime * 2, 2));
+                yield return StartCoroutine(DontMove(this.transform.position, this.transform.rotation, Random.Range(0.5f, adjustedWaitTime*2)));
                 //ResetScale();
 
             } else {

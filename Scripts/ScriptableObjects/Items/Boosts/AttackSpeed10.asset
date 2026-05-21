@@ -21,7 +21,7 @@ MonoBehaviour:
   Rarity: 1
   TypeOfItem: 1
   Description: 
-  turretType: 5
+  turretType: 6
   AttackDamage: 0
   AttackSpeed: 50
   ProjectileSpeed: 0

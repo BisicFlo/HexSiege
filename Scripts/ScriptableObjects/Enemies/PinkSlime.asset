@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: PinkSlime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   startingSpeed: 6
-  startingLife: 20
+  startingLife: 30
   damageToPlayer: 4
   moneyWhenKilled: 1
-  xpWhenKilled: 5
-  isInvinsible: 0
+  xpWhenKilled: 2
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   deathColor: {r: 0.8724327, g: 0, b: 1, a: 1}

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+    public int currentSpeed; // used in USlime
+
     [SerializeField] private EnemyData enemyData;
 
     [SerializeField] private Transform Visual; // Part holding the renderer    
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour {
     private int currentWaypointIndex = 0;
     private Transform target;
     private int currentLife;
-    private int currentSpeed;
+
     private float precision = 0.2f; // Area used to detect waypoints
     Vector3 direction;
 
@@ -84,8 +86,8 @@ public class Enemy : MonoBehaviour {
         enemyHitFlash = GetComponent<EnemyHitFlash>();
 
         target = selectedWaypoints.points[1]; // target = Waypoints.points[0];
-        currentLife = startingLife;
-        currentSpeed = startingSpeed;
+        //currentLife = startingLife;
+        //currentSpeed = startingSpeed;
 
         if (waveSpawner != null) {
             waveSpawner.EnemiesList.Add(this);

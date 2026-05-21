@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: OrangeSlime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   startingSpeed: 2
-  startingLife: 50
+  startingLife: 80
   damageToPlayer: 5
   moneyWhenKilled: 5
   xpWhenKilled: 5
-  isInvinsible: 0
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   deathColor: {r: 1, g: 0.6083573, b: 0, a: 1}

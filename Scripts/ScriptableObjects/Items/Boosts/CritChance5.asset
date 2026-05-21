@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
   m_Name: CritChance5
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
+  Icon: {fileID: 21300000, guid: ce0f755c3af7b594d9ec3e3151ad0726, type: 3}
   ID: 0
   UIModel: {fileID: 0}
   WorldModel: {fileID: 0}
@@ -20,8 +21,7 @@ MonoBehaviour:
   Rarity: 1
   TypeOfItem: 1
   Description: 
-  Icon: {fileID: 21300000, guid: 6d3f9bdd5225d734fbfc0d1b8a85e8c3, type: 3}
-  turretType: 5
+  turretType: 2
   AttackDamage: 0
   AttackSpeed: 0
   ProjectileSpeed: 0

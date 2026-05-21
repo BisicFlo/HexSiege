@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: BlueCube
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   startingSpeed: 8
-  startingLife: 12
+  startingLife: 30
   damageToPlayer: 4
-  moneyWhenKilled: 2
-  xpWhenKilled: 2
-  isInvinsible: 0
+  moneyWhenKilled: 1
+  xpWhenKilled: 1
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   deathColor: {r: 0, g: 0.7739625, b: 1, a: 1}

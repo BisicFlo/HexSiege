@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    [HideInInspector] public WaveSpawner waveSpawner = null; // set by WaveSpawner itself
-
     [SerializeField] private EnemyData enemyData;
 
-    [SerializeField] private Transform Visual; // Part holding the renderer
-
-    private EnemyHitFlash enemyHitFlash; // For visual Feedback // Setup automatically
+    [SerializeField] private Transform Visual; // Part holding the renderer    
 
     #region SetByEnemyData
     private GameObject DeathEffectPrefab = null;
@@ -22,6 +18,14 @@ public class Enemy : MonoBehaviour {
     private int moneyWhenKilled = 1;
     private int xpWhenKilled = 1;
     #endregion
+
+    #region SetByWaveSpawner 
+    private WaveSpawner waveSpawner = null; // set by WaveSpawner itself // [HideInInspector] public
+    private Waypoints selectedWaypoints; // set by WaveSpawner itself
+    #endregion
+
+    private EnemyHitFlash enemyHitFlash; // For visual Feedback // Setup automatically by GetComponent
+
     private bool isInvinsible = false;
 
     private GameObject deathEffect = null; //instance of deathEffectPrefab
@@ -38,6 +42,11 @@ public class Enemy : MonoBehaviour {
         Spawn();
     }
 
+    public void SetReferences(WaveSpawner waveSpawnerReference, Waypoints waypointsReference ) {
+        this.waveSpawner = waveSpawnerReference;
+        this.selectedWaypoints = waypointsReference;
+    }
+
     void Update() {
 
         direction = (target.position - transform.position).normalized;
@@ -48,7 +57,7 @@ public class Enemy : MonoBehaviour {
 
         // Reached waypoint?
         if ((transform.position - target.position).sqrMagnitude <= precision) {
-            if (currentWaypointIndex >= Waypoints.points.Length - 1) {
+            if (currentWaypointIndex >= selectedWaypoints.points.Length - 1) { //
                 //  Reached end ? deal damage to player / destroy
                 // OLD waveSpawner.DamagePlayer(damageToPlayer);
                 Player.instance.TakeDamage(damageToPlayer);
@@ -74,13 +83,13 @@ public class Enemy : MonoBehaviour {
         InitValues();
         enemyHitFlash = GetComponent<EnemyHitFlash>();
 
-        target = Waypoints.points[1]; // target = Waypoints.points[0];
+        target = selectedWaypoints.points[1]; // target = Waypoints.points[0];
         currentLife = startingLife;
         currentSpeed = startingSpeed;
 
         if (waveSpawner != null) {
             waveSpawner.EnemiesList.Add(this);
-            this.transform.position = Waypoints.points[0].position;
+            this.transform.position = selectedWaypoints.points[0].position;
         }
         StartCoroutine(PrepareDeathEffect());
     }
@@ -140,7 +149,7 @@ public class Enemy : MonoBehaviour {
 
     private void GetNextWaypoint() {
         currentWaypointIndex++;
-        target = Waypoints.points[currentWaypointIndex];
+        target = selectedWaypoints.points[currentWaypointIndex];
     }
 
 }

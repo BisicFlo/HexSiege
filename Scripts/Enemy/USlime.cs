@@ -1,23 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Animate anything to make it look like a slime / affect scale 
+///   
+///  Hierachy :
+///    Enemy (empty)
+///     |> Visual (holding USlime.cs)
+///       |> Renderer 
+/// 
+/// </summary>
 public class USlime : MonoBehaviour {
     public bool activated;
-    public bool ActivateJiggles = true;
 
-    [SerializeField] private Transform target; // The target (Position B)
+    [SerializeField] private Transform target; // The target (Position B) > Enemy
     [SerializeField] private float jumpTime = 1;
-    [SerializeField] private float groundCheckRadius = 0.2f; // Radius for ground check
-    [SerializeField] private LayerMask groundLayer; // Layer for ground detection
     [SerializeField] private float gravity = -9.81f; // Simulated gravity
-    [SerializeField] private int tempo = 1;
+
 
     [Header("Jiggle")]
     [SerializeField] float amplitude = 0.03f; // Initial strength of the jiggle
     [SerializeField] float decayRate = 0.1f;   // How quickly the jiggle fades
     [SerializeField] float frequency = 15f;
 
-    private bool isJumping = false;
     private Vector3 originalScale;
 
     private void Start() {
@@ -45,9 +50,7 @@ public class USlime : MonoBehaviour {
     }
 
     private IEnumerator LerpPosition(Vector3 startValue, Vector3 endValue, float lerpDuration, int mode) {
-        //Debug.Log("Starting LerpPosition");
 
-        //Debug.Log("LerpPosition");
         float timeElapsed = 0;
         Vector3 startValueFrozen = startValue;
         Vector3 endValueFrozen = endValue;
@@ -66,8 +69,8 @@ public class USlime : MonoBehaviour {
         }
         this.transform.position = endValue;      
     }
+
     private IEnumerator LerpRotation(Quaternion startValue, Quaternion endValue, float lerpDuration, int mode) {
-        //Debug.Log("Starting LerpRotation");
 
         float timeElapsed = 0;
         Quaternion startValueFrozen = startValue;
@@ -84,8 +87,8 @@ public class USlime : MonoBehaviour {
         }
         this.transform.rotation = endValue;
     }
+
     private IEnumerator DontMove(Vector3 startPosition, Quaternion startRotation, float duration) {
-        //Debug.Log("Starting DontMove");
 
         float timeElapsed = 0;
         Vector3 startPositionFrozen = startPosition;
@@ -95,11 +98,11 @@ public class USlime : MonoBehaviour {
             this.transform.SetPositionAndRotation(startPositionFrozen, startRotationFrozen);
             timeElapsed += Time.deltaTime;
             yield return null;
-        }
-        isJumping = false;
+        }        
     }
+
     private IEnumerator FlattenBeforeJump( float duration) {
-        //Debug.Log("Starting FlattenBeforeJump");
+
         float timeElapsed = 0;
         Vector3 startPositionFrozen = this.transform.position;
         Quaternion startRotationFrozen = this.transform.rotation;
@@ -113,13 +116,8 @@ public class USlime : MonoBehaviour {
         }
     }
 
-
     private IEnumerator JiggleWithoutBlendShape(float duration, float coefficient) {
-        //Debug.Log("Starting JiggleWithoutBlendShape");
 
-        //float amplitude = 0.03f; // Initial strength of the jiggle
-        //float decayRate = 0.1f;   // How quickly the jiggle fades
-        //float frequency = 15f;
         float timeElapsed = 0;
 
         while (timeElapsed < duration) {
@@ -127,16 +125,15 @@ public class USlime : MonoBehaviour {
 
             AffectScale(jiggle);
 
-            timeElapsed += Time.deltaTime;
-            //Debug.Log("jiggle : " + jiggle);
+            timeElapsed += Time.deltaTime;            
             yield return null;
         }
     }
 
-    private void AffectScale ( float jiggle) {
-        //Debug.Log("jiggle : " +  jiggle);   
+    private void AffectScale ( float jiggle) {        
         this.transform.localScale = new Vector3(jiggle / 2, -jiggle, jiggle / 2) + originalScale; // + or * ?
     }
+
     private void AffectScaleOnTop(float jiggle) {
         //Debug.Log("jiggle : " + jiggle);
         this.transform.localScale += new Vector3(jiggle / 2, -jiggle, jiggle / 2) ; // + or * ?
@@ -146,7 +143,4 @@ public class USlime : MonoBehaviour {
         Debug.Log("Starting ResetScale");
         this.transform.localScale = originalScale; 
     }
-
-
-
 }

@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHitFlash : MonoBehaviour {
-    //[SerializeField] private Renderer _renderer;
-    [SerializeField] private float _flashDuration = 0.1f;
+/// <summary>
+/// Change the color of an Object when hit , used with Enemies / Change the Emission Color
+/// </summary>
+public class EnemyHitFlash : MonoBehaviour {    
 
     [SerializeField] private Color _flashColor = Color.white;
+
 
     private MaterialPropertyBlock _mpb;
     private Coroutine _flashRoutine;
@@ -13,12 +15,13 @@ public class EnemyHitFlash : MonoBehaviour {
 
     private Renderer[] _renderers;
 
+    private static float _flashDuration = 0.1f;
+    private WaitForSeconds waitDuration = new WaitForSeconds(_flashDuration); // Prevent allocations
+
     void Awake() {
         _renderers = GetComponentsInChildren<Renderer>();
 
         _mpb = new MaterialPropertyBlock();
-
-        //StartCoroutine(TEst());
     }
 
     public void TriggerFlash() {
@@ -26,17 +29,7 @@ public class EnemyHitFlash : MonoBehaviour {
         _flashRoutine = StartCoroutine(FlashRoutine());
     }
 
-    //private IEnumerator TEst() {
-    //    while (true) {
-    //        yield return new WaitForSeconds(4f);
-    //        if (_flashRoutine != null) StopCoroutine(_flashRoutine);
-    //        _flashRoutine = StartCoroutine(FlashRoutine());
-    //    }
-    //}
-
-
-
-private IEnumerator FlashRoutine() {
+    private IEnumerator FlashRoutine() {
 
         foreach (var r in _renderers) {
             r.GetPropertyBlock(_mpb);
@@ -44,7 +37,7 @@ private IEnumerator FlashRoutine() {
             r.SetPropertyBlock(_mpb);
         }
 
-        yield return new WaitForSeconds(_flashDuration);
+        yield return waitDuration;
 
         foreach (var r in _renderers) {
             r.GetPropertyBlock(_mpb);

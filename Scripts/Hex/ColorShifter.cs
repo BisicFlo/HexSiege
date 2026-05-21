@@ -47,21 +47,6 @@ public class ColorShifter : MonoBehaviour {
         }
     }
 
-    //private void Start() {
-    //    UpdateColorOffset();
-    //}
-
-    //private void Update() {
-    //    if (animate && material != null) {
-    //        // Simple automatic cycling through colors in X
-    //        colorIndexX = (int)(Time.time * animationSpeed) % 22;
-    //        UpdateColorOffset();
-    //    }
-    //    else if (material != null) {
-    //        UpdateColorOffset();
-    //    }
-    //}
-
     /// <summary>
     /// Updates the texture offset based on grid position
     /// </summary>
@@ -100,8 +85,7 @@ public class ColorShifter : MonoBehaviour {
     public void SetBackGroundColorFromIndex(int index) {
 
         if ( index < 0 || index >= BackgroundColors.ColorList.Count) return;
-
-        //Camera.main.backgroundColor = BackgroundColorList[index]; // old
+     
         Camera.main.backgroundColor = BackgroundColors.ColorList[index]; // BackgroundColors
 
 

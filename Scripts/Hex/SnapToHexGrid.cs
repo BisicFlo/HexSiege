@@ -29,7 +29,6 @@ public class SnapToHexGrid : MonoBehaviour {
             Transform child = transform.GetChild(i);
             Snap(child);
         }
-
     }
 
 
@@ -89,7 +88,6 @@ public class SnapToHexGrid : MonoBehaviour {
         hexTile.eulerAngles = new Vector3(0, snappedY, 0);
 
     }
-
 }
 
 

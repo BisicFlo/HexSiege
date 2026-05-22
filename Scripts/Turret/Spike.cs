@@ -26,10 +26,16 @@ public class Spike : MonoBehaviour {
     protected int damage;
     protected int speed; // affects other speed variables
     protected Transform _target;
-     private  GameObject _impact; // instance of _impactPrefab
+    private GameObject _impact; // instance of _impactPrefab
     protected Enemy _enemy;
 
     // need to know if enemy is grounded ?
+
+    protected Turret _turret; // turret that created this Spike / used for events
+
+    public Spike(Turret turret) {
+        _turret = turret;
+    }
 
     public void Init(Transform target, Enemy enemy, int damage, int speed) {
         this._target = target;
@@ -47,7 +53,7 @@ public class Spike : MonoBehaviour {
     }
 
     private void Awake() {  // Start() is not called if the object is instantiated Inactive 
-        if(_impactPrefab!=null) _impact = Instantiate(_impactPrefab);
+        if (_impactPrefab != null) _impact = Instantiate(_impactPrefab);
 
         if (_impact != null) _impact.SetActive(false);
     }
@@ -85,10 +91,8 @@ public class Spike : MonoBehaviour {
 
         transform.localScale = targetScale;
 
-
-
         // === HOLD PHASE ===
-        yield return new WaitForSeconds(holdTime/speed);  // new : speed
+        yield return new WaitForSeconds(holdTime / speed);  // new : speed
 
         // === RETRACT PHASE ===
         elapsed = 0f;
@@ -114,9 +118,15 @@ public class Spike : MonoBehaviour {
     }
 
     public void HitTarget() {
-        if (_enemy != null) _enemy.TakeDamage(damage);
 
-        if (_impact != null) _impact.transform.SetPositionAndRotation(this.transform.position, this.transform.rotation);
-        if (_impact != null) _impact.SetActive(true);
+        if (_enemy != null) {
+            GameEvents.EnemyHit(_turret, _enemy); // new
+            _enemy.TakeDamage(_turret, damage);
+        }
+
+        if (_impact != null) {
+            _impact.transform.SetPositionAndRotation(this.transform.position, this.transform.rotation);
+            _impact.SetActive(true);
+        }
     }
 }

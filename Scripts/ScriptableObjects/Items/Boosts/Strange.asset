@@ -29,3 +29,5 @@ MonoBehaviour:
   CriticalDamage: 0
   CurseChance: 0
   Range: 0
+  effects:
+  - {fileID: 11400000, guid: 5dc6dc59b8d4c96418e65db048bf14df, type: 2}

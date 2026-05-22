@@ -1,6 +1,6 @@
 using Bisic.CharacterStats;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 
 [CreateAssetMenu(fileName = "New Boost Data", menuName = "Scriptable Objects/Items/TurretBoostData")]
@@ -19,6 +19,8 @@ public class TurretBoostData : ItemData {
     public int CriticalDamage;
     public int CurseChance;
     public int Range;
+
+    public List<EffectSO> effects; // new // uniques effects
 
     public void Awake() {
         TypeOfItem = ItemType.Boost;

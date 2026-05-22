@@ -124,7 +124,7 @@ public class MagicTurret : Turret {
             Debug.Log("Bullet Already In Used ");
             myProjectile.HitTarget();
         }
-        Vector3 directionTarget = (target.position - firePoint.position).normalized;
+        Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
         InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
         if (target != null) {
             myProjectile.Init(target, enemyTargetted, attackDamage, (int)ProjectileSpeed.Value);

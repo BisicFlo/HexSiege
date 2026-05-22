@@ -139,6 +139,11 @@ public class ShopManager : MonoBehaviour, IScreenManager {
                 boost.BoostAllCurrentTurret();
                 ChangeImageButton(buttonList[index], null, false); // hide sprite // NEW
 
+                if (boost.effects != null) { // new
+                    for (int i = 0; i < boost.effects.Count; i++) {
+                        boost.effects[i].OnApply(boost);
+                    }
+                }
             }
             DesactivateInteractable(index);// Add Image ? Closed Door ?
         }

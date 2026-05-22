@@ -63,7 +63,6 @@ public class Turret : MonoBehaviour {
     }
     protected virtual void InitValues() {
 
-
         AttackDamage = new CharacterStat(turretData.AttackDamage);
         AttackSpeed = new CharacterStat(turretData.AttackSpeed);
         ProjectileSpeed = new CharacterStat(turretData.ProjectileSpeed);

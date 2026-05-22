@@ -8,9 +8,15 @@ public class Bullet : MonoBehaviour {
     protected int _damage;
     protected int _speed ;
     protected Vector3 _direction = Vector3.zero;
-    protected Transform _target;
+    protected Transform _target; 
     protected GameObject _impact;
-    protected Enemy _enemy;
+    protected Enemy _enemy; // a reference to the instance of Enemy so we dont use Getcomponent
+
+    protected Turret _turret; // turret that created this bullet / used for events
+
+    public Bullet(Turret turret) {
+        _turret = turret;     
+    }
 
     public void Init(Transform target, Enemy enemy, int damage, int speed) {
         this._target = target;
@@ -18,7 +24,6 @@ public class Bullet : MonoBehaviour {
         this._damage = damage;
         this._speed = speed;
     }
-
 
     public void ActivateBulletAndDesactivateImpact() {
         _bulletIsActive = true;
@@ -30,7 +35,6 @@ public class Bullet : MonoBehaviour {
         _impact.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update() {
         if (_bulletIsActive) {
             if (_target == null) {
@@ -53,7 +57,10 @@ public class Bullet : MonoBehaviour {
     }
 
     public void HitTarget() {
-        _enemy.TakeDamage(_damage);
+
+        GameEvents.EnemyHit(_turret, _enemy); // new
+
+        if(_enemy!=null) _enemy.TakeDamage(_turret, _damage); // passing _turret for OnKill event 
         _target = null;
         this.gameObject.SetActive(false);
         _bulletIsActive = false;

@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour {
 
     private ParticleSystem.MainModule main; // 
 
+
+
     private void Start() {
         Spawn();
     }
@@ -96,12 +98,15 @@ public class Enemy : MonoBehaviour {
         StartCoroutine(PrepareDeathEffect());
     }
 
-    public bool TakeDamage(int damage) {
+    public bool TakeDamage(Turret t, int damage) {
 
         if (isInvinsible) return false;
 
         currentLife -= damage; // Lower Life
         if (currentLife <= 0) {
+
+            GameEvents.EnemyKilled(t, this); // new
+
             Die();
             return true;
         }

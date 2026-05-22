@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63d585bf7bc5504bb24a3e7ff1d6ff8, type: 3}
   m_Name: BlueCube
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  startingSpeed: 8
-  startingLife: 30
+  startingSpeed: 6
+  startingLife: 20
   damageToPlayer: 4
   moneyWhenKilled: 1
   xpWhenKilled: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PinkSlime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   startingSpeed: 6
-  startingLife: 30
+  startingLife: 35
   damageToPlayer: 4
   moneyWhenKilled: 1
   xpWhenKilled: 2

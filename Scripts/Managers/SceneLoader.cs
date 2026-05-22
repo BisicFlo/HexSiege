@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour {
 
     [SerializeField] private ColorShifter colorShifter;
 
-    [SerializeField] private List<ButtonEntry> ButtonEntries;
+    [SerializeField] private List<ButtonEntry> ButtonEntries; // set in Inspector
 
     //InventorySlot;
 

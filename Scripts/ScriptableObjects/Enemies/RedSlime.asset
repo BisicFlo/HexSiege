@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedSlime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   startingSpeed: 6
-  startingLife: 12
+  startingLife: 8
   damageToPlayer: 4
   moneyWhenKilled: 1
   xpWhenKilled: 1

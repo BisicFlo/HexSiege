@@ -21,7 +21,7 @@ public class USlime : MonoBehaviour {
     [SerializeField] private float gravity = -9.81f; // Simulated gravity
 
      private float speedInfluence = 1f;
-     private int referenceSpeed = 4;
+     private int referenceSpeed = 3;
 
 
     [Header("Jiggle")]
@@ -53,7 +53,7 @@ public class USlime : MonoBehaviour {
                 StartCoroutine(LerpPosition(this.transform.position, target.position, adjustedJumpTime, 1));
                 yield return StartCoroutine(LerpRotation(this.transform.rotation, target.rotation, adjustedJumpTime, 2));
                 StartCoroutine(JiggleWithoutBlendShape(adjustedWaitTime * 2, 2));
-                yield return StartCoroutine(DontMove(this.transform.position, this.transform.rotation, Random.Range(0.5f, adjustedWaitTime*2)));
+                yield return StartCoroutine(DontMove(this.transform.position, this.transform.rotation, Random.Range(0.4f, adjustedWaitTime)));
                 //ResetScale();
 
             } else {

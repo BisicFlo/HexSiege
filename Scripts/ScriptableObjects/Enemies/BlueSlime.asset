@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63d585bf7bc5504bb24a3e7ff1d6ff8, type: 3}
   m_Name: BlueSlime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  startingSpeed: 12
-  startingLife: 10
+  startingSpeed: 4
+  startingLife: 6
   damageToPlayer: 2
   moneyWhenKilled: 1
   xpWhenKilled: 1
-  isInvinsible: 0
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   deathColor: {r: 0, g: 0.99654245, b: 1, a: 1}

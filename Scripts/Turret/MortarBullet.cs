@@ -10,6 +10,8 @@ public class MortarBullet : Bullet {
     private Vector3 _startPosition;
     private float _timer;
 
+    public MortarBullet(Turret turret) : base(turret) {}
+
     public void Init(Transform target, Enemy enemy, int damage, int speed, float flightTime , float maxHeight) {
         this._target = target;
         this._enemy = enemy;

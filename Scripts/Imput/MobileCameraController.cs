@@ -103,7 +103,6 @@ public class MobileCameraController : MonoBehaviour {
         twoFingersOneScreen = false;
         skipNextDelta2 = true;
         sqrPreviousMagnitude = 0; // new 060526
-
     }
     private void Delta2Performed(InputAction.CallbackContext context) {
         // No need to verify twoFingersOneScreen because Delta2Performed() is called when there are 2 fingers
@@ -153,7 +152,6 @@ public class MobileCameraController : MonoBehaviour {
             cam.fieldOfView = Mathf.Clamp(newFOV, minFOV, maxFOV);
 
         }
-
         sqrPreviousMagnitude = sqrCurrentMagnitude;
     }
 }

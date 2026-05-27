@@ -5,16 +5,14 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner instance { get; private set; } // Singleton
 
-    public List<GameObject> EnemiesPrefabsList = new List<GameObject>(); // -> scriptable Object 
+    public List<GameObject> EnemiesPrefabsList = new List<GameObject>(); // -> scriptable Object // Should be in a config ScriptableObject
 
     [SerializeField] private List<Waypoints> waypointsList = new List<Waypoints>(); // One "Waypoints" per Path 
 
     [HideInInspector] public List<Enemy> EnemiesList = new List<Enemy>(); // All Enemies on the board 
 
-    //private List<Turret> TurretsList = new List<Turret>(); // ?
-
     [SerializeField] private Transform enemyPrefab;
-    [SerializeField] private Transform spawnPoint; // List ? -> if 2 spawn points
+    //[SerializeField] private Transform spawnPoint; // List ? -> if 2 spawn points
 
     [SerializeField] private float timeBetweenWaves = 4f;
     [SerializeField] private float timeBetweenSpawn = 1f;
@@ -55,36 +53,20 @@ public class WaveSpawner : MonoBehaviour {
         waitBetweenSpawn = new(timeBetweenSpawn);
 
         StartCoroutine(SpawnAllWaves(waves));
-
-    }
-
-
-
-    //public void DamagePlayer(int amount) {
-    //    playerData.Life -= amount;
-    //    if (playerData.Life <= 0) {
-    //        DisplayDefeat();
-    //    }
-    //}
-
-
-
-    private void DisplayVictory() {
-
-    }
-
-    private void DisplayDefeat() {
-
     }
 
     private void SpawnOneEnemyFromPower(int power) {
-        Transform myEnemy = Instantiate(EnemiesPrefabsList[power].transform, spawnPoint.position, spawnPoint.rotation);
+        Waypoints chosenPath = GetRandomPath();
+        Transform firstPoint = chosenPath.points[0].transform;
+
+        Transform myEnemy = Instantiate(EnemiesPrefabsList[power].transform, firstPoint.position, firstPoint.rotation);
         myEnemy.gameObject.name = "Enemy " + spawnIndex;
-        //myEnemy.GetComponent<Enemy>().waveSpawner = this;
-        myEnemy.GetComponent<Enemy>().SetReferences(this , GetRandomPath()); // each enemy choose a random path 
+
+         
+        myEnemy.GetComponent<Enemy>().SetReferences(this , chosenPath); // each enemy choose a random path 
 
         spawnIndex++;
-        //EnemiesList.Add(enemyPrefab.GetComponent<Enemy>());
+        //EnemiesList.Add(enemyPrefab.GetComponent<Enemy>()); // -> In Enemy.cs
     }
 
     private Waypoints GetRandomPath() {

@@ -77,11 +77,11 @@ public class Turret : MonoBehaviour {
     }
 
     protected bool IsCritical() {
-        return Random.value < CriticalChance.Value / 100;
+        return Random.value < CriticalChance.Value / 100f;
     }
 
-    protected bool IsCursed() {
-        return Random.value < CurseChance.Value / 100;
+    protected bool IsCursed() {        
+        return Random.value < CurseChance.Value / 100f;
     }
 
     protected void GetTarget() {
@@ -132,9 +132,7 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    protected virtual void Shoot() {
-
-    }
+    protected virtual void Shoot() {}
 
     protected Transform GetVisualFromEnemy(Transform parent) { // used with slimes
         if (parent == null) return null;
@@ -191,8 +189,4 @@ public class Turret : MonoBehaviour {
             GetTarget();
         }
     }
-
-
-
-
 }

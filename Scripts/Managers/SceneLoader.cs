@@ -16,20 +16,14 @@ public class ButtonEntry {
 public class SceneLoader : MonoBehaviour {
 
     [SerializeField] private ColorShifter colorShifter;
-
     [SerializeField] private List<ButtonEntry> ButtonEntries; // set in Inspector
 
     //InventorySlot;
-
     //[SerializeField] private Transform buttonsParent;
-
     //[SerializeField] private List<Button> buttonList;
 
     [SerializeField] private Button  quitButton;
-
     [SerializeField] private HealthBar LoadingBar;    // Used to change bar visual
-
-
 
     private void OnEnable() {
         // Switch Action Map
@@ -54,7 +48,6 @@ public class SceneLoader : MonoBehaviour {
             int colorIndex = ButtonEntries[i].ColorTheme;
             int BackgroundIndex = ButtonEntries[i].BackGround;
 
-
             if (DoesSceneIndexExist(buttonIndex)) {
                 //buttonsParent.GetChild(buttonIndex).GetComponent<Button>().onClick.AddListener(() => OnClick(buttonIndex));
                 ButtonEntries[i].Button.onClick.AddListener(() => OnClick(buttonIndex, colorIndex, BackgroundIndex));
@@ -64,6 +57,7 @@ public class SceneLoader : MonoBehaviour {
             }
         }
     }
+
     private void UnsubscribeAllButtons() {
         // Quit button
         if (quitButton != null)
@@ -72,7 +66,6 @@ public class SceneLoader : MonoBehaviour {
         // All child buttons
         for (int i = 0; i < ButtonEntries.Count; i++) {
             //Button button = buttonsParent.GetChild(i).GetComponent<Button>();
-
             ButtonEntries[i].Button.onClick.RemoveAllListeners();            
         }
     }
@@ -98,8 +91,6 @@ public class SceneLoader : MonoBehaviour {
         return index >= 0 && index < SceneManager.sceneCountInBuildSettings;
     }
 
-
-
     private IEnumerator LoadAsync(string sceneName) {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         while (!operation.isDone) {
@@ -124,5 +115,4 @@ public class SceneLoader : MonoBehaviour {
             yield return null;
         }
     }
-
 }

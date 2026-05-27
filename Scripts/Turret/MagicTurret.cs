@@ -109,12 +109,13 @@ public class MagicTurret : Turret {
     //    }
     //}
 
-
     protected override void Shoot() {
-
+        bool isCritical = IsCritical();
+        bool isCursed = IsCursed();
         int attackDamage = (int)AttackDamage.Value;
-        if (IsCritical()) attackDamage *= (int)CriticalDamage.Value;
-        if (IsCursed()) attackDamage = 999; // add animation / visual
+
+        if (isCritical) attackDamage *= (int)CriticalDamage.Value;
+        //if (IsCursed()) attackDamage = 999; // add animation / visual
 
         Bullet myProjectile = GetObjectFromIndex<Bullet>(ProjectileArray, ProjectileIndex);
         ProjectileIndex++;
@@ -127,7 +128,7 @@ public class MagicTurret : Turret {
         Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
         InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
         if (target != null) {
-            myProjectile.Init(target, enemyTargetted, attackDamage, (int)ProjectileSpeed.Value);
+            myProjectile.Init(this, target, enemyTargetted, attackDamage, (int)ProjectileSpeed.Value, isCritical, isCursed);
             myProjectile.ActivateBulletAndDesactivateImpact();
         }
     }
@@ -155,7 +156,6 @@ public class MagicTurret : Turret {
         if (dotProduct > 0.99f) return true;
         else return false;
     }
-
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;

@@ -11,7 +11,6 @@ public class BackgroundColorChanger : MonoBehaviour {
     }
 
     private void ChangeColorFromIndex(int index) {
-
         Camera.main.backgroundColor = BackgroundColorList[index];
     }
 }

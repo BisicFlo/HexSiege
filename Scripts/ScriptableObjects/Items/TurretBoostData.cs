@@ -8,7 +8,6 @@ using UnityEngine;
 public class TurretBoostData : ItemData {
 
     [Header("Bonus")]
-
     public TurretType turretType; // only apply to selected type
 
     // Stat Bonuses (0 = no boost)
@@ -46,7 +45,6 @@ public class TurretBoostData : ItemData {
         if (turret == null) return;
         RemoveBoosts(turret);
     }
-
 
     private void ApplyBoosts(Turret turret) {
         BoostStat(turret.AttackDamage, AttackDamage);

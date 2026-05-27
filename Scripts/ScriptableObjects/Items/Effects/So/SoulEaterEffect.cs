@@ -21,6 +21,7 @@ public class SoulEaterEffect : EffectSO {
     }
 
     private void HandleKill(Turret t,Enemy e) {
+        if (t == null) return;
         if (t.turretType == turretType) { // NullReferenceException: Obje...
             t.AttackSpeed.AddModifier(new StatModifier(bonusPerKill, StatModType.Flat, this));
         }

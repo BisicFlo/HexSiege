@@ -71,7 +71,6 @@ public class CannonTurret : Turret {
         }
     }
 
-
     private void CheckIfTargetIsInSight() { // GetDotProductWithTarget
         if (target == null) return;
 
@@ -189,7 +188,7 @@ public class CannonTurret : Turret {
 
         InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
         if (target != null) {
-            myBullet.Init(target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value);
+            //myBullet.Init(this, target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value);
             myBullet.ActivateBulletAndDesactivateImpact();
         }
     }

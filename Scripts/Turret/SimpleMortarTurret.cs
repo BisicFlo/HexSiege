@@ -90,7 +90,7 @@ public class SimpleMortarTurret : Turret {
 
         InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
         if (base.target != null) {
-            myBullet.Init(base.target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value, flightTime, maxHeight);
+            myBullet.Init(this, base.target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value, flightTime, maxHeight);
             myBullet.ActivateBulletAndDesactivateImpact();
         }
     }

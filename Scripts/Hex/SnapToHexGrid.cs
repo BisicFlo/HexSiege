@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -31,9 +30,7 @@ public class SnapToHexGrid : MonoBehaviour {
         }
     }
 
-
     void Snap(Transform hexTile) {
-
         // _________Position_________
         Vector3 hexPosition = hexTile.position;
         Debug.Log("pos" + hexPosition);
@@ -61,32 +58,27 @@ public class SnapToHexGrid : MonoBehaviour {
             xPos = coordinateX * offsetX + HexRadius * scale;
         }
 
-
         Debug.Log("coordinateX " + coordinateX);
 
         // Calculate Z
         float yPos = height;
 
         Vector3 newPosition = new Vector3(xPos, yPos, zPos);
-
         hexTile.position = newPosition;
 
         // _________Rotation_________
         //Snaps the world Y rotation to the nearest 60° increment:
 
         Vector3 currentEuler = hexTile.eulerAngles;
-
         float yRotation = currentEuler.y;
 
         // Convert to range -180 to +180 
         if (yRotation > 180f) yRotation -= 360f;
 
-
         float steps = Mathf.Round(yRotation / 60f);
         float snappedY = steps * 60f;
 
         hexTile.eulerAngles = new Vector3(0, snappedY, 0);
-
     }
 }
 

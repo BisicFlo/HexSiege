@@ -24,14 +24,11 @@ public class ColorShifter : MonoBehaviour {
     [Tooltip("Speed of automatic color shifting")]
     [SerializeField] private float animationSpeed = 1f;
 
-
     [Header("Background Colors")]
     //[SerializeField] private List<Color> BackgroundColorList;
     [SerializeField] private ColorData BackgroundColors; // NEW
 
-
     [SerializeField] private int BackgroundIndex;
-
 
     [SerializeField] private Text indexDisplayText;
 
@@ -59,7 +56,6 @@ public class ColorShifter : MonoBehaviour {
 
         currentOffset = new Vector2(offsetX, offsetY);
         material.mainTextureOffset = currentOffset;
-        Debug.Log("UpdateColorOffset : " + offsetX + " | " + offsetY);
     }
 
     /// <summary>
@@ -80,24 +76,18 @@ public class ColorShifter : MonoBehaviour {
         colorIndexX = index % 22;
         colorIndexY = index / 22;
         UpdateColorOffset();
-        Debug.Log("SetColorByIndex");
     }
     public void SetBackGroundColorFromIndex(int index) {
 
-        if ( index < 0 || index >= BackgroundColors.ColorList.Count) return;
-     
+        if ( index < 0 || index >= BackgroundColors.ColorList.Count) return;     
         Camera.main.backgroundColor = BackgroundColors.ColorList[index]; // BackgroundColors
-
-
         BackgroundIndex = index;
-        Debug.Log("ShiftBackgroundColor");
     }
 
     public void ShiftBackgroundColor() {
         BackgroundIndex= (BackgroundIndex+1) % BackgroundColors.ColorList.Count;
         SetBackGroundColorFromIndex(BackgroundIndex);
-        DisplayIndexesOnScreen();
-       
+        DisplayIndexesOnScreen();       
     }
 
     public void ShiftAtlasColor_X() {
@@ -115,13 +105,4 @@ public class ColorShifter : MonoBehaviour {
     private void DisplayIndexesOnScreen() {
         indexDisplayText.text = "B : " + BackgroundIndex + " X : " +  colorIndexX + " Y : " + colorIndexY;
     }
-
-
-// Editor helper
-//private void OnValidate() {
-//        if (material != null) {
-//            UpdateColorOffset();
-//        }
-//    }
-
 }

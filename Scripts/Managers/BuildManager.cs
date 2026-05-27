@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class BuildManager : MonoBehaviour, IScreenManager {
     public static BuildManager Instance { get; private set; } // Singleton
 
-    public InventoryData Inventory; // same Scriptable Object Inventory In "Player.cs"
+    public InventoryData Inventory; // same ScriptableObject Inventory In "Player.cs"
 
     private List<GameObject> UITurrets = new List<GameObject>(); 
     public List<Turret> WorldTurrets = new List<Turret>(); //?
@@ -13,7 +13,6 @@ public class BuildManager : MonoBehaviour, IScreenManager {
     [HideInInspector] public GameObject SelectedTurret;
     [HideInInspector] public GameObject SelectedTile;
 
-    //private List<Color> RarityColors = new List<Color>(); //set by ShopManager
     [SerializeField] private ColorData rarityColors; // New
 
     [SerializeField] private List<Button> buttonList = new List<Button>();
@@ -94,7 +93,6 @@ public class BuildManager : MonoBehaviour, IScreenManager {
             Turret createdTurret = BuildTurret(worldModel, SelectedTile.transform.position);
             // SetUp Intanciated Turret with Value in The scriptable Object ! <--------------------------------------------------------------------------
 
-
             //Inventory.ApplyAllBoostToTurret(createdTurret); // XXXXXXXXXX
             Debug.Log("Starting Coroutine");
             StartCoroutine(TempoBeforeApplyBoost(createdTurret));
@@ -103,9 +101,9 @@ public class BuildManager : MonoBehaviour, IScreenManager {
             RemoveFromInventory(turret); //?
             RemoveFromDisplay(index); //?
 
-              QuitBuildMenu();
+            QuitBuildMenu();
 
-             Clear3DShop(); //new
+            Clear3DShop(); //new
         }
     }
 
@@ -250,11 +248,11 @@ public class BuildManager : MonoBehaviour, IScreenManager {
         UITurrets.Clear();
     }
 
-    private void UpdateTurretOfNodeFromTile(GameObject tile,Turret turret ) {
-        if (tile.TryGetComponent<Node>(out var tileNode)) {
-            tileNode.SetTurret(turret);
-        }
-    }
+    //private void UpdateTurretOfNodeFromTile(GameObject tile,Turret turret ) {
+    //    if (tile.TryGetComponent<Node>(out var tileNode)) {
+    //        tileNode.SetTurret(turret);
+    //    }
+    //}
 
     //private bool CheckIfTileEmpty(Vector3 position) {
     //    for (int i = 0; i < placedTurrets.Count; i++) {

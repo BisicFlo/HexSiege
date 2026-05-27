@@ -10,13 +10,21 @@ public class HUDManager : MonoBehaviour {
     [SerializeField] private Text levelText;
     [SerializeField] private Text xpText;
 
-
     [SerializeField] private HealthBar healthBar; // Used to change Health Bar visual
     [SerializeField] private HealthBar xpBar;    // Used to change XP Bar visual
 
+    private void OnEnable() {
+        Debug.Log("HUDManager OnEnable called");
 
+        playerData.OnStatChanged += UpdateUI;
+        UpdateUI();//new
+    }
 
-    public void UpdateUI() {
+    private void OnDisable() {
+        playerData.OnStatChanged -= UpdateUI;
+    }
+
+    public void UpdateUI() {   // Overkill to change everything ?
         UpdateMoneyUI();
         UpdateHealthUI();
         UpdateLevelUI();
@@ -39,6 +47,4 @@ public class HUDManager : MonoBehaviour {
         levelText.text = level.ToString();
         xpText.text = xp.ToString() + " / " + xpRequired.ToString();
     }
-
-
 }

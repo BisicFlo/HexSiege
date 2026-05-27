@@ -22,10 +22,10 @@ MonoBehaviour:
   TypeOfItem: 0
   Description: 
   turretType: 0
-  AttackDamage: 1
+  AttackDamage: 0
   AttackSpeed: 80
   ProjectileSpeed: 10
   CriticalChance: 5
   CriticalDamage: 140
-  CurseChance: 1
+  CurseChance: 80
   Range: 15

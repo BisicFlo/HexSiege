@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ChangeRerollCost", menuName = "Scriptable Objects/ChangeRerollCost")]
+[CreateAssetMenu(fileName = "ChangeRerollCost", menuName = "Scriptable Objects/Effects/ChangeRerollCost")]
 public class ChangeRerollCost : EffectSO {
 
     public int value;

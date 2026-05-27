@@ -39,6 +39,13 @@ public class SpikeTurret : Turret {
     }
 
     protected override void Shoot() {
+        bool isCritical = IsCritical();
+        bool isCursed = IsCursed();
+        int attackDamage = AttackDamage.Value;
+        if (isCritical) attackDamage *= (int)CriticalDamage.Value;
+
+        if (isCursed) Debug.Log("isCursedHit");
+        if (isCritical) Debug.Log("IsCriticalHit");
 
         Spike mySpike = GetObjectFromIndex<Spike>(spikeArray, SpikeIndex);
         SpikeIndex++;
@@ -48,10 +55,10 @@ public class SpikeTurret : Turret {
             Debug.Log("Spike Already In Used ");
             mySpike.HitTarget();
         }
-        
+
         InstantiateAlternative(mySpike.gameObject, Vector3.zero, Quaternion.identity, Vector3.one, null); //firePoint.rotation
         if (target != null) {
-            mySpike.Init(target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value);
+            mySpike.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
             mySpike.ActivateBulletAndDesactivateImpact();
 
             mySpike.Erupt(target.position); //new

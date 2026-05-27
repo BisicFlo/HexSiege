@@ -182,7 +182,7 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         if (playerData.Money < price) {
             return false; // Not enough money
         } else {
-            playerData.Money -= price;
+            playerData.LoseMoney(price);
             return true;
         }
     }
@@ -198,7 +198,6 @@ public class ShopManager : MonoBehaviour, IScreenManager {
             if (randomNumber <= 0) return rarity;
             rarity++;
         }
-
         return -1;
     }
 
@@ -290,11 +289,8 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         Vector3 pos = Vector3.zero;
         pos.x = (2 * index);
         pos.y = -11; // -> Scriptable ItemData -> "Height to be spawned"
-
         GameObject turret = Instantiate(ItemsForSale[index].UIModel, pos, Quaternion.identity);
-
         turret.transform.localScale = Vector3.one * 0.6f ;
-
         //ChangeLayerToUI3D(turret);  //done in prefab
         UIItems.Add(turret);
     }
@@ -306,13 +302,11 @@ public class ShopManager : MonoBehaviour, IScreenManager {
     }
 
     private void Clear3DShop() {
-
         for (int i = 0; i < UIItems.Count; i++) {
             //RemoveFrom3DDisplay(i);
             GameObject turret = UIItems[i];
             Destroy(turret);
         }
-
         UIItems.Clear();    
     }
 
@@ -326,16 +320,15 @@ public class ShopManager : MonoBehaviour, IScreenManager {
 
         if (BuySomething(RefreshCost)) {
 
-            savedIndex = 0; //New
+            GameEvents.ShopRerolled();
+
+            savedIndex = 0;
 
             //RefreshButton.gameObject.SetActive(false);
 
             ClearAllButtons();
-
             Clear3DShop();
-
             ItemsForSale.Clear();
-
             StartCoroutine(SetupAllButtons());
         }
     }
@@ -343,14 +336,12 @@ public class ShopManager : MonoBehaviour, IScreenManager {
     private IEnumerator SetupAllButtons() {
 
         while (savedIndex < buttonList.Count) {
-            yield return new WaitForSeconds(0.5f); // Optimize
+            yield return new WaitForSeconds(0.5f); // Should Optimize
 
             SetupOneButton(buttonList[savedIndex]);
-
             //InstantiateOne3DUI(savedIndex); // Only if it's a turret  -> in 
             savedIndex++;
         }
-
         yield return new WaitForSeconds(1);
         refreshButton.gameObject.SetActive(true);
     }

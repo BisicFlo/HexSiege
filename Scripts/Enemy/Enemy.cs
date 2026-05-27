@@ -6,19 +6,21 @@ public class Enemy : MonoBehaviour {
 
     public int currentSpeed; // used in USlime
 
+    [SerializeField] private PlayerData playerData;   
+
     [SerializeField] private EnemyData enemyData;
 
     [SerializeField] private Transform Visual; // Part holding the renderer    
+
+    [SerializeField] private Curse curseSystem; // NEw
 
     #region SetByEnemyData
     private GameObject DeathEffectPrefab = null;
     private Color deathColor;
 
-    private int startingSpeed = 3;
-    private int startingLife = 4;
-    private int damageToPlayer = 4;
-    private int moneyWhenKilled = 1;
-    private int xpWhenKilled = 1;
+    private int damageToPlayer;
+    private int moneyWhenKilled;
+    private int xpWhenKilled;
     #endregion
 
     #region SetByWaveSpawner 
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour {
 
     private EnemyHitFlash enemyHitFlash; // For visual Feedback // Setup automatically by GetComponent
 
-    private bool isInvinsible = false;
+    private bool isInvinsible = false; // not used yet
 
     private GameObject deathEffect = null; //instance of deathEffectPrefab
     private int currentWaypointIndex = 0;
@@ -40,10 +42,16 @@ public class Enemy : MonoBehaviour {
 
     private ParticleSystem.MainModule main; // 
 
-
-
     private void Start() {
         Spawn();
+    }
+
+    private void OnEnable() {
+        if (curseSystem != null) curseSystem.OnCurseFallComplete += OnCurseCompleted;
+    }
+
+    private void OnDisable() {
+        if (curseSystem != null) curseSystem.OnCurseFallComplete += OnCurseCompleted;
     }
 
     public void SetReferences(WaveSpawner waveSpawnerReference, Waypoints waypointsReference ) {
@@ -52,7 +60,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void Update() {
-
+        if (target == null) return; 
         direction = (target.position - transform.position).normalized;
 
         transform.Translate(0.1f * currentSpeed * Time.deltaTime * direction, Space.World);
@@ -61,15 +69,20 @@ public class Enemy : MonoBehaviour {
 
         // Reached waypoint?
         if ((transform.position - target.position).sqrMagnitude <= precision) {
-            if (currentWaypointIndex >= selectedWaypoints.points.Length - 1) { //
+            if (currentWaypointIndex >= selectedWaypoints.points.Length - 1) {
                 //  Reached end ? deal damage to player / destroy
                 // OLD waveSpawner.DamagePlayer(damageToPlayer);
-                Player.instance.TakeDamage(damageToPlayer);
+                // OLD  Player.Instance.TakeDamage(damageToPlayer);
+                HitPlayer();
                 Die();
                 return;
             }
             GetNextWaypoint();
         }
+    }
+
+    private void HitPlayer() {
+        GameEvents.PlayerHit(this, damageToPlayer, true); 
     }
 
     private void InitValues() {
@@ -88,8 +101,6 @@ public class Enemy : MonoBehaviour {
         enemyHitFlash = GetComponent<EnemyHitFlash>();
 
         target = selectedWaypoints.points[1]; // target = Waypoints.points[0];
-        //currentLife = startingLife;
-        //currentSpeed = startingSpeed;
 
         if (waveSpawner != null) {
             waveSpawner.EnemiesList.Add(this);
@@ -99,6 +110,8 @@ public class Enemy : MonoBehaviour {
     }
 
     public bool TakeDamage(Turret t, int damage) {
+        //if (t== null) Debug.Log("Turret is Null in : " +  this.gameObject.name);
+        //else Debug.Log("Turret :" + t.gameObject.name);
 
         if (isInvinsible) return false;
 
@@ -110,10 +123,24 @@ public class Enemy : MonoBehaviour {
             Die();
             return true;
         }
-        else {
+        else if (damage > 0) {
             enemyHitFlash.TriggerFlash(); // Visual Feedback | should not be called if enemy dies
-            return false;
         }
+
+        return false;
+    }
+
+    public void TakeCurse(Turret t) {
+        if (isInvinsible) return;
+        if (curseSystem == null) return;
+
+        if (curseSystem.ApplyCurse()) {
+            // Enemy will die (4 curses)
+            GameEvents.EnemyKilled(t, this);
+        }
+    }
+    private void OnCurseCompleted() {
+        Die();        
     }
 
     private IEnumerator PrepareDeathEffect() {
@@ -135,21 +162,18 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Die() {
-        if (waveSpawner.EnemiesList.Contains(this)) {
-            waveSpawner.EnemiesList.Remove(this);
-        }
-        Player.instance.GainMoney(moneyWhenKilled);
-        Player.instance.GainXp(xpWhenKilled);
+        if (waveSpawner.EnemiesList.Contains(this)) waveSpawner.EnemiesList.Remove(this);
+        
+        playerData.GainMoney(moneyWhenKilled); // NEW
+        playerData.GainXp(xpWhenKilled); // was Player.Instance
 
         if (DeathEffectPrefab != null && Visual != null) {
-            //GameObject deathEffect = Instantiate(_DeathEffectPrefab);
 
             deathEffect.transform.position = Visual.position;
             deathEffect.SetActive(true);
 
             Destroy(deathEffect, 3);
         }
-
         this.gameObject.SetActive(false);
         Destroy(this.gameObject, 1);
     }
@@ -158,6 +182,5 @@ public class Enemy : MonoBehaviour {
         currentWaypointIndex++;
         target = selectedWaypoints.points[currentWaypointIndex];
     }
-
 }
 

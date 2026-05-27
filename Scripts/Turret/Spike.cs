@@ -25,37 +25,39 @@ public class Spike : MonoBehaviour {
     protected bool spikeIsActive = false;
     protected int damage;
     protected int speed; // affects other speed variables
-    protected Transform _target;
-    private GameObject _impact; // instance of _impactPrefab
-    protected Enemy _enemy;
+    protected bool isCritical; //new
+    protected bool isCursed;  //new
+
+    protected Transform target;
+    private GameObject impact; // instance of _impactPrefab
+    protected Enemy enemy;
 
     // need to know if enemy is grounded ?
 
-    protected Turret _turret; // turret that created this Spike / used for events
-
-    public Spike(Turret turret) {
-        _turret = turret;
-    }
-
-    public void Init(Transform target, Enemy enemy, int damage, int speed) {
-        this._target = target;
-        this._enemy = enemy;
+    protected Turret turret; // turret that created this Spike / used for events
+    public void Init(Turret turret, Transform target, Enemy enemy, int damage, int speed, bool isCritical, bool isCursed) {
+        this.turret = turret;
+        this.target = target;
+        this.enemy = enemy;
         this.damage = damage;
         this.speed = speed;
-
+        this.isCritical = isCritical;
+        this.isCursed = isCursed;
         initialScale = initialScale = transform.localScale;
+
     }
+
 
 
     public void ActivateBulletAndDesactivateImpact() {
         spikeIsActive = true;
-        if (_impact != null) _impact.SetActive(false);
+        if (impact != null) impact.SetActive(false);
     }
 
     private void Awake() {  // Start() is not called if the object is instantiated Inactive 
-        if (_impactPrefab != null) _impact = Instantiate(_impactPrefab);
+        if (_impactPrefab != null) impact = Instantiate(_impactPrefab);
 
-        if (_impact != null) _impact.SetActive(false);
+        if (impact != null) impact.SetActive(false);
     }
 
 
@@ -112,21 +114,33 @@ public class Spike : MonoBehaviour {
         transform.localScale = targetScale;
 
         // === DESACTIVATE PHASE ===
-        _target = null;
+        target = null;
         spikeIsActive = false;
         this.gameObject.SetActive(false);
     }
 
     public void HitTarget() {
+        if (enemy != null) {
+            //if (turret == null) Debug.Log("Turret is Null in : " + this.gameObject.name);
+            //else Debug.Log("Turret :" + turret.gameObject.name);
 
-        if (_enemy != null) {
-            GameEvents.EnemyHit(_turret, _enemy); // new
-            _enemy.TakeDamage(_turret, damage);
+            GameEvents.EnemyHit(turret, enemy); // new
+            enemy.TakeDamage(turret, damage);
+
+            if (isCursed) {
+                enemy.TakeCurse(turret);
+            }
+
+            if (isCritical) {
+
+            }
+
+
         }
 
-        if (_impact != null) {
-            _impact.transform.SetPositionAndRotation(this.transform.position, this.transform.rotation);
-            _impact.SetActive(true);
+        if (impact != null) {
+            impact.transform.SetPositionAndRotation(this.transform.position, this.transform.rotation);
+            impact.SetActive(true);
         }
     }
 }

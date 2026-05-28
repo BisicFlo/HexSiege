@@ -7,6 +7,8 @@ public static class GameEvents {
     public static event Action<Enemy, int, bool> OnPlayerHit;
     public static event Action OnShopRerolled;
     public static event Action OnDefeat;
+    public static event Action OnVictory;
+
 
     //public static event Action OnPurchase;
     //public static event Action OnLevelUp;
@@ -16,5 +18,8 @@ public static class GameEvents {
     public static void PlayerHit(Enemy e, int dmg, bool canBeFatal) => OnPlayerHit?.Invoke(e, dmg, canBeFatal);
     public static void ShopRerolled() => OnShopRerolled?.Invoke();
     public static void Defeat() => OnDefeat?.Invoke();
+    public static void Victory() => OnVictory?.Invoke();
+
+
 
 }

@@ -99,7 +99,6 @@ public class TouchManager : MonoBehaviour {
                 }
                 //Debug.Log($"Clicked on: {clickedObject.name}  (tag: {clickedObject.tag})", clickedObject);
             }
-
         }
         else {
             //Debug.Log("Clicked on nothing (ray didn't hit anything)");
@@ -142,7 +141,6 @@ public class TouchManager : MonoBehaviour {
         EventSystem.current.RaycastAll(eventData, uiResults);
         return uiResults.Count > 0;
     }
-
 }
 
 

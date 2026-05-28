@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Curse : MonoBehaviour {
     // Callback - This is what we'll use
@@ -18,6 +20,8 @@ public class Curse : MonoBehaviour {
     //[SerializeField] private float initialBackwardDuration = 0.25f;
     //[SerializeField] private float gravity = -9.81f;    // Simulated gravity
 
+    [SerializeField] private ParticleSystem curseEffect;
+
 
     private int activeCurses = 0;
 
@@ -30,7 +34,6 @@ public class Curse : MonoBehaviour {
         }
     }
 
-
     private void Start() {
         // All marks start deactivated
         ResetCurses();
@@ -39,8 +42,10 @@ public class Curse : MonoBehaviour {
         Debug.Log("ApplyCurse()");
 
         if (activeCurses < 4) {
-
+            curseEffect.Play();
+            HideAllStages();//New
             curseMarks[activeCurses].SetActive(true);
+
             activeCurses++;
 
             if (activeCurses >= 4) {
@@ -54,12 +59,17 @@ public class Curse : MonoBehaviour {
         return false; // Enemy already dead
     }
     public void ResetCurses() {
+        curseEffect.Stop();
         activeCurses = 0;
+        HideAllStages();
+    }
+
+    public void HideAllStages() {
         foreach (var mark in curseMarks) {
             if (mark != null)
                 mark.SetActive(false);
         }
-    }
+    } 
 
     private void CrushTarget() {
         //StartCoroutine(CurseFallSequence());

@@ -17,15 +17,15 @@ MonoBehaviour:
   UIModel: {fileID: 3042624869543643917, guid: 703ff7dd107eb454aa7a00f46e866127, type: 3}
   WorldModel: {fileID: 870277613180494476, guid: 7aedaf3b7346d72489103695a1945866, type: 3}
   NameItem: Plant 1
-  Price: 1
+  Price: 2
   Rarity: 1
   TypeOfItem: 0
   Description: 
-  turretType: 0
-  AttackDamage: 0
+  turretType: 3
+  AttackDamage: 1
   AttackSpeed: 80
   ProjectileSpeed: 10
   CriticalChance: 5
   CriticalDamage: 140
-  CurseChance: 80
+  CurseChance: 10
   Range: 15

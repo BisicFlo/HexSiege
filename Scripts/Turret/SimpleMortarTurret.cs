@@ -49,7 +49,6 @@ public class SimpleMortarTurret : Turret {
                 if (CheckIfTargetIsInSight()) {
                     Attack();
                 }
-
             }
             else {
                 Attack(); // Turret.cs

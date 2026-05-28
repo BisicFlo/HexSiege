@@ -2,15 +2,7 @@ using UnityEngine;
 
 public class SpikeTurret : Turret {
 
-    // --------------------------------------------------------------
-    //   Inspector Fields
-    // -------------------------------------------------------------- 
-
     [SerializeField] private GameObject spikePrefab = null;
-
-    // --------------------------------------------------------------
-    //   Private 
-    // --------------------------------------------------------------
 
     private Spike[] spikeArray;
     private int SpikeIndex = 0;
@@ -44,8 +36,8 @@ public class SpikeTurret : Turret {
         int attackDamage = AttackDamage.Value;
         if (isCritical) attackDamage *= (int)CriticalDamage.Value;
 
-        if (isCursed) Debug.Log("isCursedHit");
-        if (isCritical) Debug.Log("IsCriticalHit");
+        //if (isCursed) Debug.Log("isCursedHit");
+        //if (isCritical) Debug.Log("IsCriticalHit");
 
         Spike mySpike = GetObjectFromIndex<Spike>(spikeArray, SpikeIndex);
         SpikeIndex++;
@@ -59,7 +51,7 @@ public class SpikeTurret : Turret {
         InstantiateAlternative(mySpike.gameObject, Vector3.zero, Quaternion.identity, Vector3.one, null); //firePoint.rotation
         if (target != null) {
             mySpike.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
-            mySpike.ActivateBulletAndDesactivateImpact();
+            mySpike.ActivateSpikeAndDesactivateImpact();
 
             mySpike.Erupt(target.position); //new
         }

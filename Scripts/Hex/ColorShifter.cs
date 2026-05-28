@@ -77,6 +77,7 @@ public class ColorShifter : MonoBehaviour {
         colorIndexY = index / 22;
         UpdateColorOffset();
     }
+
     public void SetBackGroundColorFromIndex(int index) {
 
         if ( index < 0 || index >= BackgroundColors.ColorList.Count) return;     

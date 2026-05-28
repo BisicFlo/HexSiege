@@ -17,11 +17,11 @@ MonoBehaviour:
   UIModel: {fileID: 7822014846152319201, guid: a2232c3b7e122ef4189dff3f47779817, type: 3}
   WorldModel: {fileID: 7822014846152319201, guid: d72afffd0dd38c84bae7f19cbc02c3b4, type: 3}
   NameItem: Cristal Turret N4
-  Price: 5
+  Price: 10
   Rarity: 5
   TypeOfItem: 0
   Description: 
-  turretType: 1
+  turretType: 2
   AttackDamage: 5
   AttackSpeed: 100
   ProjectileSpeed: 10

@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Manages a collection of waypoints for enemy pathfinding.
 /// Attach this script to a parent GameObject that contains multiple child objects (waypoints).
-/// The waypoints are stored in a static array for easy global access.
+/// The waypoints are stored in a static array for easy global access. X
 /// </summary>
 public class Waypoints : MonoBehaviour {
 

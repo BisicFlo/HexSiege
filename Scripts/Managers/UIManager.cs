@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-// IScreenManager.cs ?
+// Should be in a new file IScreenManager.cs ?
 public interface IScreenManager {
     void OnScreenOpen();
     void OnScreenClose();
@@ -54,15 +54,23 @@ public class UIManager : MonoBehaviour {
         if (target == null) return;
 
         if (currentScreen != null) {
-            //Debug.Log("currentScreen.panel " + currentScreen.panel.name);
+            // 1) Hide Current Canvas
             currentScreen.panel.SetActive(false);
+            // 2) Trigger manager
             (currentScreen.manager as IScreenManager)?.OnScreenClose(); // NEW
         }
-        else {
-            Debug.Log("currentScreen null");
-        }
+
+        // 3) Display Next Canvas
         target.panel.SetActive(true);
+
+        // 4) Trigger manager 
         (target.manager as IScreenManager)?.OnScreenOpen(); // NEW
+
+        // 5) Switch Action Map
+        if (target.actionMap == ActionMap.UI) ActionMapManager.Instance.SwitchToUI();
+        if (target.actionMap == ActionMap.Touch) ActionMapManager.Instance.SwitchToTouch();
+
+        // 6) Update Current Screen
         currentScreen = target;
     }
 
@@ -77,8 +85,9 @@ public class UIManager : MonoBehaviour {
 [System.Serializable]
 public class Screen {
     public ScreenType type;
-    public GameObject panel;// or CanvasGroup canvasGroup;
+    public GameObject panel; // 
     public MonoBehaviour manager; // MonoBehaviour so it's showned in the Inspector
+    public ActionMap actionMap;
 }
 
 public enum ScreenType {
@@ -100,3 +109,10 @@ public enum ScreenType {
     Inventory,
     Debug
 }
+
+public enum ActionMap {
+    None,
+    Touch,
+    UI
+}
+

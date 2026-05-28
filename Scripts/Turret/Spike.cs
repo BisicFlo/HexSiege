@@ -44,12 +44,9 @@ public class Spike : MonoBehaviour {
         this.isCritical = isCritical;
         this.isCursed = isCursed;
         initialScale = initialScale = transform.localScale;
-
     }
 
-
-
-    public void ActivateBulletAndDesactivateImpact() {
+    public void ActivateSpikeAndDesactivateImpact() {
         spikeIsActive = true;
         if (impact != null) impact.SetActive(false);
     }
@@ -59,7 +56,6 @@ public class Spike : MonoBehaviour {
 
         if (impact != null) impact.SetActive(false);
     }
-
 
     public void Erupt(Vector3 position) {
         //if (_spikeIsActive) return;
@@ -130,14 +126,10 @@ public class Spike : MonoBehaviour {
             if (isCursed) {
                 enemy.TakeCurse(turret);
             }
-
             if (isCritical) {
 
             }
-
-
         }
-
         if (impact != null) {
             impact.transform.SetPositionAndRotation(this.transform.position, this.transform.rotation);
             impact.SetActive(true);

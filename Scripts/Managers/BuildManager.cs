@@ -36,19 +36,20 @@ public class BuildManager : MonoBehaviour, IScreenManager {
 
     public void OnScreenOpen() {
         // Switch Action Map
-        ActionMapManager.Instance.SwitchToUI();
-        // Instantiate Turrets to be rendered as icons on buttons  
+        //ActionMapManager.Instance.SwitchToUI(); # In UI manager now
+
+        // 1) Instantiate Turrets to be rendered as icons on buttons  
         InstantiateInventoryAndSetupButton();
-        // Display Quantities
+        // 2) Display Quantities
         SetupQuantityOnButton();
     }
     public void OnScreenClose() {
         // Switch Action Map
-        ActionMapManager.Instance.SwitchToTouch();
+        //ActionMapManager.Instance.SwitchToTouch();  # In UI manager now
     }
 
     private void QuitBuildMenu() {
-        ActionMapManager.Instance.SwitchToTouch();
+        //ActionMapManager.Instance.SwitchToTouch();
 
         UIManager.Instance.ShowScreen(ScreenType.HUD);
         Clear3DShop();
@@ -92,6 +93,9 @@ public class BuildManager : MonoBehaviour, IScreenManager {
             //ReloadNeeded = true;
             Turret createdTurret = BuildTurret(worldModel, SelectedTile.transform.position);
             // SetUp Intanciated Turret with Value in The scriptable Object ! <--------------------------------------------------------------------------
+
+            // Desactivate the ring
+            SelectedTile.SetActive(false); // New 
 
             //Inventory.ApplyAllBoostToTurret(createdTurret); // XXXXXXXXXX
             Debug.Log("Starting Coroutine");

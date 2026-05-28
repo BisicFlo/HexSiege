@@ -17,11 +17,11 @@ MonoBehaviour:
   UIModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
   WorldModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
   NameItem: Canon 1
-  Price: 1
+  Price: 2
   Rarity: 1
   TypeOfItem: 0
   Description: 
-  turretType: 0
+  turretType: 1
   AttackDamage: 2
   AttackSpeed: 10
   ProjectileSpeed: 10

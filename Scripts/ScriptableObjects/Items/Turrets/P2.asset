@@ -17,11 +17,11 @@ MonoBehaviour:
   UIModel: {fileID: 4549062385556163776, guid: dc6e87e20ed7dc34f802b35bc769712a, type: 3}
   WorldModel: {fileID: 5676714211311678970, guid: d48e700e81e273f44903d63a6ffb0048, type: 3}
   NameItem: Plant 2
-  Price: 2
+  Price: 4
   Rarity: 2
   TypeOfItem: 0
   Description: 
-  turretType: 0
+  turretType: 3
   AttackDamage: 2
   AttackSpeed: 80
   ProjectileSpeed: 10

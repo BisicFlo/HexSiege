@@ -54,7 +54,6 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         if (Instance != null) Debug.LogWarning("More than one BuildManager detected");
         Instance = this;        
     }
-
     private void OnEnable() {
         SetupButtonsEvents();
     }
@@ -336,7 +335,7 @@ public class ShopManager : MonoBehaviour, IScreenManager {
     private IEnumerator SetupAllButtons() {
 
         while (savedIndex < buttonList.Count) {
-            yield return new WaitForSeconds(0.5f); // Should Optimize
+            yield return new WaitForSeconds(0.5f); // Should Optimize /!\
 
             SetupOneButton(buttonList[savedIndex]);
             //InstantiateOne3DUI(savedIndex); // Only if it's a turret  -> in 

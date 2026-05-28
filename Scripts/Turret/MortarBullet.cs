@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MortarBullet : Bullet {
+public class MortarBullet : Projectile {
 
     //[Header("Mortar Settings")]
     private float flightTime = 1f;      // total duration of flight (tune this)

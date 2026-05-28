@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 
 public class SimpleMortarTurret : Turret {
@@ -82,13 +83,24 @@ public class SimpleMortarTurret : Turret {
     //    }
     //}
     protected override void Shoot() {
+        bool isCritical = IsCritical();
+        bool isCursed = IsCursed();
+        int attackDamage = AttackDamage.Value;
+
+        if (isCritical) attackDamage *= (int)CriticalDamage.Value;
+        //if (IsCursed()) attackDamage = 999; // add animation / visual
 
         MortarBullet myBullet = GetObjectFromIndex<MortarBullet>(bulletArray, bulletIndex);
         bulletIndex++;
-        bulletIndex %= bulletArray.Length; // Redundant ?
+        bulletIndex %= bulletArray.Length;
 
-        InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
+        if (myBullet.gameObject.activeSelf) { // used with too high attack Speed
+            Debug.Log("Bullet Already In Used "); 
+            myBullet.HitTarget();
+        }
         if (base.target != null) {
+            InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
+
             myBullet.Init(this, base.target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value, flightTime, maxHeight);
             myBullet.ActivateBulletAndDesactivateImpact();
         }

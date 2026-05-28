@@ -31,7 +31,7 @@ public class MagicTurret : Turret {
     // --------------------------------------------------------------
 
     private bool targetInSight = false;
-    private Bullet[] ProjectileArray;
+    private Projectile[] ProjectileArray;
     private int ProjectileIndex = 0;
     private Transform artifactTransform;
     private Vector3 startLocalPos;
@@ -45,7 +45,7 @@ public class MagicTurret : Turret {
         startLocalPos = artifactTransform.localPosition;
         phaseOffset = UnityEngine.Random.Range(0f, Mathf.PI * 2);
 
-        if (ProjectilePrefab != null) ProjectileArray = CreateStockOf<Bullet>(ProjectilePrefab, 5);
+        if (ProjectilePrefab != null) ProjectileArray = CreateStockOf<Projectile>(ProjectilePrefab, 5);
     }
     void Update() {
         // Always bob up/down relative to start position
@@ -117,7 +117,7 @@ public class MagicTurret : Turret {
         if (isCritical) attackDamage *= (int)CriticalDamage.Value;
         //if (IsCursed()) attackDamage = 999; // add animation / visual
 
-        Bullet myProjectile = GetObjectFromIndex<Bullet>(ProjectileArray, ProjectileIndex);
+        Projectile myProjectile = GetObjectFromIndex<Projectile>(ProjectileArray, ProjectileIndex);
         ProjectileIndex++;
         ProjectileIndex %= ProjectileArray.Length; // Redundant ?
 
@@ -125,9 +125,12 @@ public class MagicTurret : Turret {
             Debug.Log("Bullet Already In Used ");
             myProjectile.HitTarget();
         }
-        Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
-        InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
+        //Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
+        //InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
         if (target != null) {
+            Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
+            InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
+
             myProjectile.Init(this, target, enemyTargetted, attackDamage, (int)ProjectileSpeed.Value, isCritical, isCursed);
             myProjectile.ActivateBulletAndDesactivateImpact();
         }

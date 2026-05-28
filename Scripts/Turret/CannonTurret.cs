@@ -35,7 +35,7 @@ public class CannonTurret : Turret {
     private int bulletIndex = 0;
     private int impactIndex = 0;
     //private float fireCountdown = 0;
-    private Bullet[] bulletArray;
+    private Projectile[] bulletArray;
     private GameObject[] impactArray;
     private WaitForSeconds waitBetweenUpdateTarget;
     private Vector3 BarrelOffset;
@@ -52,7 +52,7 @@ public class CannonTurret : Turret {
     protected override void Init() {
         base.Init();
         BarrelOffset = barrelTransform.position - pitchTransform.position; // Cannon
-        if (bulletPrefab != null) bulletArray = CreateStockOf<Bullet>(bulletPrefab, 5);
+        if (bulletPrefab != null) bulletArray = CreateStockOf<Projectile>(bulletPrefab, 5);
     }
 
     private void Update() {
@@ -182,7 +182,7 @@ public class CannonTurret : Turret {
             StartCoroutine(ReloadAnimation());
         }      
 
-        Bullet myBullet = GetObjectFromIndex<Bullet>(bulletArray, bulletIndex);
+        Projectile myBullet = GetObjectFromIndex<Projectile>(bulletArray, bulletIndex);
         bulletIndex++;
         bulletIndex %= bulletArray.Length; // Redundant ?
 

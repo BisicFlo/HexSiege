@@ -11,7 +11,6 @@ public class MortarBullet : Projectile {
     private float timer;
 
 
-
     public void Init(Turret turret,Transform target, Enemy enemy, int damage, int speed, float flightTime , float maxHeight) {
         this.turret = turret;
         this.target = target;
@@ -48,20 +47,39 @@ public class MortarBullet : Projectile {
             return;
         }
 
-        // Horizontal movement: lerp flat positions
+        // 1) Horizontal movement
         Vector3 currentFlat = Vector3.Lerp(startPosition, target.position, t);
 
-        // Vertical: simple upside-down parabola (peaks in middle)
-        // 4t(1-t) gives nice 0 -> 1 -> 0 curve
+        // 2) Vertical parabola
         float height = maxHeight * 4f * t * (1f - t);
 
-        // Final position
-        transform.position = currentFlat + Vector3.up * height;
+        // 3) NEW position
+        Vector3 newPosition = currentFlat + Vector3.up * height;
 
-        // Optional: rotate to face motion direction
-        Vector3 velocityDir = (currentFlat + Vector3.up * height - transform.position).normalized;
+        // === Fix: Calculate direction before applying the position ===
+        Vector3 velocityDir = (newPosition - transform.position).normalized;
+
+        transform.position = newPosition;
+
+        // Optional: rotate to face movement direction
         if (velocityDir.sqrMagnitude > 0.01f) {
             transform.forward = velocityDir;
         }
+
+        //// 1) Horizontal movement: lerp flat positions
+        //Vector3 currentFlat = Vector3.Lerp(startPosition, target.position, t);
+
+        //// 2) Vertical: simple upside-down parabola (peaks in middle)
+        //// 4t(1-t) gives nice 0 -> 1 -> 0 curve
+        //float height = maxHeight * 4f * t * (1f - t);
+
+        //// 3) Final position
+        //transform.position = currentFlat + Vector3.up * height;
+
+        //// Optional: rotate to face motion direction
+        //Vector3 velocityDir = (currentFlat + Vector3.up * height - transform.position).normalized;
+        //if (velocityDir.sqrMagnitude > 0.01f) {
+        //    transform.forward = velocityDir;
+        //}
     }
 }

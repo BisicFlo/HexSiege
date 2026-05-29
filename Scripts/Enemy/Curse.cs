@@ -73,7 +73,7 @@ public class Curse : MonoBehaviour {
 
     private void CrushTarget() {
         //StartCoroutine(CurseFallSequence());
-        StartCoroutine(CurseFallSequenceV2(fallDuration,1));
+        StartCoroutine(CurseFallSequenceV2(fallDuration,1)); // Coroutine couldn't be started because the the game object 'Curse' is inactive!
     }
 
     //private IEnumerator CurseFallSequence() {

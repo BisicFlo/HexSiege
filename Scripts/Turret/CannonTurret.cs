@@ -177,6 +177,11 @@ public class CannonTurret : Turret {
 
 
     protected override void Shoot() {
+        bool isCritical = IsCritical();
+        bool isCursed = IsCursed();
+        int attackDamage = AttackDamage.Value;
+        if (isCritical) attackDamage *= CriticalDamage.Value;
+
 
         if (!reloading && needReloadAnimation) { // For Crossbows / bows
             StartCoroutine(ReloadAnimation());
@@ -184,11 +189,17 @@ public class CannonTurret : Turret {
 
         Projectile myBullet = GetObjectFromIndex<Projectile>(bulletArray, bulletIndex);
         bulletIndex++;
-        bulletIndex %= bulletArray.Length; // Redundant ?
+        bulletIndex %= bulletArray.Length; 
 
-        InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
+        if (myBullet.gameObject.activeSelf) {
+            Debug.Log("Bullet Already In Used ");
+            myBullet.HitTarget();
+        }
+
         if (target != null) {
-            //myBullet.Init(this, target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value);
+            InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
+
+            myBullet.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
             myBullet.ActivateBulletAndDesactivateImpact();
         }
     }

@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
-
 
 public class SimpleMortarTurret : Turret {
 

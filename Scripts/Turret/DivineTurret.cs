@@ -4,14 +4,20 @@ using UnityEngine;
 public class DivineTurret : Turret {
 
     [Header("Animation Settings")]
+    [SerializeField] private Transform blade;
+
     public float liftHeight = 1.5f;
     public float totalDuration = 1.2f;
 
     [Range(0f, 1f)]
-    public float liftPhaseRatio = 0.5f;   // % of time spent lifting + flipping
+    public float liftPhaseRatio = 0.4f;   // % of time spent lifting + flipping
     [Range(0f, 1f)]
     public float apexPauseRatio = 0.1f;   // % of time held at apex
-    // Strike phase gets the remainder
+    [Range(0f, 1f)]
+    public float strikeRatio = 0.1f;   // % of time held at apex
+    [Range(0f, 1f)]     
+    public float returnPhaseRatio = 0.5f;   // % of time held at apex
+
 
     [Header("Curves")]
     public AnimationCurve liftCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -49,18 +55,17 @@ public class DivineTurret : Turret {
     private Vector3 startLocalPos;
     private float phaseOffset;
 
-
-    [ContextMenu("Play Strike")] private void PlayStrike() => StartCoroutine(StrikeCoroutine());
+    //[ContextMenu("Play Strike")] private void PlayStrike() => StartCoroutine(StrikeCoroutine());
 
     protected override void Init() {
         base.Init();
-        
-        //artifactTransform = Artifact.transform;
-        //startLocalPos = artifactTransform.localPosition;
-        //phaseOffset = Random.Range(0f, Mathf.PI * 2);
-
         if (ProjectilePrefab != null) ProjectileArray = CreateStockOf<Projectile>(ProjectilePrefab, 5);
-    }
+
+        _startPos = blade.transform.position;
+        _startRot = blade.transform.rotation;
+    } 
+
+
     void Update() {
 
         //  bob up/down relative to start position
@@ -75,9 +80,11 @@ public class DivineTurret : Turret {
         //}
 
         if (target != null) {
+            Debug.Log("Divine : target not null");
             bool readyToFire = CheckIfReadyToFire();
             if (readyToFire) {
-                Attack();
+                Debug.Log("Divine : readyToFire");
+                Attack(); // ? useful 
                 StartCoroutine(StrikeCoroutine());
             }
         }
@@ -120,21 +127,32 @@ public class DivineTurret : Turret {
 
 
     protected override void Shoot() {
-        if (salvo) {
-            StartCoroutine(ShootMultipleProjectiles(salvoNumber,salvoInterval));
-        }
-        else {
-            ShootOneProjectile();
-        }        
+        //if (salvo) {
+        //    Debug.Log("Divine : salvo");
+
+        //    StartCoroutine(ShootMultipleProjectiles(salvoNumber,salvoInterval));
+        //}
+        //else {
+        //    Debug.Log("Divine : ShootOne");
+
+        //    ShootOneProjectile();
+        //}        
     }
 
     private IEnumerator StrikeCoroutine() {
+
+        #region Temp
+        Debug.Log(" Range :" + this.Range.Value);
+
+
+        #endregion
+
         float liftDuration = totalDuration * liftPhaseRatio;
         float pauseDuration = totalDuration * apexPauseRatio;
-        float strikeDuration = totalDuration * (1f - liftPhaseRatio - apexPauseRatio);
+        float strikeDuration = totalDuration * strikeRatio ; //(1f - liftPhaseRatio - apexPauseRatio)
 
         Vector3 apexPos = _startPos + Vector3.up * liftHeight;
-        Quaternion apexRot = _startRot * Quaternion.Euler(180f, 0f, 0f);
+        Quaternion apexRot = _startRot * Quaternion.Euler(0, 180f, 0f); //Quaternion.Euler(180f, 0f, 0f);
         Vector3 groundPos = _startPos + Vector3.down * liftHeight;
         Quaternion groundRot = apexRot; // already flipped
 
@@ -144,15 +162,15 @@ public class DivineTurret : Turret {
             float n = t / liftDuration;                    // 0 -> 1 normalized
             float curve = liftCurve.Evaluate(n);
 
-            transform.position = Vector3.Lerp(_startPos, apexPos, curve);
-            transform.rotation = Quaternion.Slerp(_startRot, apexRot, curve);
+            blade.transform.position = Vector3.Lerp(_startPos, apexPos, curve);
+            blade.transform.rotation = Quaternion.Slerp(_startRot, apexRot, curve);
 
             t += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = apexPos;
-        transform.rotation = apexRot;
+        blade.transform.position = apexPos;
+        blade.transform.rotation = apexRot;
 
         // --- Phase 2: Apex pause ---
         yield return new WaitForSeconds(pauseDuration);
@@ -163,18 +181,55 @@ public class DivineTurret : Turret {
             float n = t / strikeDuration;
             float curve = strikeCurve.Evaluate(n);
 
-            transform.position = Vector3.Lerp(apexPos, groundPos, curve);
-            transform.rotation = Quaternion.Slerp(apexRot, groundRot, curve);
+            blade.transform.position = Vector3.Lerp(apexPos, groundPos, curve);
+            blade.transform.rotation = Quaternion.Slerp(apexRot, groundRot, curve);
 
             t += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = groundPos;
-        transform.rotation = groundRot;
+        blade.transform.position = groundPos;
+        blade.transform.rotation = groundRot;
 
         // Optional: trigger impact VFX / sound here
         OnStrikeImpact();
+
+        // Real Attack
+        if (salvo) {
+            Debug.Log("Divine : salvo");
+
+            StartCoroutine(ShootMultipleProjectiles(salvoNumber, salvoInterval));
+        }
+        else {
+            Debug.Log("Divine : ShootOne");
+
+            ShootOneProjectile();
+        }
+
+        // --- Wait again
+        yield return new WaitForSeconds(pauseDuration);
+
+        //---Phase 4: Return
+
+        float returnDuration = totalDuration * returnPhaseRatio; // adjust ratio as needed
+
+        Vector3 currentPos = blade.transform.position;
+        //Quaternion currentRot = blade.transform.rotation;
+
+        t = 0f;
+        while (t < returnDuration) {
+            float n = t / returnDuration;
+            float curve = liftCurve.Evaluate(n); // reuse lift curve — smooth ease-in-out fits nicely
+
+            blade.transform.position = Vector3.Lerp(currentPos, _startPos, curve);
+            //blade.transform.rotation = Quaternion.Slerp(currentRot, _startRot, curve);
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        blade.transform.position = _startPos;
+        blade.transform.rotation = _startRot;
     }
 
     private void OnStrikeImpact() {

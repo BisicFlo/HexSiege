@@ -21,7 +21,7 @@ public class BuildManager : MonoBehaviour, IScreenManager {
     [SerializeField] private Button quitButton;
 
     private void Awake() {
-        Debug.Log("InstanceCreated");
+        //Debug.Log("InstanceCreated");
         if (Instance != null) Debug.LogWarning("More than one BuildManager detected");
         Instance = this;
     }

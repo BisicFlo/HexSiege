@@ -21,7 +21,7 @@ public class PlayerData : ScriptableObject {
     public readonly int[] xpRequired = { 2, 2, 6, 10, 20, 36, 60, 68, 80 };
 
     private void OnEnable() {
-        Debug.Log("PlayerData OnEnable called");
+        //Debug.Log("PlayerData OnEnable called");
         Health = StartingHealth;
         MaxHealth = StartingMaxHealth;
         Money = StartingMoney;

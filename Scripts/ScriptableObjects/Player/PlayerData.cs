@@ -18,7 +18,7 @@ public class PlayerData : ScriptableObject {
     public int Xp { get; private set; }
     public int Level { get; private set; } = 1;
 
-    public readonly int[] xpRequired = { 2, 2, 6, 10, 20, 36, 60, 68, 80 };
+    public static readonly int[] xpRequired = { 2, 2, 6, 10, 20, 36, 60, 68, 80 }; // "ReadOnlyCollection" ?
 
     private void OnEnable() {
         //Debug.Log("PlayerData OnEnable called");

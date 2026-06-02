@@ -23,7 +23,7 @@ public class SceneLoader : MonoBehaviour {
     //[SerializeField] private List<Button> buttonList;
 
     [SerializeField] private Button  quitButton;
-    [SerializeField] private HealthBar LoadingBar;    // Used to change bar visual
+    [SerializeField] private SliderBar LoadingBar;    // Used to change bar visual
 
     private void OnEnable() {
         // Switch Action Map

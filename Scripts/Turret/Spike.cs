@@ -59,10 +59,12 @@ public class Spike : MonoBehaviour {
 
     public void Erupt(Vector3 position) {
         //if (_spikeIsActive) return;
+        if (position == Vector3.zero) return;
 
         // Position the spike at the target location 
         this.transform.position = new Vector3(position.x, 0, position.z);
 
+        // Start Animation + effects + damage
         StartCoroutine(SpikeEruptionRoutine());
     }
 

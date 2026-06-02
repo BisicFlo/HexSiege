@@ -13,9 +13,9 @@ public class Turret : MonoBehaviour {
 
     //[Header("New Stats System")]
     [HideInInspector] public CharacterStat AttackDamage;
-     public CharacterStat AttackSpeed;  // 100 : normal 
+    [HideInInspector] public CharacterStat AttackSpeed;  // 100 : normal 
     [HideInInspector] public CharacterStat ProjectileSpeed;
-     public CharacterStat CriticalChance; // 0-100 %
+    [HideInInspector] public CharacterStat CriticalChance; // 0-100 %
     [HideInInspector] public CharacterStat CriticalDamage; //  140 %  |  200%  | 90%
     [HideInInspector] public CharacterStat CurseChance;    // 0-100 %
      public CharacterStat Range;
@@ -51,9 +51,8 @@ public class Turret : MonoBehaviour {
     //   MonoBehaviour
     // --------------------------------------------------------------
 
-
-    // Don't Call Start() in derived classes : "protected"
-    protected void Start() {
+   
+    protected void Start() {  // Don't Call Start() in derived classes : "protected"
         Init();
         InitValues();
     }
@@ -63,6 +62,7 @@ public class Turret : MonoBehaviour {
         waitBetweenUpdateTarget = new(timeBetweenUpdateTarget);
         StartCoroutine(UpdateTarget());
     }
+
     protected virtual void InitValues() {
         Debug.Log( " Init from " + this.name );
         AttackDamage = new CharacterStat(turretData.AttackDamage);
@@ -74,7 +74,6 @@ public class Turret : MonoBehaviour {
         Range = new CharacterStat(turretData.Range);
 
         rarity = turretData.Rarity;
-
     }
 
     protected bool IsCritical() {

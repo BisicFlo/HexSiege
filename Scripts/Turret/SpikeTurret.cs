@@ -51,7 +51,7 @@ public class SpikeTurret : Turret {
         InstantiateAlternative(mySpike.gameObject, Vector3.zero, Quaternion.identity, Vector3.one, null); //firePoint.rotation
         if (target != null) {
             mySpike.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
-            mySpike.ActivateSpikeAndDesactivateImpact();
+            mySpike.ActivateSpikeAndDesactivateImpact();//  Redundant  : setActive
 
             mySpike.Erupt(target.position); //new
         }

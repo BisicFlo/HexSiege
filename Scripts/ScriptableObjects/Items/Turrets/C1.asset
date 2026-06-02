@@ -27,5 +27,5 @@ MonoBehaviour:
   ProjectileSpeed: 10
   CriticalChance: 5
   CriticalDamage: 140
-  CurseChance: 50
+  CurseChance: 0
   Range: 15

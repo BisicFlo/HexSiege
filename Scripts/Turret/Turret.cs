@@ -2,6 +2,17 @@ using Bisic.CharacterStats;
 using System.Collections;
 using UnityEngine;
 
+public struct TurretStats {
+    public int attackDamage;
+    public int attackSpeed;
+    public int projectileSpeed;
+    public int range;
+    public int criticalChance;
+    public int criticalDamage;
+    public int curseChance;
+}
+
+
 public class Turret : MonoBehaviour {
 
     // --------------------------------------------------------------
@@ -51,8 +62,32 @@ public class Turret : MonoBehaviour {
     //   MonoBehaviour
     // --------------------------------------------------------------
 
-   
-    protected void Start() {  // Don't Call Start() in derived classes : "protected"
+    public TurretStats GetBaseValues() {
+
+        return new TurretStats {
+            attackDamage = AttackDamage.BaseValue,
+            attackSpeed = AttackSpeed.BaseValue,
+            projectileSpeed = ProjectileSpeed.BaseValue,
+            criticalChance = CriticalChance.BaseValue,
+            criticalDamage = CriticalDamage.BaseValue,
+            curseChance = CurseChance.BaseValue,
+            range = Range.BaseValue,
+        };
+    }
+    public TurretStats GetTotalValues() {
+
+        return new TurretStats {
+            attackDamage = AttackDamage.Value,
+            attackSpeed = AttackSpeed.Value,
+            projectileSpeed = ProjectileSpeed.Value,
+            criticalChance = CriticalChance.Value,
+            criticalDamage = CriticalDamage.Value,
+            curseChance = CurseChance.Value,
+            range = Range.Value,
+        };
+    }
+
+    protected void Start() {  // Don't Call Start() in derived classes so : "protected"
         Init();
         InitValues();
     }

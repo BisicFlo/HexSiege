@@ -10,8 +10,8 @@ public class HUDManager : MonoBehaviour {
     [SerializeField] private Text levelText;
     [SerializeField] private Text xpText;
 
-    [SerializeField] private SliderBar healthBar; // Used to change Health Bar visual
-    [SerializeField] private SliderBar xpBar;    // Used to change XP Bar visual
+    [SerializeField] private DoubleSliderBar doubleHealthBar; // Used to change Health Bar visual
+    [SerializeField] private DoubleSliderBar doubleXpBar;    // Used to change XP Bar visual
 
     private void OnEnable() {
         Debug.Log("HUDManager OnEnable called");
@@ -24,7 +24,7 @@ public class HUDManager : MonoBehaviour {
         playerData.OnStatChanged -= UpdateUI;
     }
 
-    public void UpdateUI() {   // Overkill to change everything ?
+    public void UpdateUI() {   // Overkill to change everything ??
         UpdateMoneyUI();
         UpdateHealthUI();
         UpdateLevelUI();
@@ -33,18 +33,22 @@ public class HUDManager : MonoBehaviour {
     public void UpdateMoneyUI() {
         moneyText.text = playerData.Money.ToString();
     }
+
     public void UpdateHealthUI() {
         healthText.text = playerData.Health.ToString() + " / " + playerData.MaxHealth.ToString();
-        healthBar.SetMaxValue(playerData.MaxHealth);
-        healthBar.SetValue(playerData.Health);
+        //healthBar.SetMaxValue(playerData.MaxHealth);
+        //healthBar.SetValue(playerData.Health);
+        doubleHealthBar.SetMaxValue(playerData.MaxHealth);
+        doubleHealthBar.RemoveAmountWithEffect(playerData.Health);        
     }
+
     public void UpdateLevelUI() {
         int level = playerData.Level;
         int xp = playerData.Xp;
         int xpRequired = PlayerData.xpRequired[level - 1]; // = playerData.xpRequired[level - 1];
 
-        xpBar.SetMaxValue(xpRequired);
-        xpBar.SetValue(xp);
+        doubleXpBar.SetMaxValue(xpRequired);
+        doubleXpBar.AddAmountWithEffect(xp);
         levelText.text = level.ToString();
         xpText.text = xp.ToString() + " / " + xpRequired.ToString();
     }

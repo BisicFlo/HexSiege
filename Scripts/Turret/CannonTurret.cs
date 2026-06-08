@@ -191,7 +191,7 @@ public class CannonTurret : Turret {
         bulletIndex++;
         bulletIndex %= bulletArray.Length; 
 
-        if (myBullet.gameObject.activeSelf) {
+        if (myBullet.gameObject.activeSelf) { // NullReferenceException x2
             Debug.Log("Bullet Already In Used ");
             myBullet.HitTarget();
         }

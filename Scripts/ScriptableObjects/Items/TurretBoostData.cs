@@ -13,13 +13,25 @@ public class TurretBoostData : ItemData {
     // Stat Bonuses (0 = no boost)
     public int AttackDamage;
     public int AttackSpeed;
-    public int ProjectileSpeed;
+    public int ProjectileSpeed; // ?
     public int CriticalChance;
     public int CriticalDamage;
     public int CurseChance;
     public int Range;
 
     public List<EffectSO> effects; // new // uniques effects
+
+    public TurretStats GetValues() {
+        return new TurretStats {
+            attackDamage = AttackDamage,
+            attackSpeed = AttackSpeed,
+            projectileSpeed = ProjectileSpeed,
+            criticalChance = CriticalChance,
+            criticalDamage = CriticalDamage,
+            curseChance = CurseChance,
+            range = Range,
+        };
+    }
 
     public void Awake() {
         TypeOfItem = ItemType.Boost;

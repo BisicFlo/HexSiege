@@ -34,7 +34,7 @@ public class PlayerData : ScriptableObject {
         if (Level == 10) return; //Niveau Max
 
         Xp += xpGained;
-        if (Xp >= xpRequired[Level - 1]) {
+        if (Xp >= xpRequired[Level - 1]) {  // need to be changed 
             Xp = 0;
             Level++;
         }

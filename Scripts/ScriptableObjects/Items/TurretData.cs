@@ -31,5 +31,16 @@ public class TurretData : ItemData {
 
     //public float RotationSpeed; // ?
 
+    public TurretStats GetValues() {
+        return new TurretStats {
+            attackDamage = AttackDamage,
+            attackSpeed = AttackSpeed,
+            projectileSpeed = ProjectileSpeed,
+            criticalChance = CriticalChance,
+            criticalDamage = CriticalDamage,
+            curseChance = CurseChance,
+            range = Range,
+        };
+    }
 
 }

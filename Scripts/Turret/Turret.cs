@@ -6,10 +6,10 @@ public struct TurretStats {
     public int attackDamage;
     public int attackSpeed;
     public int projectileSpeed;
-    public int range;
     public int criticalChance;
     public int criticalDamage;
     public int curseChance;
+    public int range;
 }
 
 
@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour {
     [HideInInspector] public CharacterStat CriticalChance; // 0-100 %
     [HideInInspector] public CharacterStat CriticalDamage; //  140 %  |  200%  | 90%
     [HideInInspector] public CharacterStat CurseChance;    // 0-100 %
-     public CharacterStat Range;
+    [HideInInspector] public CharacterStat Range;
 
     //[Header("Attributes")]
     //public int attackDamage = 1;

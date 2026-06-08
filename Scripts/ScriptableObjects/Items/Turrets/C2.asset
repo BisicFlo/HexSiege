@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 2
   UIModel: {fileID: 1392619063121621560, guid: 5b61f12c2290312478bad45b83b79649, type: 3}
   WorldModel: {fileID: 1392619063121621560, guid: 1c33f8de350b53740af7a67247fc00fa, type: 3}
-  NameItem: Cristal Turret N2
+  NameItem: Cristal 2
   Price: 4
   Rarity: 2
   TypeOfItem: 0

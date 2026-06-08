@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 4
   UIModel: {fileID: 6781560102716994338, guid: fa476d9f92a0f9b49b1e173f54e73e9b, type: 3}
   WorldModel: {fileID: 6781560102716994338, guid: e61ecc6ff28f01e43b66e0af894b3602, type: 3}
-  NameItem: Cristal Turret N4
+  NameItem: Cristal 4
   Price: 8
   Rarity: 4
   TypeOfItem: 0

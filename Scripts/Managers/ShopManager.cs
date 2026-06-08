@@ -15,7 +15,7 @@ public class ShopManager : MonoBehaviour, IScreenManager {
     [SerializeField] private InventoryData inventory; // Items / Turrets
 
     //[SerializeField] public  List<Color> RarityColors = new List<Color>(); // OLD =>  replaced by background images list  
-    [SerializeField] private ColorData rarityColors; // New
+    //[SerializeField] private ColorData rarityColors; // New
 
     [SerializeField] ItemDatabase itemDatabase;
 
@@ -208,10 +208,10 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         return itemDatabase.GetRandomItem();
     }
 
-    private void ChangeColorButtonFromRarity(Button button, int rarity) {
-        if (rarity < 1 || rarity > 6) return; // 6 : items
-        button.image.color = rarityColors.ColorList[rarity - 1]; // New        
-    }
+    //private void ChangeColorButtonFromRarity(Button button, int rarity) {
+    //    if (rarity < 1 || rarity > 6) return; // 6 : items
+    //    button.image.color = rarityColors.ColorList[rarity - 1]; // New        
+    //}
 
     private void ChangePriceButton(Button button, int price) {
         button.transform.GetChild(0).GetComponent<Text>().text = price.ToString();
@@ -235,7 +235,7 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         
         if (selectTurret || playerData.Level < 3) { // For Turrets 
             TurretData selectedTurret = PickTurret(rarity);
-            ChangeColorButtonFromRarity(button, rarity);
+            //ChangeColorButtonFromRarity(button, rarity);
             ChangePriceButton(button, selectedTurret.Price);
             button.gameObject.SetActive(true);
 
@@ -246,7 +246,7 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         }
         else { // For Items  / -> TurretBoostData
             ItemData selectedItem = PickItem(); // ?? TurretBoostData
-            ChangeColorButtonFromRarity(button, 6); // 6 for items
+            //ChangeColorButtonFromRarity(button, 6); // 6 for items
             ChangePriceButton(button, selectedItem.Price);
             button.gameObject.SetActive(true);
 

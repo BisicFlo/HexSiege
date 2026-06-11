@@ -12,24 +12,26 @@ public class HUDManager : MonoBehaviour {
 
     [SerializeField] private DoubleSliderBar doubleHealthBar; // Used to change Health Bar visual
     //[SerializeField] private DoubleSliderBar doubleXpBar;    // Used to change XP Bar visual
-    [SerializeField] private XpBar simpleXpBar;    // Used to change XP Bar visual
-
+    [SerializeField] private XpBar simpleXpBar;    // Used to change XP Bar visual   
 
     private void OnEnable() {
         Debug.Log("HUDManager OnEnable called");
 
         playerData.OnStatChanged += UpdateUI;
+        playerData.OnXpGained += UpdateLevelUI;
+
+        //UpdateLevelUI
         UpdateUI();//new
     }
 
     private void OnDisable() {
         playerData.OnStatChanged -= UpdateUI;
+        playerData.OnXpGained -= UpdateLevelUI;
     }
 
     public void UpdateUI() {   // Overkill to change everything ??
         UpdateMoneyUI();
         UpdateHealthUI();
-        UpdateLevelUI();
     }
 
     public void UpdateMoneyUI() {
@@ -44,15 +46,19 @@ public class HUDManager : MonoBehaviour {
         doubleHealthBar.RemoveAmountWithEffect(playerData.Health);        
     }
 
-    public void UpdateLevelUI() {
-        //int level = playerData.Level;
-        //int xp = playerData.Xp;
-        //int xpRequired = PlayerData.xpRequired[level - 1]; // = playerData.xpRequired[level - 1];
+    public void UpdateLevelUI(int xpGained) {
+        int level = playerData.Level;
+        int currentXp = playerData.Xp;
+
+        simpleXpBar.AddXp(xpGained, currentXp, level);
+
+
+        int xpRequired = PlayerData.xpRequired[level - 1]; // = playerData.xpRequired[level - 1];
 
         //doubleXpBar.SetMaxValue(xpRequired);
         //doubleXpBar.AddAmountWithEffect(xp);
 
-        //levelText.text = level.ToString();
-        //xpText.text = xp.ToString() + " / " + xpRequired.ToString();
+        levelText.text = level.ToString();
+        xpText.text = currentXp.ToString() + " / " + xpRequired.ToString();
     }
 }

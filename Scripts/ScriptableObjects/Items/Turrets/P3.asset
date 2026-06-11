@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: P3
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 2eeb52dcd8e868e45a342e7984243fc7, type: 3}
   ID: 8
   UIModel: {fileID: 8763059658947035909, guid: 18bd90ab1c6c9974ab035abbacc7bc2c, type: 3}
   WorldModel: {fileID: 2063871252862783729, guid: 5300cb4cb051a43459784b3f3b529c4b, type: 3}

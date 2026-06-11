@@ -20,7 +20,6 @@ public class AnimateTurret : MonoBehaviour {
     //   Private 
     // --------------------------------------------------------------
 
-    private bool isJumping = false;
     private Vector3 originalScale;
 
 

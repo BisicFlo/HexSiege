@@ -114,8 +114,7 @@ public class MagicTurret : Turret {
         bool isCursed = IsCursed();
         int attackDamage = (int)AttackDamage.Value;
 
-        if (isCritical) attackDamage *= (int)CriticalDamage.Value;
-        //if (IsCursed()) attackDamage = 999; // add animation / visual
+        if (isCritical) attackDamage *= CriticalDamage.Value;
 
         Projectile myProjectile = GetObjectFromIndex<Projectile>(ProjectileArray, ProjectileIndex);
         ProjectileIndex++;

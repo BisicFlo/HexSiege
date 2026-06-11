@@ -52,6 +52,7 @@ public class CannonTurret : Turret {
     protected override void Init() {
         base.Init();
         BarrelOffset = barrelTransform.position - pitchTransform.position; // Cannon
+
         if (bulletPrefab != null) bulletArray = CreateStockOf<Projectile>(bulletPrefab, 5);
     }
 
@@ -180,12 +181,12 @@ public class CannonTurret : Turret {
         bool isCritical = IsCritical();
         bool isCursed = IsCursed();
         int attackDamage = AttackDamage.Value;
-        if (isCritical) attackDamage *= CriticalDamage.Value;
 
+        if (isCritical) attackDamage *= CriticalDamage.Value;
 
         if (!reloading && needReloadAnimation) { // For Crossbows / bows
             StartCoroutine(ReloadAnimation());
-        }      
+        }   
 
         Projectile myBullet = GetObjectFromIndex<Projectile>(bulletArray, bulletIndex);
         bulletIndex++;
@@ -223,6 +224,10 @@ public class CannonTurret : Turret {
         Config3.SetActive(true);
 
         reloading = false;
+    }
+
+    private void OnDestroy() {
+        DestroyStockOf(bulletArray);
     }
 
     private void OnDrawGizmosSelected() {

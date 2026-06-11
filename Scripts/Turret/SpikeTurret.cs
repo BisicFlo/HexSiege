@@ -57,6 +57,10 @@ public class SpikeTurret : Turret {
         }
     }
 
+    private void OnDestroy() {
+        DestroyStockOf(spikeArray);
+    }
+
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, Mathf.Sqrt(Range.Value)); // Mathf.Sqrt because sqrMagnitude

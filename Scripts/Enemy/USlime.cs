@@ -21,7 +21,7 @@ public class USlime : MonoBehaviour {
     [SerializeField] private float gravity = -9.81f; // Simulated gravity
 
      private float speedInfluence = 1f;
-     private int referenceSpeed = 3;
+     private int referenceSpeed = 2;
 
 
     [Header("Jiggle")]
@@ -44,9 +44,11 @@ public class USlime : MonoBehaviour {
 
                 // Option 1: Multiplicative (most common & intuitive)
                 float speedRatio = enemy.currentSpeed / referenceSpeed;
+                if (speedRatio < 1) speedRatio = 1; // Prevent negative Waiting time 
                 float adjustedWaitTime = baseWaitTime / (1f + speedInfluence * (speedRatio - 1f));
                 float adjustedJumpTime = baseJumpTime / (1f + speedInfluence * (speedRatio - 1f));
 
+                
 
                 yield return StartCoroutine(FlattenBeforeJump(adjustedWaitTime));
                 StartCoroutine(JiggleWithoutBlendShape(adjustedWaitTime*2, -1));

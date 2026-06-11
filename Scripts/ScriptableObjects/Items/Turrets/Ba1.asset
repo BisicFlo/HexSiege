@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: Ba1
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 736dd617b4aa1f445bad3a860c7f8755, type: 3}
   ID: 1
   UIModel: {fileID: 8641230041856785237, guid: 140a2517d35337d4b90bfc7686d0b2ac, type: 3}
-  WorldModel: {fileID: 8066269316739059970, guid: 4bec0e14a3239df488b458cc9b501548, type: 3}
+  WorldModel: {fileID: 2566282952670584015, guid: b9a9cf45b0bcbe14e8284f7bc3a0facf, type: 3}
   NameItem: Ballista 1
   Price: 2
   Rarity: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
   Description: 
   turretType: 1
   AttackDamage: 1
-  AttackSpeed: 20
+  AttackSpeed: 30
   ProjectileSpeed: 50
   CriticalChance: 5
   CriticalDamage: 140

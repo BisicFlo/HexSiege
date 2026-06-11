@@ -125,11 +125,15 @@ public class CardConfig : MonoBehaviour {
 
 
     public void MainSetup() {
+        ResetCardOrientation(); // New
+
         if (turretDataSelected != null) { // used In Shop
             ChangeBackgroundColor(turretDataSelected.Rarity);
             ChangeSlidersFromTurret(turretDataSelected);
             ChangeTypeImage(turretDataSelected.turretType);
             ChangeText(turretDataSelected);
+            ChangeMainImage(turretDataSelected);
+            
         }
         else if (turretSelected != null) { // used In Inspector
             ChangeBackgroundColor(turretSelected.rarity);
@@ -143,6 +147,7 @@ public class CardConfig : MonoBehaviour {
             ChangeSlidersFromTurret(turretBoostSelected);
             ChangeTypeImage(turretBoostSelected.turretType);
             ChangeText(turretBoostSelected);
+            ChangeMainImage(turretDataSelected);
         }
     }
 
@@ -216,17 +221,17 @@ public class CardConfig : MonoBehaviour {
         TurretTypeManager.Instance.SetCorrespondingSprite(TypeImage, turretType);
     }
 
-    private void ChangeText(ItemData turretData) {
-        if (turretData == null) {  Debug.Log("turretData is null in ChangeText() ")  ; return; }
-        ItemPriceFront.text = turretData.Price.ToString();
-        ItemPriceBack.text = turretData.Price.ToString();
+    private void ChangeText(ItemData itemData) {
+        if (itemData == null) {  Debug.Log("turretData is null in ChangeText() ")  ; return; }
+        ItemPriceFront.text = itemData.Price.ToString();
+        ItemPriceBack.text = itemData.Price.ToString();
 
-        ItemNameFront.text = turretData.NameItem.ToString();
-        ItemNameBack.text = turretData.NameItem.ToString();
+        ItemNameFront.text = itemData.NameItem.ToString();
+        ItemNameBack.text = itemData.NameItem.ToString();
     }
 
-    private void ChangeMainImage(TurretData turretData) {
-        MainImage.sprite = turretData.Icon;
+    private void ChangeMainImage(ItemData itemData) {
+        MainImage.sprite = itemData.Icon;
     }
     private void ChangeMainImage(Turret turret) {
         MainImage.sprite = turret.turretData.Icon;
@@ -241,6 +246,12 @@ public class CardConfig : MonoBehaviour {
         currentFlip = StartCoroutine(FlipRoutine());
     }
 
+    public void ResetCardOrientation() {
+        isFaceUp = true;
+        FrontCard.gameObject.SetActive(true);
+        BackCard.gameObject.SetActive(false);
+        FrontCard.localScale = Vector3.one;
+    }
     private IEnumerator FlipRoutine() {
         Transform front ;
         Transform back ;

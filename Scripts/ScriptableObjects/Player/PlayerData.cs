@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerData : ScriptableObject {
 
     public event Action OnStatChanged;
+    public event Action<int> OnXpGained; // important in HUDManager and XpBar
+
 
     [SerializeField] private int StartingHealth;
     [SerializeField] private int StartingMaxHealth;
@@ -20,8 +22,7 @@ public class PlayerData : ScriptableObject {
 
     public static readonly int[] xpRequired = { 2, 2, 6, 10, 20, 36, 60, 68, 80 }; // "ReadOnlyCollection" ?
 
-    private void OnEnable() {
-        //Debug.Log("PlayerData OnEnable called");
+    public void Init() {       
         Health = StartingHealth;
         MaxHealth = StartingMaxHealth;
         Money = StartingMoney;
@@ -38,7 +39,7 @@ public class PlayerData : ScriptableObject {
             Xp = 0;
             Level++;
         }
-        OnStatChanged?.Invoke();
+        OnXpGained?.Invoke(xpGained);
     }
     public void GainMoney(int money) {
         Money += money;

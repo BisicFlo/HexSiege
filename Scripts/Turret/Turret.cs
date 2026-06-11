@@ -218,6 +218,19 @@ public class Turret : MonoBehaviour {
         return array[index];
     }
 
+    protected void DestroyStockOf<T>(T[] instances) where T : Object {
+        for (int i = 0; i < instances.Length; i++) {
+            if (instances[i] == null) continue;
+
+            GameObject go = instances[i] is GameObject gameObj
+                ? gameObj
+                : (instances[i] as Component)?.gameObject;
+
+            if (go != null) Destroy(go);
+            instances[i] = null;
+        }
+    }
+
     protected IEnumerator UpdateTarget() {
         while (true) {
             yield return waitBetweenUpdateTarget;

@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 
 public class XpBar : MonoBehaviour {
-    public PlayerData playerData; // temp ! debug
+    //public PlayerData playerData; // temp ! debug
 
     [SerializeField] private Slider slider;
     [SerializeField] private float segmentDuration = 0.4f;
 
-    private int maxXp = 100;
-    private int currentXp = 0;
+    //private int maxXp = 100;
+    //private int currentXp = 0;
     private Coroutine animCoroutine;
 
     // Each segment: animate from A to B, then snap back to 0 if overflow
     private readonly Queue<(float from, float to, bool resetAfter)> segments = new();
 
-    public int GainXP;
+    //public int GainXP;
 
 
     //private void Awake() {
@@ -25,12 +25,12 @@ public class XpBar : MonoBehaviour {
     //    imageHighlightBonus = sliderBonus.transform.GetChild(1).GetChild(0).GetComponent<Image>();
     //}
 
-    private void Update() { //temp
-        if (GainXP != 0) {
-            AddXp(GainXP, playerData.Xp, playerData.Level);
-            GainXP = 0;
-        }
-    }
+    //private void Update() { //temp
+    //    if (GainXP != 0) {
+    //        AddXp(GainXP, playerData.Xp, playerData.Level);
+    //        GainXP = 0;
+    //    }
+    //}
 
     public void AddXp(int amount, int currentXp, int currentLevel ) {
         int remaining = amount;

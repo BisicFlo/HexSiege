@@ -33,6 +33,8 @@ public class Player : MonoBehaviour {
         inventory.TurretContainer.Clear();// 
 
         //SetupPlayerData();
+
+        playerData.Init(); //New
     }
 
     private void HandleOnPlayerHit(Enemy e, int dmg, bool cacanBeFatal) {

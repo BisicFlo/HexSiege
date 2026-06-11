@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// Editor tool that recursively changes the "Rendering Layer Mask" 
@@ -121,8 +122,9 @@ public class ChangeRenderingLayerMaskRecursively : EditorWindow {
             foreach (MeshRenderer renderer in renderers) {
                 if (renderer.renderingLayerMask != renderingLayerMask) {
                     // Record change for Undo
-                    Undo.RecordObject(renderer, "Change Rendering Layer Mask");
+                    Undo.RecordObject(renderer, "Apply Renderer Settings");
                     renderer.renderingLayerMask = renderingLayerMask;
+                    renderer.shadowCastingMode = ShadowCastingMode.Off; // New
                     prefabChanged = true;
                     changedCount++;
                 }

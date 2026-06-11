@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: P1
+  m_Name: Ba2
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 81c27fc037572ed4e80e625f148453c3, type: 3}
-  ID: 6
-  UIModel: {fileID: 3042624869543643917, guid: 703ff7dd107eb454aa7a00f46e866127, type: 3}
-  WorldModel: {fileID: 870277613180494476, guid: 7aedaf3b7346d72489103695a1945866, type: 3}
-  NameItem: Plant 1
-  Price: 2
-  Rarity: 1
+  Icon: {fileID: 21300000, guid: c5656628a6fd0ca448ded16c6337e3e0, type: 3}
+  ID: 1
+  UIModel: {fileID: 8641230041856785237, guid: 140a2517d35337d4b90bfc7686d0b2ac, type: 3}
+  WorldModel: {fileID: 8423115778812472039, guid: 32bafaa3e4455174583ae4e858048b7d, type: 3}
+  NameItem: Ballista 1
+  Price: 6
+  Rarity: 3
   TypeOfItem: 0
   Description: 
-  turretType: 3
-  AttackDamage: 1
-  AttackSpeed: 80
-  ProjectileSpeed: 10
+  turretType: 1
+  AttackDamage: 3
+  AttackSpeed: 30
+  ProjectileSpeed: 50
   CriticalChance: 5
   CriticalDamage: 140
-  CurseChance: 10
-  Range: 15
+  CurseChance: 0
+  Range: 20

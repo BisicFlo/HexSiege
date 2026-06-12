@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 0
   UIModel: {fileID: 0}
   WorldModel: {fileID: 0}
-  NameItem: 
+  NameItem: Strange
   Price: 5
   Rarity: 1
   TypeOfItem: 1

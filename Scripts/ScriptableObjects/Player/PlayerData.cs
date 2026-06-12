@@ -32,12 +32,21 @@ public class PlayerData : ScriptableObject {
     }
 
     public void GainXp(int xpGained) {
-        if (Level == 10) return; //Niveau Max
+        Debug.Log("Xp Gained : " + xpGained);   
+
+        if (Level >= 10) return; // Max level
 
         Xp += xpGained;
-        if (Xp >= xpRequired[Level - 1]) {  // need to be changed 
-            Xp = 0;
+
+        // Handle multiple level-ups + excess XP carry-over
+        while (Level < 10 && Xp >= xpRequired[Level - 1]) {
+            Xp -= xpRequired[Level - 1];
             Level++;
+        }
+        // Clamp XP at max level
+        if (Level >= 10) {
+            Xp = 0; 
+            Level = 10;
         }
         OnXpGained?.Invoke(xpGained);
     }

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: Ca1
+  m_Name: G3
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 74a7bda78a346ae4c88f6e624a06a0da, type: 3}
+  Icon: {fileID: 21300000, guid: bbab3d620afaed84590edda60dc973c4, type: 3}
   ID: 1
-  UIModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
-  WorldModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
-  NameItem: Cannon
+  UIModel: {fileID: 599305214713675627, guid: c06aad6d5624f194096ee0b2eccb1a74, type: 3}
+  WorldModel: {fileID: 599305214713675627, guid: c06aad6d5624f194096ee0b2eccb1a74, type: 3}
+  NameItem: Frost Eye
   Price: 2
-  Rarity: 1
+  Rarity: 3
   TypeOfItem: 0
   Description: 
-  turretType: 1
-  AttackDamage: 2
-  AttackSpeed: 10
+  turretType: 5
+  AttackDamage: 1
+  AttackSpeed: 90
   ProjectileSpeed: 10
   CriticalChance: 5
   CriticalDamage: 140

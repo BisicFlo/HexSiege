@@ -95,7 +95,9 @@ public class BuildManager : MonoBehaviour, IScreenManager {
             // SetUp Intanciated Turret with Value in The scriptable Object ! <--------------------------------------------------------------------------
 
             // Desactivate the ring
-            SelectedTile.SetActive(false); // New 
+            // SelectedTile.SetActive(false); // OLD 
+
+            SetupNode(SelectedTile, createdTurret); // New
 
             //Inventory.ApplyAllBoostToTurret(createdTurret); // XXXXXXXXXX
             Debug.Log("Starting Coroutine");
@@ -109,6 +111,18 @@ public class BuildManager : MonoBehaviour, IScreenManager {
 
             Clear3DShop(); //new
         }
+    }
+
+    public bool SetupNode(GameObject selectedTile, Turret createdTurret) {
+        if (selectedTile == null || createdTurret == null) return false;
+
+        Node node = selectedTile.GetComponent<Node>();
+
+        if (node == null) return false;
+
+        bool isTurretPlaced = node.SetTurret(createdTurret);
+
+        return isTurretPlaced;
     }
 
     private void Apply(Turret turret ) {

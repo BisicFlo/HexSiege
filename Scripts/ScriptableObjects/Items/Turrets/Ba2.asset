@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 1
   UIModel: {fileID: 8641230041856785237, guid: 140a2517d35337d4b90bfc7686d0b2ac, type: 3}
   WorldModel: {fileID: 8423115778812472039, guid: 32bafaa3e4455174583ae4e858048b7d, type: 3}
-  NameItem: Ballista 1
+  NameItem: Stormpiercer
   Price: 6
   Rarity: 3
   TypeOfItem: 0

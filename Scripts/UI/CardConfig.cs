@@ -140,14 +140,15 @@ public class CardConfig : MonoBehaviour {
             ChangeSlidersFromTurret(turretSelected);
             ChangeTypeImage(turretSelected.turretData.turretType);
             ChangeText(turretSelected.turretData);
+            ChangeMainImage(turretSelected.turretData);
 
         }
-        else if (turretBoostSelected != null) {
+        else if (turretBoostSelected != null) { // used In Shop with Items
             ChangeBackgroundColor(6); // 6 = items
             ChangeSlidersFromTurret(turretBoostSelected);
             ChangeTypeImage(turretBoostSelected.turretType);
             ChangeText(turretBoostSelected);
-            ChangeMainImage(turretDataSelected);
+            ChangeMainImage(turretBoostSelected);
         }
     }
 
@@ -161,7 +162,7 @@ public class CardConfig : MonoBehaviour {
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretTotalStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretTotalStats.criticalChance, 100);
-        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage, turretTotalStats.criticalDamage, 200);
+        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage -100, turretTotalStats.criticalDamage-100, 100);
 
         ChangeOneSlider(curseChanceSlider, turretBaseStats.curseChance, turretTotalStats.curseChance, 100);
         ChangeOneSlider(rangeSlider, turretBaseStats.range, turretTotalStats.range, 100);
@@ -176,7 +177,7 @@ public class CardConfig : MonoBehaviour {
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretBaseStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretBaseStats.criticalChance, 100);
-        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage, turretBaseStats.criticalDamage, 200);
+        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage - 100, turretBaseStats.criticalDamage - 100, 100);
 
         ChangeOneSlider(curseChanceSlider, turretBaseStats.curseChance, turretBaseStats.curseChance, 100);
         ChangeOneSlider(rangeSlider, turretBaseStats.range, turretBaseStats.range, 100);
@@ -185,13 +186,12 @@ public class CardConfig : MonoBehaviour {
     private void ChangeSlidersFromTurret(TurretBoostData turretBoostData) {
         if (turretBoostData == null) return;
 
-        turretBaseStats = turretBoostData.GetValues();
+        turretBaseStats = turretBoostData.GetValues(); //if (turretBaseStats == null) Debug.Log("!! turretBaseStats null ");
 
         UpdateStatSliderForItem(damageSlider, turretBaseStats.attackDamage);
         UpdateStatSliderForItem(attackSpeedSlider, turretBaseStats.attackSpeed);
-        UpdateStatSliderForItem(projectileSpeedSlider, turretBaseStats.projectileSpeed);
         UpdateStatSliderForItem(criticalChanceSlider, turretBaseStats.criticalChance);
-        UpdateStatSliderForItem(criticalDamageSlider, turretBaseStats.criticalDamage);
+        UpdateStatSliderForItem(criticalDamageSlider, turretBaseStats.criticalDamage-100); // default : 140% -> 40% just for display
         UpdateStatSliderForItem(curseChanceSlider, turretBaseStats.curseChance);
         UpdateStatSliderForItem(rangeSlider, turretBaseStats.range);
     }

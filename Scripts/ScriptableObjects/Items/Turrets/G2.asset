@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: Ca1
+  m_Name: G2
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 74a7bda78a346ae4c88f6e624a06a0da, type: 3}
+  Icon: {fileID: 21300000, guid: bf457e16d354e5d48807779dc295bbe9, type: 3}
   ID: 1
-  UIModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
-  WorldModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
-  NameItem: Cannon
+  UIModel: {fileID: 5305178360891346598, guid: 37686a3bf0dd51a4eaaadc047d11278f, type: 3}
+  WorldModel: {fileID: 5305178360891346598, guid: 37686a3bf0dd51a4eaaadc047d11278f, type: 3}
+  NameItem: Death Eye
   Price: 2
-  Rarity: 1
+  Rarity: 5
   TypeOfItem: 0
   Description: 
-  turretType: 1
-  AttackDamage: 2
-  AttackSpeed: 10
+  turretType: 5
+  AttackDamage: 1
+  AttackSpeed: 50
   ProjectileSpeed: 10
-  CriticalChance: 5
+  CriticalChance: 0
   CriticalDamage: 140
-  CurseChance: 0
-  Range: 15
+  CurseChance: 30
+  Range: 20

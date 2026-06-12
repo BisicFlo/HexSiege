@@ -5,11 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopManagerV2 : MonoBehaviour, IScreenManager {
-    public static ShopManagerV2 Instance { get; private set; } // Singleton
+    public static ShopManagerV2 Instance { get; private set; } // Singleton // ?? Used
 
     public int RerollCost = 2;
     [SerializeField] private Text RerollCostText;
-
 
     #region --------- Inspector Fields ---------
     [SerializeField] private PlayerData playerData; // money 
@@ -217,9 +216,10 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
     }
     private void PassDataToCardConfig(CardConfig cardConfig, ItemData itemData) {
         Debug.Log("ItemData");
-        cardConfig.itemDataSelected = itemData;
+        cardConfig.itemDataSelected = null;
         cardConfig.turretDataSelected = null;
         cardConfig.turretSelected = null;
+        cardConfig.turretBoostSelected = (TurretBoostData)itemData;
     }
 
     private void GetAndHandleOneItem(int index ) {
@@ -227,13 +227,15 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
         bool isTurret = Random.Range(0, 100) < 70; // 70 % chance
 
-        if (isTurret || playerData.Level < 3) { // For Turrets 
+        if (isTurret || playerData.Level < 3) { // For Turrets  // no item before lvl 3
+
             TurretData selectedTurret = PickTurret(rarity);
             ItemsForSale.Add(selectedTurret);
             PassDataToCardConfig(CardList[index], selectedTurret);
         }
         else {
             ItemData selectedItem = PickItem(); // ?? TurretBoostData
+            Debug.Log("selectedItem : " + selectedItem.name);
             ItemsForSale.Add(selectedItem);
             PassDataToCardConfig(CardList[index], selectedItem);
         }
@@ -244,8 +246,6 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
         cardConfig.gameObject.SetActive(true);
         cardConfig.MainSetup();
-
-
     }
 
     private void ClearAllCard() {
@@ -279,7 +279,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
             GetAndHandleOneItem(savedIndex);
 
-            yield return new WaitForSeconds(1f); // Should Optimize /!\ 
+            yield return new WaitForSeconds(.6f); // Should Optimize /!\ 
 
             DisplayOneCard(savedIndex);
 

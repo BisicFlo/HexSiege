@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
         GameEvents.OnPlayerHit -= HandleOnPlayerHit;
     }
 
-    private void Start() {
+    private void Awake() {
         if (Instance != null) Debug.LogWarning("More than one Player detected");
         Instance = this;
 

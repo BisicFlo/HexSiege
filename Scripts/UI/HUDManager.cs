@@ -20,14 +20,20 @@ public class HUDManager : MonoBehaviour {
         playerData.OnStatChanged += UpdateUI;
         playerData.OnXpGained += UpdateLevelUI;
 
-        //UpdateLevelUI
-        UpdateUI();//new
+
     }
 
     private void OnDisable() {
         playerData.OnStatChanged -= UpdateUI;
         playerData.OnXpGained -= UpdateLevelUI;
     }
+
+    private void Start() {
+        //UpdateLevelUI
+        UpdateUI();//new
+        UpdateLevelUI(0);
+    }
+
 
     public void UpdateUI() {   // Overkill to change everything ??
         UpdateMoneyUI();
@@ -48,17 +54,24 @@ public class HUDManager : MonoBehaviour {
 
     public void UpdateLevelUI(int xpGained) {
         int level = playerData.Level;
-        int currentXp = playerData.Xp;
+        if (level < 10) {
+            int currentXp = playerData.Xp ; 
 
-        simpleXpBar.AddXp(xpGained, currentXp, level);
+            Debug.Log(" !! Xp : " + currentXp);
+
+            simpleXpBar.AddXp(xpGained, currentXp - xpGained, level); // Important : playerData.Xp already have + xpGained
 
 
-        int xpRequired = PlayerData.xpRequired[level - 1]; // = playerData.xpRequired[level - 1];
+            int xpRequired = PlayerData.xpRequired[level - 1]; // = playerData.xpRequired[level - 1];
 
-        //doubleXpBar.SetMaxValue(xpRequired);
-        //doubleXpBar.AddAmountWithEffect(xp);
+            //doubleXpBar.SetMaxValue(xpRequired);
+            //doubleXpBar.AddAmountWithEffect(xp);
 
-        levelText.text = level.ToString();
-        xpText.text = currentXp.ToString() + " / " + xpRequired.ToString();
+            levelText.text = level.ToString();
+            xpText.text = currentXp.ToString() + " / " + xpRequired.ToString();
+        }
+        else {
+            xpText.text = ""; // could be optmisized 
+        }
     }
 }

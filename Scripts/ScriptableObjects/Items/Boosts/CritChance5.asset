@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 0
   UIModel: {fileID: 0}
   WorldModel: {fileID: 0}
-  NameItem: 
+  NameItem: CritChance+
   Price: 2
   Rarity: 1
   TypeOfItem: 1
@@ -29,3 +29,4 @@ MonoBehaviour:
   CriticalDamage: 0
   CurseChance: 0
   Range: 0
+  effects: []

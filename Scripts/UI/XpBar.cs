@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 public class XpBar : MonoBehaviour {
-    //public PlayerData playerData; // temp ! debug
+    public PlayerData playerData; // temp ! debug
 
     [SerializeField] private Slider slider;
     [SerializeField] private float segmentDuration = 0.4f;
@@ -17,7 +17,7 @@ public class XpBar : MonoBehaviour {
     // Each segment: animate from A to B, then snap back to 0 if overflow
     private readonly Queue<(float from, float to, bool resetAfter)> segments = new();
 
-    //public int GainXP;
+    public int GainXP;
 
 
     //private void Awake() {
@@ -25,14 +25,16 @@ public class XpBar : MonoBehaviour {
     //    imageHighlightBonus = sliderBonus.transform.GetChild(1).GetChild(0).GetComponent<Image>();
     //}
 
-    //private void Update() { //temp
-    //    if (GainXP != 0) {
-    //        AddXp(GainXP, playerData.Xp, playerData.Level);
-    //        GainXP = 0;
-    //    }
-    //}
+    private void Update() { //temp
+        if (GainXP != 0) {
+            AddXp(GainXP, playerData.Xp, playerData.Level);
+            GainXP = 0;
+        }
+    }
 
     public void AddXp(int amount, int currentXp, int currentLevel ) {
+        Debug.Log("AddXp : " + amount);
+
         int remaining = amount;
         int xp = currentXp;
 
@@ -45,21 +47,23 @@ public class XpBar : MonoBehaviour {
 
             int maxXp = PlayerData.xpRequired[currentLevel-1];
             int space = maxXp - xp;
+            Debug.Log("maxXp : " + maxXp + "space : " + space);
+
 
             if (remaining >= space) {
+                Debug.Log("remaining : " + remaining);
                 segments.Enqueue(((float)xp / maxXp, 1f, true));
                 remaining -= space;
                 xp = 0;
                 currentLevel++;
             }
             else {
+                Debug.Log("Target  : " + (float)(xp + remaining) / maxXp);
                 segments.Enqueue(((float)xp / maxXp, (float)(xp + remaining) / maxXp, false));
                 xp += remaining;
                 remaining = 0;
             }
         }
-
-        currentXp = xp;
 
         if (animCoroutine == null)
             animCoroutine = StartCoroutine(ProcessQueue());

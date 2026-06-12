@@ -84,12 +84,24 @@ public class TouchManager : MonoBehaviour {
 
                 if (ReleaseObject.CompareTag("Ground")) {
                     Debug.Log("Ground");
-                    OpenBuildMenu();
-                    SetSelectedTile(ReleaseObject);
+
+                    if (ReleaseObject.TryGetComponent<Node>(out var node)) {
+
+                        if (node.IsEmpty()) { // If node empty -> Build
+                            OpenBuildMenu();
+                            SetSelectedTile(ReleaseObject);
+                        }
+                        else { //  If node NOT empty -> Inspect Turret
+                            InspectTurretManager.Instance.selectedTurret = node.TurretOnTop;
+                            OpenTurretInspectorMenu();
+                            InspectTurretManager.Instance.DisplayTurret();
+                        }
+                    }
                 }
                 else if (ReleaseObject.CompareTag("Turret")) {
+                    // Redundant but sometime the turret is outside of the node collider : the user clics on the turret not the node 
                     Debug.Log("Turret");
-                    InspectTurretManager.Instance.selectedTurret = ReleaseObject.GetComponent<Turret>(); 
+                    InspectTurretManager.Instance.selectedTurret = ReleaseObject.GetComponent<Turret>();
                     OpenTurretInspectorMenu();
                     InspectTurretManager.Instance.DisplayTurret();
                 }

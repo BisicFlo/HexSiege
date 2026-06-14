@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner instance { get; private set; } // Singleton
@@ -41,7 +42,7 @@ public class WaveSpawner : MonoBehaviour {
 
     private static readonly int[,] wavesTest =
        {{  2,  0,  0,  0,  0 },  // Wave 1
-        {  4,  2,  1,  0,  0 }};  // Wave 2
+        {  4,  2,  1,  1,  1 }};  // Wave 2
 
     private void Awake() {
         if (instance != null) Debug.LogWarning("More than one WaveSpawner detected");
@@ -62,8 +63,8 @@ public class WaveSpawner : MonoBehaviour {
         Transform myEnemy = Instantiate(EnemiesPrefabsList[power].transform, firstPoint.position, firstPoint.rotation);
         myEnemy.gameObject.name = "Enemy " + spawnIndex;
 
-         
-        myEnemy.GetComponent<Enemy>().SetReferences(this , chosenPath); // each enemy choose a random path 
+
+        myEnemy.GetComponent<Enemy>().SetReferences(this, chosenPath); // each enemy choose a random path 
 
         spawnIndex++;
         //EnemiesList.Add(enemyPrefab.GetComponent<Enemy>()); // -> In Enemy.cs
@@ -72,6 +73,14 @@ public class WaveSpawner : MonoBehaviour {
     private Waypoints GetRandomPath() {
         int randomIndex = Random.Range(0, waypointsList.Count); // inclusiv / exclusiv 
         return waypointsList[randomIndex];
+    }
+
+    private void WinTheLevel() {
+        int currentLevelIndex = int.Parse(SceneManager.GetActiveScene().name.Replace("Lvl_", "")) - 1; // subtract 1 to make it 0-based
+
+        SaveManager.Instance.UnlockNextLevel(currentLevelIndex, 1); // currentLevelIndex // starsEarned
+
+        UIManager.Instance.ShowScreen(ScreenType.Victory); 
     }
 
     private IEnumerator SpawnAllWaves(int[,] waves) {
@@ -102,7 +111,7 @@ public class WaveSpawner : MonoBehaviour {
             if (EnemiesList.Count == 0) {
                 // END OF THE LEVEL
                 // All Enemies are dead
-                UIManager.Instance.ShowScreen(ScreenType.Victory); break;
+                WinTheLevel(); break;
             }
         }
     }

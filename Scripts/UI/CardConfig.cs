@@ -223,8 +223,8 @@ public class CardConfig : MonoBehaviour {
 
     private void ChangeText(ItemData itemData) {
         if (itemData == null) {  Debug.Log("turretData is null in ChangeText() ")  ; return; }
-        ItemPriceFront.text = itemData.Price.ToString();
-        ItemPriceBack.text = itemData.Price.ToString();
+        if (ItemPriceFront != null) ItemPriceFront.text = itemData.Price.ToString();
+        if (ItemPriceBack != null) ItemPriceBack.text = itemData.Price.ToString();
 
         ItemNameFront.text = itemData.NameItem.ToString();
         ItemNameBack.text = itemData.NameItem.ToString();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 
 [System.Serializable]
@@ -23,11 +24,9 @@ public class SceneLoader : MonoBehaviour {
     //[SerializeField] private List<Button> buttonList;
 
     [SerializeField] private Button  quitButton;
-    [SerializeField] private SliderBar LoadingBar;    // Used to change bar visual
+    [SerializeField] private SliderBar LoadingBar;    // Used to change bar visual Loading Screen
 
     private void OnEnable() {
-        // Switch Action Map
-        //ActionMapManager.Instance.SwitchToUI(); // - 
         SetupButtonsEvents();
     }
 
@@ -37,23 +36,40 @@ public class SceneLoader : MonoBehaviour {
 
     private void SetupButtonsEvents() {
 
-        // Quit Button 
-        if (quitButton != null)
-            quitButton.onClick.AddListener(() => QuitMenu());
-
-        // Buttons
         for (int i = 0; i < ButtonEntries.Count; i++) {
 
             int buttonIndex = ButtonEntries[i].SceneIndex;
             int colorIndex = ButtonEntries[i].ColorTheme;
             int BackgroundIndex = ButtonEntries[i].BackGround;
 
-            if (DoesSceneIndexExist(buttonIndex)) {
-                //buttonsParent.GetChild(buttonIndex).GetComponent<Button>().onClick.AddListener(() => OnClick(buttonIndex));
-                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(buttonIndex, colorIndex, BackgroundIndex));
+            if (buttonIndex == -2) { // - - - - Next Level - - - -
+
+                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // Gets the current active scene
+                if (DoesSceneIndexExist(currentSceneIndex + 1)) {
+                    ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex + 1, colorIndex, BackgroundIndex));
+                }
             }
-            else {
-                ButtonEntries[i].Button.interactable = false;
+
+            else if (buttonIndex == -1) { // - - - - Reload Same Level - - - -
+
+                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // Gets the current active scene
+                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex, colorIndex, BackgroundIndex));
+            }
+
+            else if (buttonIndex == 0) { // - - - - Load Main Menu - - - -
+
+                ButtonEntries[i].Button.onClick.AddListener(() => OnClick( 0, colorIndex, BackgroundIndex));
+            }
+
+            else {      // - - - - Load Level n° buttonIndex - - - -
+                
+                bool canPlay = SaveManager.Instance.Data.levelUnlocked[buttonIndex]; // if level unlocked 
+                if (DoesSceneIndexExist(buttonIndex) && canPlay) {
+                    ButtonEntries[i].Button.onClick.AddListener(() => OnClick(buttonIndex, colorIndex, BackgroundIndex));
+                }
+                else {
+                    ButtonEntries[i].Button.interactable = false;
+                }
             }
         }
     }
@@ -82,9 +98,7 @@ public class SceneLoader : MonoBehaviour {
         colorShifter.SetBackGroundColorFromIndex(backgroundIndex);
     }
 
-    private void QuitMenu() {
-        UIManager.Instance.ShowScreen(ScreenType.MainMenu);
-    }
+
 
     private bool DoesSceneIndexExist(int index) {
         // Indices are 0-based, so they must be >= 0 and less than the total count

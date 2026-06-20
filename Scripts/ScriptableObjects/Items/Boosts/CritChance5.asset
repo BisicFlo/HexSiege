@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
   m_Name: CritChance5
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: ce0f755c3af7b594d9ec3e3151ad0726, type: 3}
+  Icon: {fileID: 21300000, guid: 87d1f61e0adb31549abb41e3e765b8f2, type: 3}
   ID: 0
   UIModel: {fileID: 0}
   WorldModel: {fileID: 0}

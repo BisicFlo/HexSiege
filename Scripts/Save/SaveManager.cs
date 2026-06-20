@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.IO;
 
@@ -13,14 +14,13 @@ public class PlayerProgress {
         levelStars = new int[totalLevels];
         levelUnlocked[0] = true; // first level always unlocked
     }
-
 }
 
 public class SaveManager : MonoBehaviour {
     public static SaveManager Instance { get; private set; }
 
     [Header("Config")]
-    [SerializeField] private int totalLevels = 30;
+    [SerializeField] private int totalLevels = 10;
 
     private string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
 

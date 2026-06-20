@@ -48,12 +48,12 @@ public class DivineTurret : Turret {
     //   Private 
     // --------------------------------------------------------------
 
-    private bool targetInSight = false;
+    //private bool targetInSight = false;
     private Projectile[] ProjectileArray;
     private int ProjectileIndex = 0;
-    private Transform artifactTransform;
-    private Vector3 startLocalPos;
-    private float phaseOffset;
+    //private Transform artifactTransform;
+    //private Vector3 startLocalPos;
+    //private float phaseOffset;
 
     //[ContextMenu("Play Strike")] private void PlayStrike() => StartCoroutine(StrikeCoroutine());
 
@@ -68,7 +68,7 @@ public class DivineTurret : Turret {
 
     void Update() {
 
-        //  bob up/down relative to start position
+        ////bob up/ down relative to start position
 
         //float bobOffset = Mathf.Sin((Time.time * bobSpeed) + phaseOffset) * bobHeight;
 

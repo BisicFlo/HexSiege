@@ -137,7 +137,7 @@ public class TouchManager : MonoBehaviour {
     }
 
     void SetSelectedTile(GameObject tile) {
-        BuildManager.Instance.SelectedTile = tile;
+        BuildManagerV2.Instance.SelectedTile = tile;
     }
 
     void SetSelectedTurret(GameObject turret) {

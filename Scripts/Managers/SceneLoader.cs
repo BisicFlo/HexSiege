@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 
 [System.Serializable]
 public class ButtonEntry {
     public Button Button;
     public int SceneIndex;
+    public int UnlockID;    // 0 and 1 always Unlocked / 2 unlocked after 1 level / ....
     public int ColorTheme; // ColorShifter.cs    (0-87)
     public int BackGround; // ColorShifter.cs    (0-13)
 }
@@ -19,11 +19,6 @@ public class SceneLoader : MonoBehaviour {
     [SerializeField] private ColorShifter colorShifter;
     [SerializeField] private List<ButtonEntry> ButtonEntries; // set in Inspector
 
-    //InventorySlot;
-    //[SerializeField] private Transform buttonsParent;
-    //[SerializeField] private List<Button> buttonList;
-
-    [SerializeField] private Button  quitButton;
     [SerializeField] private SliderBar LoadingBar;    // Used to change bar visual Loading Screen
 
     private void OnEnable() {
@@ -40,32 +35,43 @@ public class SceneLoader : MonoBehaviour {
 
             int buttonIndex = ButtonEntries[i].SceneIndex;
             int colorIndex = ButtonEntries[i].ColorTheme;
-            int BackgroundIndex = ButtonEntries[i].BackGround;
+            int backgroundIndex = ButtonEntries[i].BackGround;
 
-            if (buttonIndex == -2) { // - - - - Next Level - - - -
+            int unlockID = ButtonEntries[i].UnlockID; // New
+
+
+            if (buttonIndex == -3) { // - - - - Quit App - - - -
+                                     // Should add confirmation
+                ButtonEntries[i].Button.onClick.AddListener(() => Application.Quit());
+            }
+
+            else if (buttonIndex == -2) { // - - - - Next Level - - - -
 
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // Gets the current active scene
                 if (DoesSceneIndexExist(currentSceneIndex + 1)) {
-                    ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex + 1, colorIndex, BackgroundIndex));
+                    ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex + 1, colorIndex, backgroundIndex));
                 }
             }
 
             else if (buttonIndex == -1) { // - - - - Reload Same Level - - - -
 
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // Gets the current active scene
-                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex, colorIndex, BackgroundIndex));
+                int currentColorIndex = colorShifter.GetCurrentColorIndex();
+                int CurrentBackgroundColorIndex = colorShifter.GetCurrentBackgroundColorIndex();
+
+                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex, currentColorIndex, CurrentBackgroundColorIndex));
             }
 
             else if (buttonIndex == 0) { // - - - - Load Main Menu - - - -
 
-                ButtonEntries[i].Button.onClick.AddListener(() => OnClick( 0, colorIndex, BackgroundIndex));
+                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(0, colorIndex, backgroundIndex));
             }
 
             else {      // - - - - Load Level n° buttonIndex - - - -
-                
-                bool canPlay = SaveManager.Instance.Data.levelUnlocked[buttonIndex]; // if level unlocked 
+
+                bool canPlay = SaveManager.Instance.Data.levelUnlocked[unlockID]; // if level unlocked 
                 if (DoesSceneIndexExist(buttonIndex) && canPlay) {
-                    ButtonEntries[i].Button.onClick.AddListener(() => OnClick(buttonIndex, colorIndex, BackgroundIndex));
+                    ButtonEntries[i].Button.onClick.AddListener(() => OnClick(buttonIndex, colorIndex, backgroundIndex));
                 }
                 else {
                     ButtonEntries[i].Button.interactable = false;
@@ -75,9 +81,6 @@ public class SceneLoader : MonoBehaviour {
     }
 
     private void UnsubscribeAllButtons() {
-        // Quit button
-        if (quitButton != null)
-            quitButton.onClick.RemoveAllListeners();
 
         // All child buttons
         for (int i = 0; i < ButtonEntries.Count; i++) {

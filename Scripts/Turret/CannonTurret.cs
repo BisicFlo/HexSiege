@@ -17,8 +17,8 @@ public class CannonTurret : Turret {
     [Header("Attributes")]
     [SerializeField] private float yawSpeed = 180f;      // degrees per second (horizontal)
     [SerializeField] private float pitchSpeed = 180f;    // degrees per second (vertical)
-    [SerializeField] private float maxPitchUp = 60f;     // max elevation (positive = up)
-    [SerializeField] private float maxPitchDown = 30f;   // max depression (positive value = how far down)
+    //[SerializeField] private float maxPitchUp = 60f;     // max elevation (positive = up)
+    //[SerializeField] private float maxPitchDown = 30f;   // max depression (positive value = how far down)
 
     [Header("Configs")]
     [SerializeField] private bool needReloadAnimation; 
@@ -31,13 +31,13 @@ public class CannonTurret : Turret {
     // --------------------------------------------------------------
 
     //private float countdown = 2f;  
-    private int waveIndex = 0;
+    //private int waveIndex = 0;
     private int bulletIndex = 0;
-    private int impactIndex = 0;
+    //private int impactIndex = 0;
     //private float fireCountdown = 0;
     private Projectile[] bulletArray;
-    private GameObject[] impactArray;
-    private WaitForSeconds waitBetweenUpdateTarget;
+    //private GameObject[] impactArray;
+    //private WaitForSeconds waitBetweenUpdateTarget;
     private Vector3 BarrelOffset;
     [SerializeField] private bool targetInSight;
     [SerializeField] private bool targetAlmostInSight;

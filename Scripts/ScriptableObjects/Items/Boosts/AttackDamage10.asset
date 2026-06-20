@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
   m_Name: AttackDamage10
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: d438d5dbfb0bf484d9e15073af071558, type: 3}
+  Icon: {fileID: 21300000, guid: ce0f755c3af7b594d9ec3e3151ad0726, type: 3}
   ID: 0
   UIModel: {fileID: 0}
   WorldModel: {fileID: 0}

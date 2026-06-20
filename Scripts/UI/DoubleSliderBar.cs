@@ -23,7 +23,7 @@ public class DoubleSliderBar : MonoBehaviour {
     //private Image imageHighlightBonus;  // Small stripe of color for bright effect 
 
     private Coroutine lerpCoroutine = null;
-    [SerializeField] private bool isDirty = false;
+    //[SerializeField] private bool isDirty = false;
     [SerializeField] private float target;
 
     public bool takeDamage;

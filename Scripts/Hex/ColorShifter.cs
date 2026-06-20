@@ -19,10 +19,10 @@ public class ColorShifter : MonoBehaviour {
     [Range(0, 3)]
     [SerializeField] private int colorIndexY = 0;
 
-    [Header("Animation Settings")]
-    [SerializeField] private bool animate = false;
-    [Tooltip("Speed of automatic color shifting")]
-    [SerializeField] private float animationSpeed = 1f;
+    //[Header("Animation Settings")]
+    //[SerializeField] private bool animate = false;
+    //[Tooltip("Speed of automatic color shifting")]
+    //[SerializeField] private float animationSpeed = 1f;
 
     [Header("Background Colors")]
     //[SerializeField] private List<Color> BackgroundColorList;
@@ -101,6 +101,15 @@ public class ColorShifter : MonoBehaviour {
         colorIndexY = (colorIndexY + 1) % 4;
         UpdateColorOffset();
         DisplayIndexesOnScreen();
+    }
+
+
+    public int GetCurrentColorIndex() {
+        return colorIndexX + colorIndexY*22;
+    }
+
+    public int GetCurrentBackgroundColorIndex() {
+        return BackgroundIndex;
     }
 
     private void DisplayIndexesOnScreen() {

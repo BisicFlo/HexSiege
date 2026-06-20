@@ -20,7 +20,7 @@ public class Spike : MonoBehaviour {
     [SerializeField] private float retractTime = 0.4f;
 
     private Vector3 initialScale;
-    private bool isActive = false;
+    //private bool isActive = false;
 
     protected bool spikeIsActive = false;
     protected int damage;

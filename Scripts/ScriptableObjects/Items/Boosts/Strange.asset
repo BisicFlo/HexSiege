@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
   Icon: {fileID: 21300000, guid: 4a9505f74f455d44fa2e5894c8775aeb, type: 3}
   ID: 0
-  UIModel: {fileID: 0}
   WorldModel: {fileID: 0}
   NameItem: Strange
   Price: 5
   Rarity: 1
   TypeOfItem: 1
-  Description: 
-  turretType: 6
-  AttackDamage: 5
-  AttackSpeed: -50
+  turretType: 7
+  AttackDamage: 1
+  AttackSpeed: -10
   ProjectileSpeed: 0
   CriticalChance: 0
   CriticalDamage: 0

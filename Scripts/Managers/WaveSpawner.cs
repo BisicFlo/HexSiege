@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour {
-    public static WaveSpawner instance { get; private set; } // Singleton
+    public static WaveSpawner Instance { get; private set; } // Singleton
 
     public List<GameObject> EnemiesPrefabsList = new List<GameObject>(); // -> scriptable Object // Should be in a config ScriptableObject
 
@@ -12,7 +12,7 @@ public class WaveSpawner : MonoBehaviour {
 
     [HideInInspector] public List<Enemy> EnemiesList = new List<Enemy>(); // All Enemies on the board 
 
-    [SerializeField] private Transform enemyPrefab;
+    //[SerializeField] private Transform enemyPrefab;
     //[SerializeField] private Transform spawnPoint; // List ? -> if 2 spawn points
 
     [SerializeField] private float timeBetweenWaves = 4f;
@@ -45,8 +45,8 @@ public class WaveSpawner : MonoBehaviour {
         {  4,  2,  1,  1,  1 }};  // Wave 2
 
     private void Awake() {
-        if (instance != null) Debug.LogWarning("More than one WaveSpawner detected");
-        instance = this;
+        if (Instance != null) Debug.LogWarning("More than one WaveSpawner detected");
+        Instance = this;
     }
 
     private void Start() {
@@ -88,6 +88,7 @@ public class WaveSpawner : MonoBehaviour {
         int waveNumber = waves.GetLength(0);
         int poolNumber = waves.GetLength(1);
 
+        yield return waitBetweenWaves; // New : wait so time at start
 
         for (int waveIndex = 0; waveIndex < waveNumber; waveIndex++) {
 

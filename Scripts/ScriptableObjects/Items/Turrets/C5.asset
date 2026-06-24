@@ -12,20 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: C5
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 4f85b55b791245e4d92461711e137c2a, type: 3}
-  ID: 5
-  UIModel: {fileID: 7822014846152319201, guid: a2232c3b7e122ef4189dff3f47779817, type: 3}
-  WorldModel: {fileID: 7822014846152319201, guid: d72afffd0dd38c84bae7f19cbc02c3b4, type: 3}
-  NameItem: Cristal 4
-  Price: 10
-  Rarity: 5
+  Icon: {fileID: 21300000, guid: 3baa02d988a2bc941ad5326601049134, type: 3}
+  ID: 1
+  WorldModel: {fileID: 7391825831483969891, guid: 73a061a1e1229644db80dddbd617d412, type: 3}
+  NameItem: Kraken Slayer
+  Price: 8
+  Rarity: 4
   TypeOfItem: 0
-  Description: 
-  turretType: 2
-  AttackDamage: 5
-  AttackSpeed: 100
-  ProjectileSpeed: 10
-  CriticalChance: 5
-  CriticalDamage: 140
+  turretType: 1
+  AttackDamage: 6
+  AttackSpeed: 40
+  ProjectileSpeed: 50
+  CriticalChance: 10
+  CriticalDamage: 200
   CurseChance: 0
-  Range: 15
+  Range: 30

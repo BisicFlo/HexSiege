@@ -8,7 +8,7 @@ using UnityEngine;
 public class TurretBoostData : ItemData {
 
     [Header("Bonus")]
-    public TurretType turretType; // only apply to selected type
+    public TurretType turretType; // only apply to selected type / Or select "All" 
 
     // Stat Bonuses (0 = no boost)
     public int AttackDamage;
@@ -38,9 +38,9 @@ public class TurretBoostData : ItemData {
     }
 
     public void BoostAllCurrentTurret() {
-        if (BuildManager.Instance == null )  return;
+        if (BuildManagerV2.Instance == null )  return;
 
-        foreach (Turret turret in BuildManager.Instance.WorldTurrets) {
+        foreach (Turret turret in BuildManagerV2.Instance.WorldTurrets) {
             ApplyToTurret(turret);
         }
     }

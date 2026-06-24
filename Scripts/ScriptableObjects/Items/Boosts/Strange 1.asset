@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
   Icon: {fileID: 21300000, guid: 2a0e9ffaf758a1c4988f34f3145f59c4, type: 3}
   ID: 0
-  UIModel: {fileID: 0}
   WorldModel: {fileID: 0}
   NameItem: Effect Greed
   Price: 5
   Rarity: 1
   TypeOfItem: 1
-  Description: 
-  turretType: 6
+  turretType: 7
   AttackDamage: 5
   AttackSpeed: 0
   ProjectileSpeed: 0

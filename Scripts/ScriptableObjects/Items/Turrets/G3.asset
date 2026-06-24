@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: bbab3d620afaed84590edda60dc973c4, type: 3}
   ID: 1
-  UIModel: {fileID: 599305214713675627, guid: c06aad6d5624f194096ee0b2eccb1a74, type: 3}
   WorldModel: {fileID: 599305214713675627, guid: c06aad6d5624f194096ee0b2eccb1a74, type: 3}
   NameItem: Frost Eye
-  Price: 2
+  Price: 6
   Rarity: 3
   TypeOfItem: 0
-  Description: 
-  turretType: 5
-  AttackDamage: 1
+  turretType: 6
+  AttackDamage: 3
   AttackSpeed: 90
   ProjectileSpeed: 10
   CriticalChance: 5
-  CriticalDamage: 140
+  CriticalDamage: 120
   CurseChance: 0
-  Range: 15
+  Range: 20

@@ -16,6 +16,8 @@ public class AnimateTurret : MonoBehaviour {
     [Tooltip("Axis in local space of the jiggle direction")]
     public AxisType Axis;
 
+    [SerializeField] bool reverse = false;
+
     // --------------------------------------------------------------
     //   Private 
     // --------------------------------------------------------------
@@ -63,7 +65,7 @@ public class AnimateTurret : MonoBehaviour {
     }
 
     private void AffectScale(float jiggle) {
-
+        if (reverse) jiggle = -jiggle;
 
         if (Axis == AxisType.X)
             this.transform.localScale = new Vector3(-jiggle, jiggle / 2, jiggle / 2) + originalScale; // + or * ?

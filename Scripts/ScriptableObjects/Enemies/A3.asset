@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63d585bf7bc5504bb24a3e7ff1d6ff8, type: 3}
+  m_Name: A3
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  Name: Shroomguard
+  StartingSpeed: 2
+  StartingLife: 40
+  DamageToPlayer: 4
+  MoneyWhenKilled: 1
+  XpWhenKilled: 1
+  DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
+  DeathColor: {r: 0.36477977, g: 0.28156513, b: 0.23418862, a: 1}

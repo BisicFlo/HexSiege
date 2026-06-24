@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GreedEffect
   m_EditorClassIdentifier: Assembly-CSharp::GreedEffect
   effectName: 
-  CanKillYou: 1
-  LifeCost: 2
+  canBeFatal: 0
+  lifeCost: 1

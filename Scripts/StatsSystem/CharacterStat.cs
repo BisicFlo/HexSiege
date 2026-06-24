@@ -8,7 +8,7 @@ namespace Bisic.CharacterStats {
     [Serializable]
     public class CharacterStat {
         public int BaseValue; // float ?
-        private readonly List<StatModifier> statModifiers; // private readonly
+        public List<StatModifier> statModifiers; // private readonly
         public readonly ReadOnlyCollection<StatModifier> StatModifiers; // reference to statModifiers
 
         public CharacterStat() {

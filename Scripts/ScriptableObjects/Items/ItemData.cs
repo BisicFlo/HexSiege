@@ -16,7 +16,7 @@ public abstract class ItemData : ScriptableObject {
     [Header("Item")]
 
     public int ID;
-    public GameObject UIModel; // Prefab    
+    //public GameObject UIModel; // Prefab    
     public GameObject WorldModel; // Prefab Used to Instanciate In World 
 
     public string NameItem;
@@ -24,6 +24,6 @@ public abstract class ItemData : ScriptableObject {
     public int Rarity;
 
     public ItemType TypeOfItem;
-    public string Description; // ?
+    //public string Description; // ?
 
 }

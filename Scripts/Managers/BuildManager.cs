@@ -1,3 +1,4 @@
+/*
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -180,13 +181,13 @@ public class BuildManager : MonoBehaviour, IScreenManager {
             pos.y = -11.1f;
             ItemData myItem = Inventory.TurretContainer[i].Item;
 
-            GameObject turret = Instantiate(myItem.UIModel, pos, Quaternion.identity);
+            //GameObject turret = Instantiate(myItem.UIModel, pos, Quaternion.identity);
 
-            turret.transform.localScale = Vector3.one * 0.6f;
-            //ChangeLayerToUI3D(turret);  //done in prefab
-            UITurrets.Add(turret);
+            //turret.transform.localScale = Vector3.one * 0.6f;
+            ////ChangeLayerToUI3D(turret);  //done in prefab
+            //UITurrets.Add(turret);
 
-            ChangeColorButtonFromRarity(buttonList[i], myItem.Rarity);
+            //ChangeColorButtonFromRarity(buttonList[i], myItem.Rarity);
         }
     }
 
@@ -299,3 +300,5 @@ public class BuildManager : MonoBehaviour, IScreenManager {
     }
 
 }
+
+*/

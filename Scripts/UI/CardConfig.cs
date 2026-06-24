@@ -162,7 +162,7 @@ public class CardConfig : MonoBehaviour {
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretTotalStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretTotalStats.criticalChance, 100);
-        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage -100, turretTotalStats.criticalDamage-100, 100);
+        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage -100, turretTotalStats.criticalDamage-100, 300);
 
         ChangeOneSlider(curseChanceSlider, turretBaseStats.curseChance, turretTotalStats.curseChance, 100);
         ChangeOneSlider(rangeSlider, turretBaseStats.range, turretTotalStats.range, 100);
@@ -177,7 +177,7 @@ public class CardConfig : MonoBehaviour {
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretBaseStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretBaseStats.criticalChance, 100);
-        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage - 100, turretBaseStats.criticalDamage - 100, 100);
+        ChangeOneSlider(criticalDamageSlider, turretBaseStats.criticalDamage - 100, turretBaseStats.criticalDamage - 100, 300);
 
         ChangeOneSlider(curseChanceSlider, turretBaseStats.curseChance, turretBaseStats.curseChance, 100);
         ChangeOneSlider(rangeSlider, turretBaseStats.range, turretBaseStats.range, 100);

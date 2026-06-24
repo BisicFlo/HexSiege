@@ -1,4 +1,6 @@
 using System;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +33,10 @@ public class ColorShifter : MonoBehaviour {
     [SerializeField] private int BackgroundIndex;
 
     [SerializeField] private Text indexDisplayText;
+
+    [Header("Fog/Gradient Material")]
+    [Tooltip("Material that should be the same color as background")]
+    [SerializeField] private Material fogMaterial;
 
     private Renderer rend;
     private Vector2 currentOffset;
@@ -83,6 +89,12 @@ public class ColorShifter : MonoBehaviour {
         if ( index < 0 || index >= BackgroundColors.ColorList.Count) return;     
         Camera.main.backgroundColor = BackgroundColors.ColorList[index]; // BackgroundColors
         BackgroundIndex = index;
+
+        SetFogColor(BackgroundColors.ColorList[index]);
+    }
+
+    private void SetFogColor(Color color) {
+        fogMaterial.color = color;
     }
 
     public void ShiftBackgroundColor() {
@@ -112,7 +124,65 @@ public class ColorShifter : MonoBehaviour {
         return BackgroundIndex;
     }
 
+
+    /// <summary>
+    /// Returns the current main texture offset of the material
+    /// </summary>
+    public Vector2 GetMaterialOffset() {
+        return material.mainTextureOffset;
+    }
+
+    /// <summary>
+    /// Returns the current main texture offset Index of the material:  x: [0-22] | y:[0-4]
+    /// </summary>
+    public Vector2 GetMaterialOffsetIndex() { 
+        Vector2 index = material.mainTextureOffset;
+
+        index.x *= 22;
+        index.y *= 4;
+
+        index.x %= 22;
+        index.y %= 4;
+
+        return index;
+    }
+
+
+    /// <summary>
+    /// Returns the current main texture offset Index of the material: [0-87]
+    /// </summary>
+    public int GetMaterialOffsetGlobalIndex() {
+        Vector2 offset = material.mainTextureOffset;
+
+        int x = Mathf.RoundToInt(offset.x * 22f) % 22;
+        int y = Mathf.RoundToInt(offset.y * 4f) % 4;
+
+        if (x < 0) x += 22;
+        if (y < 0) y += 4;
+
+        return (int)(22 * y + x);
+    }
+
+    public int GetBackGroundColorIndex() {
+        int index = -1;
+
+        for (int i = 0; i < BackgroundColors.ColorList.Count; i++) {
+
+            if (Camera.main.backgroundColor == BackgroundColors.ColorList[i]) {
+                index = i; break;
+            }
+
+        }
+        return index;
+    }
+
+
+
     private void DisplayIndexesOnScreen() {
+        if (indexDisplayText == null) return;
         indexDisplayText.text = "B : " + BackgroundIndex + " X : " +  colorIndexX + " Y : " + colorIndexY;
     }
+
+
+
 }

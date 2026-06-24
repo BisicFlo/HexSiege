@@ -137,4 +137,8 @@ public class Spike : MonoBehaviour {
             impact.SetActive(true);
         }
     }
+
+    private void OnDestroy() {
+        Destroy(impact);
+    }
 }

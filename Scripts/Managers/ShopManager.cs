@@ -1,4 +1,5 @@
 
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -241,7 +242,7 @@ public class ShopManager : MonoBehaviour, IScreenManager {
 
             ItemsForSale.Add(selectedTurret);
 
-            InstantiateOne3DUI(savedIndex); // New
+            //InstantiateOne3DUI(savedIndex); // New
             ChangeImageButton(button, null, false);
         }
         else { // For Items  / -> TurretBoostData
@@ -278,21 +279,21 @@ public class ShopManager : MonoBehaviour, IScreenManager {
             pos.x = (2 * i);
             pos.y = -10;
 
-            GameObject turret = Instantiate(ItemsForSale[i].UIModel, pos, Quaternion.identity);
+            //GameObject turret = Instantiate(ItemsForSale[i].UIModel, pos, Quaternion.identity);
             //ChangeLayerToUI3D(turret);  //done in prefab
-            UIItems.Add(turret);
+            //UIItems.Add(turret);
         }
     }
 
-    private void InstantiateOne3DUI(int index) {
-        Vector3 pos = Vector3.zero;
-        pos.x = (2 * index);
-        pos.y = -11; // -> Scriptable ItemData -> "Height to be spawned"
-        GameObject turret = Instantiate(ItemsForSale[index].UIModel, pos, Quaternion.identity);
-        turret.transform.localScale = Vector3.one * 0.6f ;
-        //ChangeLayerToUI3D(turret);  //done in prefab
-        UIItems.Add(turret);
-    }
+    //private void InstantiateOne3DUI(int index) {
+    //    Vector3 pos = Vector3.zero;
+    //    pos.x = (2 * index);
+    //    pos.y = -11; // -> Scriptable ItemData -> "Height to be spawned"
+    //    GameObject turret = Instantiate(ItemsForSale[index].UIModel, pos, Quaternion.identity);
+    //    turret.transform.localScale = Vector3.one * 0.6f ;
+    //    //ChangeLayerToUI3D(turret);  //done in prefab
+    //    UIItems.Add(turret);
+    //}
 
     private void RemoveFrom3DDisplay(int index) {
         GameObject turret = UIItems[index];
@@ -345,3 +346,4 @@ public class ShopManager : MonoBehaviour, IScreenManager {
         refreshButton.gameObject.SetActive(true);
     }
 }
+*/

@@ -23,13 +23,13 @@ public class Turret : MonoBehaviour {
     public TurretType turretType;
 
     //[Header("New Stats System")]
-    [HideInInspector] public CharacterStat AttackDamage;
-    [HideInInspector] public CharacterStat AttackSpeed;  // 100 : normal 
-    [HideInInspector] public CharacterStat ProjectileSpeed;
-    [HideInInspector] public CharacterStat CriticalChance; // 0-100 %
-    [HideInInspector] public CharacterStat CriticalDamage; //  140 %  |  200%  | 90%
-    [HideInInspector] public CharacterStat CurseChance;    // 0-100 %
-    [HideInInspector] public CharacterStat Range;
+     public CharacterStat AttackDamage;
+    public CharacterStat AttackSpeed;  // 100 : normal 
+     public CharacterStat ProjectileSpeed;
+    public CharacterStat CriticalChance; // 0-100 %
+    public CharacterStat CriticalDamage; //  140 %  |  200%  | 90%
+    public CharacterStat CurseChance;    // 0-100 %
+    public CharacterStat Range;
 
     //[Header("Attributes")]
     //public int attackDamage = 1;
@@ -93,7 +93,7 @@ public class Turret : MonoBehaviour {
     }
 
     protected virtual void Init() {
-        waveSpawner = WaveSpawner.instance;
+        waveSpawner = WaveSpawner.Instance;
         waitBetweenUpdateTarget = new(timeBetweenUpdateTarget);
         StartCoroutine(UpdateTarget());
     }

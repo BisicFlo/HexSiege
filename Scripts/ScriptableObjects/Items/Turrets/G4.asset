@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: 96fc7f1461f065e4096a0637a8ddf9eb, type: 3}
   ID: 1
-  UIModel: {fileID: 1527380008469945030, guid: 60389b35dd2040e43b73066a1a9678df, type: 3}
   WorldModel: {fileID: 1527380008469945030, guid: 60389b35dd2040e43b73066a1a9678df, type: 3}
   NameItem: Frost Star
-  Price: 2
+  Price: 4
   Rarity: 2
   TypeOfItem: 0
-  Description: 
   turretType: 2
-  AttackDamage: 1
+  AttackDamage: 2
   AttackSpeed: 90
   ProjectileSpeed: 10
   CriticalChance: 10
-  CriticalDamage: 140
+  CriticalDamage: 150
   CurseChance: 0
   Range: 15

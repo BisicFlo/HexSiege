@@ -6,6 +6,7 @@ public enum TurretType {
     Plant,
     Totem,
     Divine,
+    Obscure,
     All,
 }
 

@@ -9,11 +9,11 @@ public class ChangeRerollCost : EffectSO {
     private int defaultValue;
 
     public override void OnApply(ItemData itemData) { // is (ItemData itemData) useful ?
-        defaultValue = ShopManager.Instance.RefreshCost;
-        ShopManager.Instance.RefreshCost = value;
+        defaultValue = ShopManagerV2.Instance.RerollCost;
+        ShopManagerV2.Instance.RerollCost = value;
     }
 
     public override void OnRemove(ItemData itemData) {     //Used ?
-        ShopManager.Instance.RefreshCost = defaultValue;
+        ShopManagerV2.Instance.RerollCost = defaultValue;
     }
 }

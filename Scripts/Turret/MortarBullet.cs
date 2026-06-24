@@ -81,5 +81,10 @@ public class MortarBullet : Projectile {
         //if (velocityDir.sqrMagnitude > 0.01f) {
         //    transform.forward = velocityDir;
         //}
+
+        
+    }
+    private void OnDestroy() {
+        Destroy(impact);
     }
 }

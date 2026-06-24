@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: 9e85ac2863edfdb49975d94dfb2a92a8, type: 3}
   ID: 1
-  UIModel: {fileID: 8642581732382114138, guid: 7d3eb9a1c4f0d344188a2c92e8966c20, type: 3}
   WorldModel: {fileID: 8642581732382114138, guid: 7d3eb9a1c4f0d344188a2c92e8966c20, type: 3}
-  NameItem: Stellated Octahedron
-  Price: 2
+  NameItem: Void Prism
+  Price: 8
   Rarity: 4
   TypeOfItem: 0
-  Description: 
-  turretType: 2
-  AttackDamage: 1
-  AttackSpeed: 90
+  turretType: 6
+  AttackDamage: 4
+  AttackSpeed: 120
   ProjectileSpeed: 10
   CriticalChance: 5
-  CriticalDamage: 140
+  CriticalDamage: 150
   CurseChance: 0
   Range: 15

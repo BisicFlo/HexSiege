@@ -8,7 +8,7 @@ public class BuildManagerV2 : MonoBehaviour, IScreenManager {
 
     public InventoryData Inventory; // same ScriptableObject Inventory In "Player.cs"
 
-    public List<Turret> WorldTurrets = new List<Turret>(); //?
+    public List<Turret> WorldTurrets = new List<Turret>(); // Used For Boosts / Items
 
     [SerializeField] private List<CardConfig> CardList = new List<CardConfig>(); // New
 

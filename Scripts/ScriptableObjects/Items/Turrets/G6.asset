@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: b9381ecb22bd49e478ed6c7125dcc606, type: 3}
   ID: 1
-  UIModel: {fileID: 2978063926521663262, guid: 1164c82e1dc13cd41ae9f2f91ad1f0e8, type: 3}
   WorldModel: {fileID: 2978063926521663262, guid: 1164c82e1dc13cd41ae9f2f91ad1f0e8, type: 3}
   NameItem: Evil Eye
-  Price: 2
+  Price: 10
   Rarity: 5
   TypeOfItem: 0
-  Description: 
-  turretType: 2
-  AttackDamage: 1
-  AttackSpeed: 90
-  ProjectileSpeed: 10
-  CriticalChance: 5
-  CriticalDamage: 140
-  CurseChance: 0
-  Range: 15
+  turretType: 6
+  AttackDamage: 4
+  AttackSpeed: 120
+  ProjectileSpeed: 20
+  CriticalChance: 10
+  CriticalDamage: 200
+  CurseChance: 10
+  Range: 20

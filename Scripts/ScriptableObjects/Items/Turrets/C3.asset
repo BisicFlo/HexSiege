@@ -12,20 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: C3
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 56a6215541425fc459f346ce11a0a633, type: 3}
-  ID: 3
-  UIModel: {fileID: 391639519198757243, guid: e140e828c2fa3494caf774bfcab2118e, type: 3}
-  WorldModel: {fileID: 391639519198757243, guid: 18c99c5ad77f11a41ac19a6c0c0a289a, type: 3}
-  NameItem: Cristal 3
+  Icon: {fileID: 21300000, guid: c5656628a6fd0ca448ded16c6337e3e0, type: 3}
+  ID: 1
+  WorldModel: {fileID: 8423115778812472039, guid: 32bafaa3e4455174583ae4e858048b7d, type: 3}
+  NameItem: Stormpiercer
   Price: 6
   Rarity: 3
   TypeOfItem: 0
-  Description: 
-  turretType: 2
-  AttackDamage: 3
-  AttackSpeed: 100
-  ProjectileSpeed: 10
+  turretType: 1
+  AttackDamage: 4
+  AttackSpeed: 30
+  ProjectileSpeed: 50
   CriticalChance: 5
   CriticalDamage: 140
   CurseChance: 0
-  Range: 15
+  Range: 20

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulEaterEffect
   effectName: 
   isPermanent: 0
-  duration: 0
+  duration: 5
   bonusPerKill: 10
   maxStacks: 10
-  turretType: 6
+  turretType: 7

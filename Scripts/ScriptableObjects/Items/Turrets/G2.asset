@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: bf457e16d354e5d48807779dc295bbe9, type: 3}
   ID: 1
-  UIModel: {fileID: 5305178360891346598, guid: 37686a3bf0dd51a4eaaadc047d11278f, type: 3}
   WorldModel: {fileID: 5305178360891346598, guid: 37686a3bf0dd51a4eaaadc047d11278f, type: 3}
   NameItem: Death Eye
-  Price: 2
-  Rarity: 5
+  Price: 6
+  Rarity: 4
   TypeOfItem: 0
-  Description: 
-  turretType: 5
+  turretType: 6
   AttackDamage: 1
   AttackSpeed: 50
   ProjectileSpeed: 10
   CriticalChance: 0
-  CriticalDamage: 140
+  CriticalDamage: 110
   CurseChance: 30
   Range: 20

@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: 926e5245c5274024096fc684cf67db5f, type: 3}
   ID: 1
-  UIModel: {fileID: 559414286097667755, guid: abcdf8bc662a7b04c95cf1c55d2051f7, type: 3}
   WorldModel: {fileID: 559414286097667755, guid: abcdf8bc662a7b04c95cf1c55d2051f7, type: 3}
   NameItem: Blue Eye
-  Price: 2
+  Price: 4
   Rarity: 2
   TypeOfItem: 0
-  Description: 
-  turretType: 5
-  AttackDamage: 1
-  AttackSpeed: 90
+  turretType: 6
+  AttackDamage: 2
+  AttackSpeed: 70
   ProjectileSpeed: 10
   CriticalChance: 5
-  CriticalDamage: 140
+  CriticalDamage: 110
   CurseChance: 0
   Range: 15

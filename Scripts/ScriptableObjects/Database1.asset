@@ -19,9 +19,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfa951111fed5974891c28800f39804f, type: 2}
   uncommonTurretList:
   - {fileID: 11400000, guid: ab90f130340ef23478819752976c99cd, type: 2}
-  - {fileID: 11400000, guid: 7f609c4cc749ef648b367e43fda2b6e3, type: 2}
+  - {fileID: 11400000, guid: 81b916edb2049d748bfb413475fca7e4, type: 2}
   - {fileID: 11400000, guid: 9542ee932777a984486b2cc419e96457, type: 2}
   - {fileID: 11400000, guid: bbb2665d7d186ca49827939b4516d9a6, type: 2}
+  - {fileID: 11400000, guid: f5d81be4464a2074baf1c153a723fc65, type: 2}
   rareTurretList:
   - {fileID: 11400000, guid: f8a71585b9c705a49b5e3bcbe74d9aa0, type: 2}
   - {fileID: 11400000, guid: 3c3b870a08d80dc4e9640d164f9e9286, type: 2}
@@ -32,10 +33,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24493bb4cdf0af54e93bbdcff9cacbdf, type: 2}
   - {fileID: 11400000, guid: 7d5f01e83d6a1dd43a7bb68fcf879a46, type: 2}
   - {fileID: 11400000, guid: b1b26f8153f515e49b01cfd0ef0f5e29, type: 2}
+  - {fileID: 11400000, guid: c92038bb77aa85240baf02f7bf8bb3fb, type: 2}
   legendaryTurretList:
   - {fileID: 11400000, guid: 9f2dfec08e643754fa989615ebc551d2, type: 2}
   - {fileID: 11400000, guid: 9cea9ff386b349d4692e76009d7675a8, type: 2}
   - {fileID: 11400000, guid: af21d7e47629ac44ab8782b9735274ad, type: 2}
+  - {fileID: 11400000, guid: 7f609c4cc749ef648b367e43fda2b6e3, type: 2}
   itemList:
   - {fileID: 11400000, guid: 1c2b5877bad31ca439790d5af8face6f, type: 2}
   - {fileID: 11400000, guid: db8e15305f4133b499c15b3988b81f78, type: 2}

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 [System.Serializable]
 public class ButtonEntry {
     public Button Button;
@@ -17,6 +16,7 @@ public class ButtonEntry {
 public class SceneLoader : MonoBehaviour {
 
     [SerializeField] private ColorShifter colorShifter;
+
     [SerializeField] private List<ButtonEntry> ButtonEntries; // set in Inspector
 
     [SerializeField] private SliderBar LoadingBar;    // Used to change bar visual Loading Screen
@@ -56,10 +56,10 @@ public class SceneLoader : MonoBehaviour {
             else if (buttonIndex == -1) { // - - - - Reload Same Level - - - -
 
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // Gets the current active scene
-                int currentColorIndex = colorShifter.GetCurrentColorIndex();
-                int CurrentBackgroundColorIndex = colorShifter.GetCurrentBackgroundColorIndex();
+                //int currentColorIndex = colorShifter.GetCurrentColorIndex();
+                //int CurrentBackgroundColorIndex = colorShifter.GetCurrentBackgroundColorIndex();
 
-                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex, currentColorIndex, CurrentBackgroundColorIndex));
+                ButtonEntries[i].Button.onClick.AddListener(() => OnClick(currentSceneIndex));
             }
 
             else if (buttonIndex == 0) { // - - - - Load Main Menu - - - -
@@ -91,6 +91,7 @@ public class SceneLoader : MonoBehaviour {
 
     private void OnClick(int buttonIndex, int colorIndex, int backgroundIndex) {
         Debug.Log("Onclick : " + buttonIndex + "|" + colorIndex + "|" + backgroundIndex);
+
         // Display Loading Screen
         UIManager.Instance.ShowScreen(ScreenType.Loading);
         // Start Loading 
@@ -100,7 +101,13 @@ public class SceneLoader : MonoBehaviour {
         // Change Background Color  
         colorShifter.SetBackGroundColorFromIndex(backgroundIndex);
     }
+    private void OnClick(int buttonIndex) {       
 
+        // Display Loading Screen
+        UIManager.Instance.ShowScreen(ScreenType.Loading);
+        // Start Loading 
+        StartCoroutine(LoadAsync(buttonIndex));
+    }
 
 
     private bool DoesSceneIndexExist(int index) {

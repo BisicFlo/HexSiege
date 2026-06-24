@@ -8,6 +8,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
     public static ShopManagerV2 Instance { get; private set; } // Singleton // ?? Used
 
     public int RerollCost = 2;
+
     [SerializeField] private Text RerollCostText;
 
     #region --------- Inspector Fields ---------
@@ -128,8 +129,6 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
         }
     }
 
-
-
     private bool BuySomething(int price) {
         if (playerData.Money < price) {
             return false; // Not enough money
@@ -152,19 +151,19 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
         }
         return -1;
     }
+
     private TurretData PickTurret(int rarity) {
         return itemDatabase.GetRandomTurretFromRarity(rarity);
     }
+
     private ItemData PickItem() {
         return itemDatabase.GetRandomItem();
     }
-    //private void ChangeColorButtonFromRarity(Button button, int rarity) {
-    //    if (rarity < 1 || rarity > 6) return; // 6 : items
-    //    button.image.color = rarityColors.ColorList[rarity - 1]; // New        
-    //}
+
     private void ChangePriceButton(Button button, int price) {
         button.transform.GetChild(0).GetComponent<Text>().text = price.ToString();
     }
+
     private void ChangeImageButton(Button button, Sprite sprite, bool setActive) {
         if (setActive) {
             button.transform.GetChild(2).gameObject.SetActive(true);
@@ -175,6 +174,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
         }
 
     }
+
     private void SetupOneButton(Button button) {
         //int rarity = PickRarity(playerData.Level);
 
@@ -205,7 +205,6 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
         //}
         //button.interactable = true; // ? ActivateInteractable(int index)
     }
-
 
     private void PassDataToCardConfig(CardConfig cardConfig, TurretData turretData ) {
         Debug.Log("TurretData");
@@ -264,7 +263,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
             savedIndex = 0;
 
-            //RefreshButton.gameObject.SetActive(false);
+            refreshButton.gameObject.SetActive(false);
             ClearAllCard();
             ItemsForSale.Clear();
             StartCoroutine(DisplayAllCards());

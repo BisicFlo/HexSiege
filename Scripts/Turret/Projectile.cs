@@ -77,4 +77,8 @@ public class Projectile : MonoBehaviour {
         impact.transform.SetPositionAndRotation(this.transform.position, this.transform.rotation);
         impact.SetActive(true);
     }
+
+    private void OnDestroy() {
+        Destroy(impact);
+    }
 }

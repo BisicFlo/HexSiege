@@ -86,14 +86,14 @@ public class Enemy : MonoBehaviour {
     }
 
     private void InitValues() {
-        this.currentLife = enemyData.startingLife;
-        this.currentSpeed = enemyData.startingSpeed;
-        this.damageToPlayer = enemyData.damageToPlayer;
-        this. moneyWhenKilled = enemyData.moneyWhenKilled;
-        this.xpWhenKilled = enemyData.xpWhenKilled;
+        this.currentLife = enemyData.StartingLife;
+        this.currentSpeed = enemyData.StartingSpeed;
+        this.damageToPlayer = enemyData.DamageToPlayer;
+        this. moneyWhenKilled = enemyData.MoneyWhenKilled;
+        this.xpWhenKilled = enemyData.XpWhenKilled;
 
         this.DeathEffectPrefab = enemyData.DeathEffectPrefab;
-        this.deathColor = enemyData.deathColor;
+        this.deathColor = enemyData.DeathColor;
     }
 
     public void Spawn() {

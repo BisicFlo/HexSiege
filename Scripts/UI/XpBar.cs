@@ -3,35 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// XpBar - Animated experience bar with level-up segmentation.
+/// Supports multi-level XP gains in a single call with smooth fill animations. 
+/// </summary>
 public class XpBar : MonoBehaviour {
-    public PlayerData playerData; // temp ! debug
 
+    [Header("References")]
     [SerializeField] private Slider slider;
-    [SerializeField] private float segmentDuration = 0.4f;
 
-    //private int maxXp = 100;
-    //private int currentXp = 0;
-    private Coroutine animCoroutine;
+    [Header("Animation")]
+    [Tooltip("Duration to fill one full segment (0 to 1)")]
+    [SerializeField] private float segmentDuration = 0.4f;      
 
     // Each segment: animate from A to B, then snap back to 0 if overflow
     private readonly Queue<(float from, float to, bool resetAfter)> segments = new();
 
-    public int GainXP;
+    private Coroutine animCoroutine;
 
-
-    //private void Awake() {
-    //    imageSliderBonus = sliderBonus.fillRect.GetComponent<Image>();
-    //    imageHighlightBonus = sliderBonus.transform.GetChild(1).GetChild(0).GetComponent<Image>();
-    //}
-
-    private void Update() { //temp
-        if (GainXP != 0) {
-            AddXp(GainXP, playerData.Xp, playerData.Level);
-            GainXP = 0;
-        }
-    }
-
+    /// <summary>
+    /// Adds XP and queues the appropriate animations, handling level-ups automatically.
+    /// </summary>
+    /// <param name="amount">Amount of XP to add.</param>
+    /// <param name="currentXp">Current XP before adding.</param>
+    /// <param name="currentLevel">Current player level.</param>
     public void AddXp(int amount, int currentXp, int currentLevel ) {
         Debug.Log("AddXp : " + amount);
 
@@ -91,7 +86,9 @@ public class XpBar : MonoBehaviour {
                 slider.value = 0f;
             }
         }
-
         animCoroutine = null;
     }
+
+
+    
 }

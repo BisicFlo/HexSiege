@@ -2,55 +2,48 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// DoubleSliderBar - A specialized UI component for displaying values with bonus/penalty overlays.
+/// Commonly used for health bars, damage previews, or stat comparisons.
+/// 
+/// Features:
+/// - Base value (bottom layer)
+/// - Bonus/Total value (top layer) with color feedback
+/// - Smooth animated transitions
+/// - Supports both positive (green) and negative (red) bonuses
+/// </summary>
 public class DoubleSliderBar : MonoBehaviour {
 
-    [SerializeField] private Slider sliderBaseValue; // Main Bar : white 
-    [SerializeField] private Slider sliderBonus; // Bonus Bar : Green | Red
+    [Header("Sliders")]
+    [Tooltip("Main base value slider (usually white or gray)")]
+    [SerializeField] private Slider sliderBaseValue; 
 
-    [SerializeField] private Image imageSliderBonus;     // main image Slider
-    [SerializeField] private Image imageHighlightBonus;  // Small stripe of color for bright effect 
+    [Tooltip("Secondary/Bonus slider, behind the main slider")]
+    [SerializeField] private Slider sliderBonus;     
 
-    //[SerializeField] private static Color RedColor = Color.red; // B2122D + E62E4D
-    //[SerializeField] private static Color GreenColor = Color.green; // AAFF00 + E1FF77
+    [Tooltip("Main fill image of the bonus slider")]
+    [SerializeField] private Image imageSliderBonus;
 
+    [Tooltip("Highlight stripe for extra visual pop")]
+    [SerializeField] private Image imageHighlightBonus;
+
+    // Predefined colors (HTML format for easy tweaking)
     private static Color RedColor = ColorUtility.TryParseHtmlString("#B2122D", out Color color) ? color : Color.red;
     private static Color LightRedColor = ColorUtility.TryParseHtmlString("#E62E4D", out Color color) ? color : Color.red;
     private static Color GreenColor = ColorUtility.TryParseHtmlString("#AAFF00", out Color color) ? color : Color.green;
     private static Color LightGreenColor = ColorUtility.TryParseHtmlString("#E1FF77", out Color color) ? color : Color.green;
 
-    //private Image imageSliderBonus;     // main image Slider
-    //private Image imageHighlightBonus;  // Small stripe of color for bright effect 
-
     private Coroutine lerpCoroutine = null;
-    //[SerializeField] private bool isDirty = false;
-    [SerializeField] private float target;
+     private float targetValue;
 
-    public bool takeDamage;
-    public bool heal;
-    private int health = 10;
-
-    //private void Awake() {
-    //    imageSliderBonus = sliderBonus.fillRect.GetComponent<Image>();
-    //    imageHighlightBonus = sliderBonus.transform.GetChild(1).GetChild(0).GetComponent<Image>();
-    //}
-
-    private void Update() { //temp
-        if (takeDamage) {
-            takeDamage = false;
-            health--;
-            RemoveAmountWithEffect(health);
-        }
-        if (heal) {
-            heal = false;
-            health++;
-            AddAmountWithEffect(health);
-        }
-    }
 
     public void SetValue(int value) {
         sliderBaseValue.value = value;
     }
+
+    /// <summary>
+    /// Sets both base and total value with automatic color switching.
+    /// </summary>
     public void SetValue(int baseValue, int total) { // bonus is the total value : Base + bonus stat
         if (total - baseValue >= 0) {
             sliderBaseValue.value = baseValue;
@@ -65,6 +58,10 @@ public class DoubleSliderBar : MonoBehaviour {
             imageHighlightBonus.color = LightRedColor;
         }
     }
+
+    /// <summary>
+    /// Updates the maximum value of both sliders (e.g. when max health increases).
+    /// </summary>
     public void SetMaxValue(int newMaxHealth) {
         float oldMaxBase = sliderBaseValue.maxValue;
         float oldMaxBonus = sliderBonus.maxValue;
@@ -72,45 +69,27 @@ public class DoubleSliderBar : MonoBehaviour {
         sliderBaseValue.maxValue = newMaxHealth;
         sliderBonus.maxValue = newMaxHealth;
 
+        // Preserve current fill ratio when max increases
         sliderBaseValue.value += newMaxHealth - oldMaxBase;
         sliderBonus.value += newMaxHealth - oldMaxBonus;
     }
 
-    //public void RemoveAmountWithEffectOLD(int value) { // Set amount : value
 
-    //    //sliderBaseValue.value = value;
-    //    //target = value;
-
-    //    //if (lerpCoroutine == null) {
-    //    //    isDirty = true;
-    //    //    lerpCoroutine = StartCoroutine(LerpTo(sliderBonus, 1 ));
-    //    //} else {
-    //    //    isDirty = true;
-    //    //}
-    //}
+    /// <summary>
+    /// Removes value with smooth animation on the bonus layer.
+    /// </summary>
     public void RemoveAmountWithEffect(int value) {
         sliderBaseValue.value = value;   // snap the BASE (bottom layer)
-        target = value;
+        targetValue = value;
         EnsureCoroutineRunning(sliderBonus); // animate BONUS down to match
     }
 
-    //public void AddAmountWithEffectOLD(int value) {
-
-    //    //sliderBonus.value = value;
-    //    //target = value;
-
-    //    //if (lerpCoroutine == null) {
-    //    //    isDirty = true;
-    //    //    lerpCoroutine = StartCoroutine(LerpTo(sliderBaseValue, 1));
-    //    //}
-    //    //else {
-    //    //    isDirty = true;
-    //    //}
-    //}
-
+    /// <summary>
+    /// Adds value with smooth animation on the base layer.
+    /// </summary>
     public void AddAmountWithEffect(int value) {
         sliderBonus.value = value;       // snap the BONUS (top layer)
-        target = value;
+        targetValue = value;
         EnsureCoroutineRunning(sliderBaseValue); // animate BASE up to match
     }
 
@@ -121,17 +100,19 @@ public class DoubleSliderBar : MonoBehaviour {
         lerpCoroutine = StartCoroutine(LerpTo(slider, 1f));
     }
 
-
+    /// <summary>
+    /// Smoothly lerps a slider toward the current target value.
+    /// </summary>
     private IEnumerator LerpTo(Slider slider, float duration) {
         float start = slider.value;
-        float myTarget = target;          // snapshot at coroutine start
+        float myTarget = targetValue;          // snapshot at coroutine start
         float elapsed = 0f;
 
         while (elapsed < duration) {
             // If target changed mid-flight, restart from current position
-            if (!Mathf.Approximately(myTarget, target)) {
+            if (!Mathf.Approximately(myTarget, targetValue)) {
                 start = slider.value;
-                myTarget = target;
+                myTarget = targetValue;
                 elapsed = 0f;
             }
 
@@ -146,24 +127,3 @@ public class DoubleSliderBar : MonoBehaviour {
 }
 
 
-//    private IEnumerator LerpToOLD(Slider slider , float duration) {
-
-//        while (isDirty) {
-//            isDirty = false;
-
-//            float start = slider.value;
-//            float elapsed = 0f;
-
-//            Debug.Log("Lerping from : " + start + " to : " + target);
-
-//            while (elapsed < duration) {
-//                elapsed += Time.deltaTime;
-//                slider.value = Mathf.Lerp(start, target, elapsed / duration);
-//                yield return null;
-//            }
-//            slider.value = target; // Ensure exact end value            
-//        }
-//        Debug.Log("CoroutineFinished"); 
-//       lerpCoroutine = null;
-//    }
-//}

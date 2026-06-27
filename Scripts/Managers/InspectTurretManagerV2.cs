@@ -66,7 +66,4 @@ public class InspectTurretManagerV2 : MonoBehaviour, IScreenManager {
         // Remove from somewhere ? List ?
         QuitInspectMenu();
     }
-
-
-
 }

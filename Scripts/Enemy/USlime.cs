@@ -20,14 +20,13 @@ public class USlime : MonoBehaviour {
     [SerializeField] private float baseWaitTime = 1;
     [SerializeField] private float gravity = -9.81f; // Simulated gravity
 
-     private float speedInfluence = 1f;
-     private int referenceSpeed = 2;
-
-
     [Header("Jiggle")]
     [SerializeField] float amplitude = 0.03f; // Initial strength of the jiggle
     [SerializeField] float decayRate = 0.1f;   // How quickly the jiggle fades
     [SerializeField] float frequency = 15f;
+
+    private float speedInfluence = 1f;
+    private int referenceSpeed = 2;
 
     private Vector3 originalScale;
 

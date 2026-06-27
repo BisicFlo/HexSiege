@@ -1,49 +1,59 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
+/// <summary>
+/// Curse System - Applies up to 4 curse marks to a target.
+/// When all 4 marks are applied, triggers a dramatic falling curse object
+/// that crushes the target and invokes a death callback.
+/// </summary>
 public class Curse : MonoBehaviour {
-    // Callback - This is what we'll use
-    [HideInInspector] public System.Action OnCurseFallComplete;
+
+    // --------------------------------------------------------------
+    //   Inspector Fields
+    // -------------------------------------------------------------- 
+
+    [HideInInspector] public System.Action OnCurseFallComplete; // Called when the curse fall animation completes.
 
     [Header("Curse Marks")]
-    [Tooltip("Assign your 4 curse mark GameObjects here ")]
+    [Tooltip("Assign 4 curse mark visuals (GameObjects)")]
     [SerializeField] private GameObject[] curseMarks = new GameObject[4];
 
     [Header("Falling Curse Effect")]
-    [SerializeField] private GameObject curseObject;                      // The object that will "fall" on the enemy (can be a VFX, skull, rune, etc.)
-    [SerializeField] private Transform fallTarget;                        // Usually the enemy itself or a point on top of it
+    [Tooltip("The  curse object / Parent that falls on the enemy when 4 marks are applied")]
+    [SerializeField] private GameObject curseObject;     
+
+    [Tooltip("Target position where the curse object should land (usually the enemy's center")]
+    [SerializeField] private Transform fallTarget;         // Usually the enemy itself or a point on top of it
     [SerializeField] private float fallDuration = 1.2f;
-    //[SerializeField] private AnimationCurve fallCurve;                    // Controls non-linear speed
-    //[SerializeField] private float initialBackwardDistance = 1.5f;
-    //[SerializeField] private float initialBackwardDuration = 0.25f;
-    //[SerializeField] private float gravity = -9.81f;    // Simulated gravity
 
-    [SerializeField] private ParticleSystem curseEffect;
+    [Header("Visual Effect")]
+    [Tooltip("Particle system that plays while curse marks are active")]
+    [SerializeField] private ParticleSystem curseEffect;   // Small particles when at least 1 mark is applied
 
+
+    // --------------------------------------------------------------
+    //   Private 
+    // --------------------------------------------------------------
 
     private int activeCurses = 0;
 
-    public bool CurseMe = false; // temp
-
-    private void Update() {     // temp
-        if (CurseMe) {
-            CurseMe = false;
-            ApplyCurse();
-        }
-    }
+    // --------------------------------------------------------------
+    //   MonoBehaviour
+    // --------------------------------------------------------------
 
     private void Start() {
-        // All marks start deactivated
-        ResetCurses();
+        ResetCurses();  // All marks start deactivated
     }
+
+    /// <summary>
+    /// Applies one curse mark. Returns true when all 4 marks are applied (lethal).
+    /// </summary>
+    /// <returns>True if the target should die, false otherwise.</returns>
     public bool ApplyCurse() {
-        Debug.Log("ApplyCurse()");
 
         if (activeCurses < 4) {
             curseEffect.Play();
-            HideAllStages();//New
+            HideAllStages();
             curseMarks[activeCurses].SetActive(true);
 
             activeCurses++;
@@ -56,72 +66,40 @@ public class Curse : MonoBehaviour {
                 return false; // Enemy will not die
             }
         }
-        return false; // Enemy already dead
+        return false; // Enemy is already fully cursed
     }
+
+    /// <summary>
+    /// Resets the curse system to its initial state.
+    /// Called when the enemy respawns or the curse is removed.
+    /// </summary>
     public void ResetCurses() {
         curseEffect.Stop();
         activeCurses = 0;
         HideAllStages();
     }
 
+    /// <summary>
+    /// Deactivates all curse mark visuals.
+    /// </summary>
     public void HideAllStages() {
         foreach (var mark in curseMarks) {
             if (mark != null)
                 mark.SetActive(false);
         }
-    } 
-
-    private void CrushTarget() {
-        //StartCoroutine(CurseFallSequence());
-        StartCoroutine(CurseFallSequenceV2(fallDuration,1)); // Coroutine couldn't be started because the the game object 'Curse' is inactive!
     }
 
-    //private IEnumerator CurseFallSequence() {
-    //    if (curseObject == null) {
-    //        Debug.LogWarning("No curseObject assigned. Enemy will die instantly.");
-    //        yield break;
-    //    }
-    //    yield return new WaitForSeconds(1);
+    /// <summary>
+    /// Triggers the final crushing curse animation.
+    /// </summary>
+    private void CrushTarget() {
+        StartCoroutine(CurseFallSequenceV2(fallDuration, 1)); // Coroutine couldn't be started because the the game object 'Curse' is inactive!
+    }
 
-    //    // Activate the falling object
-    //    curseObject.SetActive(true);
-    //    Vector3 startPosition = curseObject.transform.position;
-    //    Vector3 targetPosition = fallTarget.position;
-
-    //    // 1. Slight backward movement at the beginning
-    //    Vector3 backwardPos = startPosition + (startPosition - targetPosition).normalized * initialBackwardDistance;
-
-    //    float timer = 0f;
-    //    while (timer < initialBackwardDuration) {
-    //        timer += Time.deltaTime;
-    //        float t = timer / initialBackwardDuration;
-    //        curseObject.transform.position = Vector3.Lerp(startPosition, backwardPos, t);
-    //        yield return null;
-    //    }
-
-    //    // 2. Fall down with non-linear speed using AnimationCurve
-    //    timer = 0f;
-    //    Vector3 fallStartPos = curseObject.transform.position;
-
-    //    while (timer < fallDuration) {
-    //        timer += Time.deltaTime;
-    //        float normalizedTime = timer / fallDuration;
-    //        float curveValue = fallCurve.Evaluate(normalizedTime);
-
-    //        curseObject.transform.position = Vector3.Lerp(fallStartPos, targetPosition, curveValue);
-    //        yield return null;
-    //    }
-
-    //    // Ensure final position
-    //    curseObject.transform.position = targetPosition;
-
-    //    // Optional: Impact effect
-    //    // ParticleSystem ps = curseObject.GetComponentInChildren<ParticleSystem>();
-    //    // if (ps) ps.Play();
-
-    //}
-
-    private IEnumerator CurseFallSequenceV2( float lerpDuration, int mode) {
+    /// <summary>
+    /// Animates the curse object falling onto the target.
+    /// </summary>
+    private IEnumerator CurseFallSequenceV2(float lerpDuration, int mode) {
 
         yield return new WaitForSeconds(1);
 
@@ -129,17 +107,14 @@ public class Curse : MonoBehaviour {
         Vector3 endValueFrozen = fallTarget.transform.position;
 
         float timeElapsed = 0;
-        //Vector3 jump = Vector3.zero;
         while (timeElapsed < lerpDuration) {
             float t = timeElapsed / lerpDuration;
-            if (mode == 1) t = Mathf.Sin(t * Mathf.PI * 0.5f);
-            if (mode == 2) t = Mathf.SmoothStep(0, 1, t);
+            if (mode == 1) t = Mathf.Sin(t * Mathf.PI * 0.5f); // Ease-out
+            if (mode == 2) t = Mathf.SmoothStep(0, 1, t); // Smooth acceleration + deceleration
 
             curseObject.transform.position = Vector3.Slerp(startValueFrozen, endValueFrozen, t);
-            //jump.y = 0.5f * gravity * lerpDuration * timeElapsed - 0.5f * gravity * timeElapsed * timeElapsed;
-            //curseObject.transform.position -= jump;
-            timeElapsed += Time.deltaTime;
 
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
         curseObject.transform.position = endValueFrozen;
@@ -147,6 +122,10 @@ public class Curse : MonoBehaviour {
         CompleteCurse();
     }
 
+    /// <summary>
+    /// Called when the curse object has finished falling.
+    /// Notifies the subscriber (usually the enemy) to die.
+    /// </summary>
     private void CompleteCurse() {
         OnCurseFallComplete?.Invoke();     //This calls the Enemy's Death()
     }

@@ -15,33 +15,27 @@ public struct TurretStats {
 
 public class Turret : MonoBehaviour {
 
+    [HideInInspector] public Enemy enemyTargetted;
+    [HideInInspector] public int rarity; // New
+
     // --------------------------------------------------------------
     //   Inspector Fields
     // -------------------------------------------------------------- 
+
     public TurretData turretData;
 
     public TurretType turretType;
 
     //[Header("New Stats System")]
-     public CharacterStat AttackDamage;
+    public CharacterStat AttackDamage;
     public CharacterStat AttackSpeed;  // 100 : normal 
-     public CharacterStat ProjectileSpeed;
+    public CharacterStat ProjectileSpeed;
     public CharacterStat CriticalChance; // 0-100 %
-    public CharacterStat CriticalDamage; //  140 %  |  200%  | 90%
+    public CharacterStat CriticalDamage; //  140 % | ex :  200% / 90%
     public CharacterStat CurseChance;    // 0-100 %
-    public CharacterStat Range;
-
-    //[Header("Attributes")]
-    //public int attackDamage = 1;
-    //public float attackSpeed = 1f;
-    //public int projectileSpeed = 10;
-    //public int range = 15;
-    //public int criticalChance = 0; // New
-    //public int curseChance = 0; // New
+    public CharacterStat Range; // ~20
 
     public float timeBetweenUpdateTarget = 0.4f;
-
-    [HideInInspector] public int rarity; // New
 
     [Header("Animation")]
     [SerializeField] private AnimateTurret animateTurret;
@@ -52,10 +46,7 @@ public class Turret : MonoBehaviour {
 
     private WaveSpawner waveSpawner;
     protected Transform target;
-
     private WaitForSeconds waitBetweenUpdateTarget;
-    [HideInInspector] public Enemy enemyTargetted; //public ? ?
-
     private float fireCountdown = 0;
 
     // --------------------------------------------------------------

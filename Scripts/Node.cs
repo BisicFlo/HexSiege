@@ -1,18 +1,8 @@
 using UnityEngine;
 
-// Unused 
 
-public class Node : MonoBehaviour {
- 
-    //[SerializeField] private Renderer rend; //used to highlight
-
+public class Node : MonoBehaviour { 
     public Turret TurretOnTop { get; private set; }
-
-
-    //public Renderer GetRenderer() {
-    //    return rend;
-    //}
-
 
     public bool SetTurret(Turret turret) {
 
@@ -30,21 +20,5 @@ public class Node : MonoBehaviour {
     public void ClearNode() {
          TurretOnTop = null;
     }
-
-
-    //public void BuildSelectedTurret() {
-    //    BuildTurret(BuildManager.Instance.SelectedTurret);
-    //}
-
-    //private void BuildTurret(GameObject turretPrefab) {
-    //    if (turretOnTop != null) Debug.Log("Space already occupied");
-
-    //    turretOnTop = (GameObject)Instantiate(turretPrefab, this.transform.position, Quaternion.identity);
-    //}
-
-
-
-
-
 
 }

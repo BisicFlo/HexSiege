@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 0
   WorldModel: {fileID: 0}
   NameItem: Strange
-  Price: 5
+  Price: 8
   Rarity: 1
   TypeOfItem: 1
   turretType: 7

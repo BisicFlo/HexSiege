@@ -14,6 +14,10 @@ public class TouchManager : MonoBehaviour {
 
     [SerializeField] private float maxRayDistance = 100f;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData openMenuSound; // New
+
+
     // --------------------------------------------------------------
     //   Private 
     // --------------------------------------------------------------
@@ -68,13 +72,13 @@ public class TouchManager : MonoBehaviour {
 
         } else {
             //Debug.Log("Clicked on nothing (ray didn't hit anything)");
+
         }
     }
 
     private void ClickCanceled(InputAction.CallbackContext context) {
 
         Vector2 screenPos = positionAction.ReadValue<Vector2>();
-
         Ray ray = Camera.main.ScreenPointToRay(screenPos);
 
         if (Physics.Raycast(ray, out RaycastHit hit, maxRayDistance)) {
@@ -125,10 +129,14 @@ public class TouchManager : MonoBehaviour {
     }
 
     void OpenBuildMenu() {
+        SoundManager.Instance.PlaySFX(openMenuSound); // New
+
         UIManager.Instance.ShowScreen(ScreenType.Build);
     }
 
     void OpenTurretInspectorMenu() {
+        SoundManager.Instance.PlaySFX(openMenuSound); // New
+
         UIManager.Instance.ShowScreen(ScreenType.InspectTurret);
     }
 

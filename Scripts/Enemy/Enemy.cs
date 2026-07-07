@@ -12,7 +12,11 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] private Transform Visual; // Part holding the renderer    
 
-    [SerializeField] private Curse curseSystem; // NEw
+    [SerializeField] private Curse curseSystem; 
+
+    [SerializeField] private SoundData hitSound; // New
+    [SerializeField] private SoundData deathSound; // New
+
 
     #region SetByEnemyData
     private GameObject DeathEffectPrefab = null;
@@ -125,6 +129,7 @@ public class Enemy : MonoBehaviour {
         }
         else if (damage > 0) {
             enemyHitFlash.TriggerFlash(); // Visual Feedback | should not be called if enemy dies
+            SoundManager.Instance.PlaySFX(hitSound, transform.position); //NEw
         }
 
         return false;
@@ -174,6 +179,9 @@ public class Enemy : MonoBehaviour {
 
             Destroy(deathEffect, 3);
         }
+
+        SoundManager.Instance.PlaySFX(deathSound, transform.position); // NEw
+
         this.gameObject.SetActive(false);
         Destroy(this.gameObject, 1);
     }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7f7c537060fd74c9282f84488ace3a, type: 3}
+  m_Name: SD_FireBall
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: 412c99345e253b34597b0a7f63f3b52e, type: 3}
+  - {fileID: 8300000, guid: b9782632c9edf3e48a860cf776c125d8, type: 3}
+  - {fileID: 8300000, guid: c1b16de0f32cb864faced30b2511174d, type: 3}
+  mixerGroup: {fileID: 24300002, guid: cc096714f66bc444e80472888bbf91d6, type: 2}
+  volumeRange: {x: 0.5, y: 0.8}
+  pitchRange: {x: 0.8, y: 1.2}
+  isFrequent: 0
+  maxInstances: 8

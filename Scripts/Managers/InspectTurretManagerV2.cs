@@ -8,10 +8,13 @@ public class InspectTurretManagerV2 : MonoBehaviour, IScreenManager {
 
     [SerializeField] private ColorData rarityColors;
 
-    [SerializeField] private Button quitButton;
+    //[SerializeField] private Button quitButton;
     [SerializeField] private Button destroyButton;
 
     [SerializeField] private CardConfig inspectCard;
+
+    [Header("Sounds")]
+    [SerializeField] private SoundData destroySound; // New
 
     private void Awake() {
         if (Instance != null) Debug.LogWarning("More than one InspectManager detected");
@@ -48,12 +51,12 @@ public class InspectTurretManagerV2 : MonoBehaviour, IScreenManager {
     }
 
     private void SetupButtonsEvents() {   
-        quitButton.onClick.AddListener(() => QuitInspectMenu());
+        //quitButton.onClick.AddListener(() => QuitInspectMenu());
         destroyButton.onClick.AddListener(() => DestroyTurretAndQuit());
     }
 
     private void ClearButtonsEvents() {
-        quitButton.onClick.RemoveAllListeners();
+        //quitButton.onClick.RemoveAllListeners();
         destroyButton.onClick.RemoveAllListeners();
     }
 
@@ -62,6 +65,8 @@ public class InspectTurretManagerV2 : MonoBehaviour, IScreenManager {
     }
 
     private void DestroyTurretAndQuit() {
+        SoundManager.Instance.PlaySFX(destroySound); // New
+
         Destroy(selectedTurret.gameObject);
         // Remove from somewhere ? List ?
         QuitInspectMenu();

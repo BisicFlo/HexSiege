@@ -55,10 +55,14 @@ public class CardConfig : MonoBehaviour {
     [SerializeField] private float flipDuration = 0.4f;
     [SerializeField] private AnimationCurve flipCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData clickSound; // New
 
-    [Header("Debug")]
-    [SerializeField] private bool DisplayStats;
-    [SerializeField] private bool Animate;
+
+
+    //[Header("Debug")]
+    //[SerializeField] private bool DisplayStats;
+    //[SerializeField] private bool Animate;
 
     public ItemData itemDataSelected = null; // unused
     public TurretData turretDataSelected = null;  // hide in inspector
@@ -82,16 +86,16 @@ public class CardConfig : MonoBehaviour {
 
 
 
-    private void Update() { //temp
-        if (DisplayStats) {
-            DisplayStats = false;
-            MainSetup();
-        }
-        if (Animate) {
-            Animate = false;
-            Flip();
-        }
-    }
+    //private void Update() { //temp
+    //    if (DisplayStats) {
+    //        DisplayStats = false;
+    //        MainSetup();
+    //    }
+    //    if (Animate) {
+    //        Animate = false;
+    //        Flip();
+    //    }
+    //}
 
     private void OnEnable() {
         SetupButtonsEvents();
@@ -238,12 +242,14 @@ public class CardConfig : MonoBehaviour {
     }
 
     public void Flip() {
-        Debug.Log("Flip");
+        //Debug.Log("Flip");
 
         if (currentFlip != null)
             StopCoroutine(currentFlip);
 
         currentFlip = StartCoroutine(FlipRoutine());
+
+        SoundManager.Instance.PlaySFX(clickSound);
     }
 
     public void ResetCardOrientation() {

@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 0
   WorldModel: {fileID: 0}
   NameItem: CritChance+
-  Price: 2
+  Price: 5
   Rarity: 1
   TypeOfItem: 1
   turretType: 7

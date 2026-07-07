@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7f7c537060fd74c9282f84488ace3a, type: 3}
+  m_Name: SD_Cristal_1
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: f258a751eac3aa9469337e6b9290c91a, type: 3}
+  - {fileID: 8300000, guid: 1c1729591970acd4585f9131e7f22740, type: 3}
+  - {fileID: 8300000, guid: 31f59dbf30771384fb716d7158d44b74, type: 3}
+  - {fileID: 8300000, guid: 16e7cbe39fa56d14f863b0554b2aad00, type: 3}
+  mixerGroup: {fileID: 24300002, guid: cc096714f66bc444e80472888bbf91d6, type: 2}
+  volumeRange: {x: 0.6, y: 0.8}
+  pitchRange: {x: 0.9, y: 1.1}
+  isFrequent: 0
+  maxInstances: 8

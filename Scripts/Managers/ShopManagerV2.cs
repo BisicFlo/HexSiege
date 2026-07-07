@@ -26,6 +26,11 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
     //[SerializeField] private List<GameObject> UIItems = new List<GameObject>(); //  3D elements used in UI
 
     [SerializeField] private List<Image> imageList = new List<Image>(); // Temp -> improved ? // Used to display items 
+
+    [Header("Sounds")]
+    [SerializeField] private SoundData popSound; // New
+    [SerializeField] private SoundData rerollSound; // New
+    [SerializeField] private SoundData buySound; // New
     #endregion
 
     #region --------- Private Fields ---------
@@ -70,24 +75,18 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
     private void SetupButtonsEvents() {
         // Refresh Button 
-        refreshButton.onClick.AddListener(() => RefreshShop());
-
-        // Quit Button 
-        quitButton.onClick.AddListener(() => QuitShopMenu());
+        refreshButton.onClick.AddListener(() => { RefreshShop(); SoundManager.Instance.PlaySFX(rerollSound); });
 
         // Buy Buttons
         for (int i = 0; i < CardList.Count; i++) {
             int buttonIndex = i; // used to save the index in the lambda expression  -> OnClick(i) stores OnClick(4)
-            CardList[i].BuyButton.onClick.AddListener(() => OnClick(buttonIndex));
+            CardList[i].BuyButton.onClick.AddListener(() => { OnClick(buttonIndex); SoundManager.Instance.PlaySFX(rerollSound); }); // New
         }
     }
 
     private void RemoveButtonsEvents() {
         // Refresh Button 
         refreshButton.onClick.RemoveAllListeners();
-
-        // Quit Button 
-        quitButton.onClick.RemoveAllListeners();
 
         // Buy Buttons
         for (int i = 0; i < CardList.Count; i++) {
@@ -282,10 +281,15 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
             DisplayOneCard(savedIndex);
 
+            SoundManager.Instance.PlaySFX(popSound);
+
             savedIndex++;
         }
         yield return new WaitForSeconds(1);
 
         refreshButton.gameObject.SetActive(true);
+
+        SoundManager.Instance.PlaySFX(rerollSound);
+
     }
 }

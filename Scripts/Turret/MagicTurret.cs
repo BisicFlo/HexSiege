@@ -26,6 +26,9 @@ public class MagicTurret : Turret {
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject ProjectilePrefab = null;
 
+    //[SerializeField] protected SoundData shootSound; // New
+
+
     // --------------------------------------------------------------
     //   Private 
     // --------------------------------------------------------------
@@ -127,6 +130,9 @@ public class MagicTurret : Turret {
         //Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
         //InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
         if (target != null) {
+            SoundManager.Instance.PlaySFX(shootSound, transform.position); // NEw
+
+
             Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
             InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Aqua Cube
   StartingSpeed: 2
-  StartingLife: 10
+  StartingLife: 12
   DamageToPlayer: 2
   MoneyWhenKilled: 2
   XpWhenKilled: 1

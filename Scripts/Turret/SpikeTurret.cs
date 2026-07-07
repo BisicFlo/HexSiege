@@ -50,6 +50,8 @@ public class SpikeTurret : Turret {
 
         InstantiateAlternative(mySpike.gameObject, Vector3.zero, Quaternion.identity, Vector3.one, null); //firePoint.rotation
         if (target != null) {
+            SoundManager.Instance.PlaySFX(shootSound, transform.position); // New
+
             mySpike.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
             mySpike.ActivateSpikeAndDesactivateImpact();//  Redundant  : setActive
 

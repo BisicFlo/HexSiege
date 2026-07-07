@@ -18,6 +18,8 @@ public class MortarTurret : Turret {
     [SerializeField] private float flightTime = 1;   
     [SerializeField] private float maxHeight = 10;
 
+
+
     //[Header("Animation")]
     //[SerializeField] private AnimateTurret animateTurret;
 
@@ -97,6 +99,8 @@ public class MortarTurret : Turret {
             myBullet.HitTarget();
         }
         if (base.target != null) {
+            SoundManager.Instance.PlaySFX(shootSound, transform.position); // NEw
+
             InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
 
             myBullet.Init(this, base.target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value, flightTime, maxHeight);

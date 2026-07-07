@@ -26,6 +26,7 @@ public class CannonTurret : Turret {
     [SerializeField] private GameObject Config2;
     [SerializeField] private GameObject Config3;
 
+
     // --------------------------------------------------------------
     //   Private 
     // --------------------------------------------------------------
@@ -178,6 +179,8 @@ public class CannonTurret : Turret {
 
 
     protected override void Shoot() {
+        
+
         bool isCritical = IsCritical();
         bool isCursed = IsCursed();
         int attackDamage = AttackDamage.Value;
@@ -198,6 +201,9 @@ public class CannonTurret : Turret {
         }
 
         if (target != null) {
+            SoundManager.Instance.PlaySFX(shootSound, transform.position); // NEw
+
+
             InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
 
             myBullet.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);

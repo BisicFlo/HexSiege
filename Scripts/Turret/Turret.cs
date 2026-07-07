@@ -40,6 +40,9 @@ public class Turret : MonoBehaviour {
     [Header("Animation")]
     [SerializeField] private AnimateTurret animateTurret;
 
+    [Header("Sound")]
+    [SerializeField] protected SoundData shootSound; // New
+
     // --------------------------------------------------------------
     //   Private 
     // --------------------------------------------------------------
@@ -158,7 +161,9 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    protected virtual void Shoot() {}
+    protected virtual void Shoot() {
+
+    }
 
     protected Transform GetVisualFromEnemy(Transform parent) { // used with slimes
         if (parent == null) return null;

@@ -21,7 +21,10 @@ public class BuildManagerV2 : MonoBehaviour, IScreenManager {
     [SerializeField] private List<Button> buttonList = new List<Button>();
     [SerializeField] private List<Text> quantityTextList = new List<Text>();
 
-    [SerializeField] private Button quitButton;
+    //[SerializeField] private Button quitButton;
+
+    [Header("Sounds")]
+    [SerializeField] private SoundData BuildSound; // New
 
     private void Awake() {
         if (Instance != null) Debug.LogWarning("More than one BuildManagerV2 detected");
@@ -53,7 +56,7 @@ public class BuildManagerV2 : MonoBehaviour, IScreenManager {
     }
     private void SetupButtonsEvents() {
         // Quit Button 
-        quitButton.onClick.AddListener(() => QuitBuildMenu());
+        //quitButton.onClick.AddListener(() => QuitBuildMenu());
 
         // Build Buttons
         for (int i = 0; i < buttonList.Count; i++) {
@@ -63,7 +66,7 @@ public class BuildManagerV2 : MonoBehaviour, IScreenManager {
     }
     private void RemoveButtonsEvents() {
         // Quit Button 
-        quitButton.onClick.RemoveAllListeners();
+        //quitButton.onClick.RemoveAllListeners();
 
         // Build Buttons
         for (int i = 0; i < buttonList.Count; i++) {
@@ -92,6 +95,9 @@ public class BuildManagerV2 : MonoBehaviour, IScreenManager {
         StartCoroutine(TempoBeforeApplyBoost(createdTurret));
 
         //Apply (createdTurret); // Test ?
+
+        SoundManager.Instance.PlaySFX(BuildSound); // New
+
 
         RemoveFromInventory(turret); //?
 

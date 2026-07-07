@@ -90,6 +90,7 @@ public class ColorShifter : MonoBehaviour {
     }
 
     private void SetFogColor(Color color) {
+        if (fogMaterial==null) return;
         fogMaterial.color = color;
     }
 

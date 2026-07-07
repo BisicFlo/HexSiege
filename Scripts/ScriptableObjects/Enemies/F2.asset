@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Bomb-Y
   StartingSpeed: 3
-  StartingLife: 20
+  StartingLife: 40
   DamageToPlayer: 10
   MoneyWhenKilled: 1
   XpWhenKilled: 1

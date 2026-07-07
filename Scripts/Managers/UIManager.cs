@@ -19,6 +19,7 @@ public class Screen {
     public GameObject panel; // 
     public MonoBehaviour manager; // MonoBehaviour so it's showned in the Inspector
     public ActionMap actionMap;
+    public SoundData openMenuSound; // New
 }
 
 public enum ScreenType {
@@ -107,20 +108,23 @@ public class UIManager : MonoBehaviour {
             currentScreen.panel.SetActive(false);
 
             // 2) Trigger manager
-            (currentScreen.manager as IScreenManager)?.OnScreenClose(); // NEW
+            (currentScreen.manager as IScreenManager)?.OnScreenClose(); 
         }
 
         // 3) Display Next Canvas
         target.panel.SetActive(true);
 
         // 4) Trigger manager 
-        (target.manager as IScreenManager)?.OnScreenOpen(); // NEW
+        (target.manager as IScreenManager)?.OnScreenOpen(); 
 
         // 5) Switch Action Map
         if (target.actionMap == ActionMap.UI) ActionMapManager.Instance.SwitchToUI();
         if (target.actionMap == ActionMap.Touch) ActionMapManager.Instance.SwitchToTouch();
 
-        // 6) Update Current Screen
+        // 6) Play Sound (New)
+        if (target.openMenuSound != null) SoundManager.Instance.PlaySFX(target.openMenuSound); // New        
+
+        // 7) Update Current Screen
         currentScreen = target;
     }
 

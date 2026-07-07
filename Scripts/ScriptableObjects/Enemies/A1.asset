@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Chestnut
   StartingSpeed: 2
-  StartingLife: 30
+  StartingLife: 35
   DamageToPlayer: 2
   MoneyWhenKilled: 1
   XpWhenKilled: 2

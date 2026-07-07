@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b7f7c537060fd74c9282f84488ace3a, type: 3}
-  m_Name: SD_Cristal_1
+  m_Name: SD_Ambiance_Wind
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   clips:
-  - {fileID: 8300000, guid: f258a751eac3aa9469337e6b9290c91a, type: 3}
-  - {fileID: 8300000, guid: 1c1729591970acd4585f9131e7f22740, type: 3}
-  - {fileID: 8300000, guid: 31f59dbf30771384fb716d7158d44b74, type: 3}
-  - {fileID: 8300000, guid: 16e7cbe39fa56d14f863b0554b2aad00, type: 3}
+  - {fileID: 8300000, guid: e417d31756f86364ea0c6c59660be412, type: 3}
   mixerGroup: {fileID: 24300002, guid: cc096714f66bc444e80472888bbf91d6, type: 2}
-  volumeRange: {x: 0.7, y: 1}
-  pitchRange: {x: 0.9, y: 1.1}
+  volumeRange: {x: 0.6, y: 0.6}
+  pitchRange: {x: 1, y: 1}
   isFrequent: 0
   maxInstances: 8

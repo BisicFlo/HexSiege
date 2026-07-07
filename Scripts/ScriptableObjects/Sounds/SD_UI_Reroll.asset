@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b7f7c537060fd74c9282f84488ace3a, type: 3}
-  m_Name: UI Reroll
+  m_Name: SD_UI_Reroll
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   clips:
   - {fileID: 8300000, guid: 6ef778da49004f040beda867d5461c22, type: 3}

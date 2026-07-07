@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SD_Plant_1
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   clips:
-  - {fileID: 8300000, guid: 8c4ea8e8db136244e969fce2644c566b, type: 3}
+  - {fileID: 8300000, guid: 3ad6844971c481d4d8b3dccef61bb864, type: 3}
   mixerGroup: {fileID: 24300002, guid: cc096714f66bc444e80472888bbf91d6, type: 2}
   volumeRange: {x: 0.8, y: 0.9}
   pitchRange: {x: 0.8, y: 1.2}

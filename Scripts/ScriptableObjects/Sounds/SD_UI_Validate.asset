@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b7f7c537060fd74c9282f84488ace3a, type: 3}
-  m_Name: UI Button 1
+  m_Name: SD_UI_Validate
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   clips:
-  - {fileID: 8300000, guid: 5a4803ccbef9c6c4d9571eb6fab5cdb6, type: 3}
-  - {fileID: 8300000, guid: 850ad043bc6ffc942927e91f3b83f135, type: 3}
-  - {fileID: 8300000, guid: fa1a93266f6e0644ead29caedb268199, type: 3}
-  - {fileID: 8300000, guid: dc5974bde4f139944be9411aa70a6efa, type: 3}
+  - {fileID: 8300000, guid: e6f43c193f7beee4f91f17ad20e1f058, type: 3}
   mixerGroup: {fileID: 24300002, guid: cc096714f66bc444e80472888bbf91d6, type: 2}
-  volumeRange: {x: 0.8, y: 1}
+  volumeRange: {x: 0.8, y: 0.9}
   pitchRange: {x: 0.9, y: 1.1}
   isFrequent: 0
   maxInstances: 8

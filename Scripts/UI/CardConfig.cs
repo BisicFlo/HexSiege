@@ -162,7 +162,7 @@ public class CardConfig : MonoBehaviour {
         turretBaseStats = turret.GetBaseValues();
         turretTotalStats = turret.GetTotalValues();
 
-        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretTotalStats.attackDamage, 100);
+        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretTotalStats.attackDamage, 40); // 100
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretTotalStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretTotalStats.criticalChance, 100);
@@ -177,7 +177,7 @@ public class CardConfig : MonoBehaviour {
 
         turretBaseStats = turretData.GetValues();
 
-        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretBaseStats.attackDamage, 100);
+        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretBaseStats.attackDamage, 40);
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretBaseStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretBaseStats.criticalChance, 100);
@@ -202,9 +202,9 @@ public class CardConfig : MonoBehaviour {
 
     private void UpdateStatSliderForItem(DoubleSliderBar doubleSlider, int value) {
         if (value > 0)
-            ChangeOneSlider(doubleSlider, 0, value, 100);
+            ChangeOneSlider(doubleSlider, 0, value, 50);
         else
-            ChangeOneSlider(doubleSlider, value, 0, 100);
+            ChangeOneSlider(doubleSlider, value, 0, 50);
     }
 
     private void ChangeOneSlider(DoubleSliderBar doubleSlider, int baseValue, int total , int maxValue) {

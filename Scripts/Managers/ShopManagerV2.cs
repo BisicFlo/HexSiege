@@ -80,7 +80,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
         // Buy Buttons
         for (int i = 0; i < CardList.Count; i++) {
             int buttonIndex = i; // used to save the index in the lambda expression  -> OnClick(i) stores OnClick(4)
-            CardList[i].BuyButton.onClick.AddListener(() => { OnClick(buttonIndex); SoundManager.Instance.PlaySFX(rerollSound); }); // New
+            CardList[i].BuyButton.onClick.AddListener(() => { OnClick(buttonIndex); SoundManager.Instance.PlaySFX(buySound); }); // New
         }
     }
 

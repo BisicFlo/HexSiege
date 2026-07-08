@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
   m_Name: Strange 1
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: 2a0e9ffaf758a1c4988f34f3145f59c4, type: 3}
+  Icon: {fileID: 21300000, guid: ce0f755c3af7b594d9ec3e3151ad0726, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Effect Greed
+  NameItem: Effect of Greed
   Price: 8
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
-  AttackDamage: 5
+  AttackDamage: 3
   AttackSpeed: 0
   ProjectileSpeed: 0
   CriticalChance: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 25310d2a030384c4980689b235ddd3b4, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: AttackSpeed+
+  NameItem: Attack Speed +
   Price: 5
   Rarity: 1
   TypeOfItem: 1

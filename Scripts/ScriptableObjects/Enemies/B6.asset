@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B6
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Black Slime
-  StartingSpeed: 4
+  StartingSpeed: 6
   StartingLife: 20
   DamageToPlayer: 1
   MoneyWhenKilled: 1

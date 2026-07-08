@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B3
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Red Slime
-  StartingSpeed: 4
+  StartingSpeed: 5
   StartingLife: 8
   DamageToPlayer: 1
   MoneyWhenKilled: 1

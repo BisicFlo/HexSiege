@@ -5,7 +5,7 @@ using System.IO;
 
 [System.Serializable]
 public class PlayerProgress {
-    public int highestLevelReached = 1;
+    public int highestLevelReached = 0;
     public bool[] levelUnlocked;
     public int[] levelStars;       // 0–3 stars per level
 
@@ -49,7 +49,7 @@ public class SaveManager : MonoBehaviour {
             Data = new PlayerProgress(totalLevels);
             Debug.Log("[SaveManager] No save found, creating new.");
 
-            UnlockFirstLevel(); 
+           // UnlockFirstLevel(); 
         }
     }
 
@@ -66,16 +66,30 @@ public class SaveManager : MonoBehaviour {
         SaveGame();
     }
 
-    public void UnlockFirstLevel() {
+    //public void UnlockFirstLevel() {
 
-            Data.levelUnlocked[1] = true;
-            Data.highestLevelReached = 1;       
+    //        Data.levelUnlocked[1] = true;
+    //        Data.highestLevelReached = 1;       
 
-        SaveGame();
-    }
+    //    SaveGame();
+    //}
 
     public void DeleteSave() {
         if (File.Exists(SavePath)) File.Delete(SavePath);
         Data = new PlayerProgress(totalLevels);
     }
+
+    //public void DeleteSaveFile() {
+    //    // 1. Define the path to your file
+    //    string path = Path.Combine(Application.persistentDataPath, "save.json");
+
+    //    // 2. Check if the file actually exists before trying to delete it
+    //    if (File.Exists(path)) {
+    //        File.Delete(path);
+    //        Debug.Log("Save file successfully deleted!");
+    //    }
+    //    else {
+    //        Debug.LogWarning("No save file found to delete.");
+    //    }
+    //}
 }

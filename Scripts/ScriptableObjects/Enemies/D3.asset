@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Mind Cristal
   StartingSpeed: 3
-  StartingLife: 15
+  StartingLife: 40
   DamageToPlayer: 3
   MoneyWhenKilled: 2
   XpWhenKilled: 1

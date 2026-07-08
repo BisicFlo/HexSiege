@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
-  m_Name: CritChance5
+  m_Name: CurseChange10
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: a94a63b11fff54a4a91b07437118fba4, type: 3}
+  Icon: {fileID: 21300000, guid: 88e289a0584bd61499ebc822e5437c32, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Crit Chance +
-  Price: 5
+  NameItem: Curse Chance +
+  Price: 6
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
   AttackDamage: 0
   AttackSpeed: 0
   ProjectileSpeed: 0
-  CriticalChance: 5
+  CriticalChance: 0
   CriticalDamage: 0
-  CurseChance: 0
+  CurseChance: 10
   Range: 0
   effects: []

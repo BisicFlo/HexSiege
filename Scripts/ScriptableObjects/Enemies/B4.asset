@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: B4
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Pink Slime
-  StartingSpeed: 4
-  StartingLife: 15
+  StartingSpeed: 8
+  StartingLife: 20
   DamageToPlayer: 1
   MoneyWhenKilled: 1
   XpWhenKilled: 1

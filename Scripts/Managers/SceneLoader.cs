@@ -99,7 +99,7 @@ public class SceneLoader : MonoBehaviour {
         // Change Color Theme 
         colorShifter.SetColorByIndex(colorIndex);
         // Change Background Color  
-        colorShifter.SetBackGroundColorFromIndex(backgroundIndex);
+        //colorShifter.SetBackGroundColorFromIndex(backgroundIndex); // -> Now in ChangeBackgroundColorOnStart.cs
     }
     private void OnClick(int buttonIndex) {       
 

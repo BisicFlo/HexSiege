@@ -223,7 +223,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
     private void GetAndHandleOneItem(int index ) {
         int rarity = PickRarity(playerData.Level);
 
-        bool isTurret = Random.Range(0, 100) < 70; // 70 % chance
+        bool isTurret = Random.Range(0, 100) < 80; // 80 % chance
 
         if (isTurret || playerData.Level < 3) { // For Turrets  // no item before lvl 3
 

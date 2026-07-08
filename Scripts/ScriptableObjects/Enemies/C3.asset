@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Mud Cube
   StartingSpeed: 2
-  StartingLife: 20
+  StartingLife: 25
   DamageToPlayer: 2
   MoneyWhenKilled: 2
-  XpWhenKilled: 1
+  XpWhenKilled: 2
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0.57232696, g: 0.3803149, b: 0.25376755, a: 1}

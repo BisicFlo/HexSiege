@@ -15,4 +15,5 @@ The game implements "Gradient Atlas Texturing" a highly efficient technique wher
 
 - Genre: Tower Defense
 - Platform: Android
-- Latest version: 0.01.019
+- Latest version: 0.01.020
+  

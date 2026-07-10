@@ -7,7 +7,7 @@ using UnityEngine;
 
 // Only one Turret can have SoulEater effect , For the moment it's permanent 
 
-[CreateAssetMenu(fileName = "SoulEaterEffect", menuName = "Scriptable Objects/SoulEaterEffect")]
+[CreateAssetMenu(fileName = "SoulEaterEffect", menuName = "Scriptable Objects/Effects/SoulEaterEffect")]
 public class SoulEaterEffect : EffectSO {
 
     public bool isPermanent;

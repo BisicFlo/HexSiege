@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
-  m_Name: Strange
+  m_Name: XP-6
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: 4a9505f74f455d44fa2e5894c8775aeb, type: 3}
+  Icon: {fileID: 21300000, guid: db3865e0978975e44a4718fd7e704086, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Strange
-  Price: 8
+  NameItem: XP +
+  Price: 4
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
-  AttackDamage: 1
-  AttackSpeed: -10
+  AttackDamage: 0
+  AttackSpeed: 0
   ProjectileSpeed: 0
   CriticalChance: 0
   CriticalDamage: 0
   CurseChance: 0
   Range: 0
   effects:
-  - {fileID: 11400000, guid: 5dc6dc59b8d4c96418e65db048bf14df, type: 2}
+  - {fileID: 11400000, guid: e897f220631edac43af33b7fc9bd498b, type: 2}

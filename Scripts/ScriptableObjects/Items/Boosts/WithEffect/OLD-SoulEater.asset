@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
-  m_Name: CritDamage10
+  m_Name: OLD-SoulEater
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: d68774c14d4bd504e85b4213d2bf1567, type: 3}
+  Icon: {fileID: 21300000, guid: 4d713876479f21f47ab5fed077fdecf2, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Crit Damage +
-  Price: 5
+  NameItem: Soul Eater
+  Price: 10
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
   AttackDamage: 0
   AttackSpeed: 0
   ProjectileSpeed: 0
-  CriticalChance: 5
+  CriticalChance: 0
   CriticalDamage: 0
   CurseChance: 0
   Range: 0
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 5dc6dc59b8d4c96418e65db048bf14df, type: 2}

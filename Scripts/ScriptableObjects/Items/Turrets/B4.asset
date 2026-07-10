@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: B4
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: e651f1c2ee9a19b4ba7e0a71793f3950, type: 3}
+  Icon: {fileID: 21300000, guid: 06931713e9ebac247a846f5193863abe, type: 3}
   ID: 8
   WorldModel: {fileID: 331597292981712356, guid: cc0c3c5ca780e9e448ae6c2850e94842, type: 3}
   NameItem: Cotton Ball
@@ -26,4 +26,4 @@ MonoBehaviour:
   CriticalChance: 15
   CriticalDamage: 150
   CurseChance: 10
-  Range: 15
+  Range: 12

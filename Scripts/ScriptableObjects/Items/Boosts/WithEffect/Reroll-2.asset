@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
-  m_Name: CurseChange10
+  m_Name: Reroll-2
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: 88e289a0584bd61499ebc822e5437c32, type: 3}
+  Icon: {fileID: 21300000, guid: b75d1c01c5109e9449f65aabbbb12ca7, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Curse Chance +
-  Price: 6
+  NameItem: '?'
+  Price: 2
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
-  AttackDamage: 0
+  AttackDamage: 2
   AttackSpeed: 0
   ProjectileSpeed: 0
   CriticalChance: 0
   CriticalDamage: 0
-  CurseChance: 10
+  CurseChance: 0
   Range: 0
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 25792d7a7478d15408289a1c399e87b2, type: 2}
+  - {fileID: 11400000, guid: fd82e513afcf7334783c5b1a1d05bf6e, type: 2}

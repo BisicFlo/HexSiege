@@ -11,6 +11,8 @@ public class TurretTypeManager : MonoBehaviour {
     [SerializeField] private Sprite plantSprite;
     [SerializeField] private Sprite totemSprite;
     [SerializeField] private Sprite divineSprite;
+    [SerializeField] private Sprite obscureSprite;
+
     [SerializeField] private Sprite allSprite;
 
 
@@ -34,6 +36,8 @@ public class TurretTypeManager : MonoBehaviour {
         if (plantSprite != null) spriteMap[TurretType.Plant] = plantSprite;
         if (totemSprite != null) spriteMap[TurretType.Totem] = totemSprite;
         if (divineSprite != null) spriteMap[TurretType.Divine] = divineSprite;
+        if (divineSprite != null) spriteMap[TurretType.Obscure] = obscureSprite;
+
         if (allSprite != null) spriteMap[TurretType.All] = allSprite;
 
 

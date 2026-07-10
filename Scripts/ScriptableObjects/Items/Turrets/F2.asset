@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: G5
+  m_Name: F2
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 9e85ac2863edfdb49975d94dfb2a92a8, type: 3}
+  Icon: {fileID: 21300000, guid: a0d6dc22e66b7c94f8f87d8d0a26c6cc, type: 3}
   ID: 1
-  WorldModel: {fileID: 8642581732382114138, guid: 7d3eb9a1c4f0d344188a2c92e8966c20, type: 3}
-  NameItem: Void Prism
-  Price: 8
+  WorldModel: {fileID: 5305178360891346598, guid: 37686a3bf0dd51a4eaaadc047d11278f, type: 3}
+  NameItem: Death Eye
+  Price: 6
   Rarity: 4
   TypeOfItem: 0
   turretType: 6
-  AttackDamage: 4
-  AttackSpeed: 120
+  AttackDamage: 1
+  AttackSpeed: 50
   ProjectileSpeed: 10
-  CriticalChance: 5
-  CriticalDamage: 150
-  CurseChance: 0
-  Range: 15
+  CriticalChance: 0
+  CriticalDamage: 110
+  CurseChance: 30
+  Range: 20

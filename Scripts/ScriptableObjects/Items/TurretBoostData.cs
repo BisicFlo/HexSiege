@@ -49,6 +49,7 @@ public class TurretBoostData : ItemData {
     public void ApplyToTurret(Turret turret) {
         if (turret == null) return;
         // We verify the type :  Magical boost only applies to Magical turrets
+        Debug.Log("this.turretType :" + this.turretType + " | " + " turret.turretType :" + turret.turretType);
         if (this.turretType != turret.turretType && this.turretType != TurretType.All ) return;
         ApplyBoosts(turret);           
     }

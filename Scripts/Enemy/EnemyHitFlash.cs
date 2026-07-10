@@ -26,7 +26,8 @@ public class EnemyHitFlash : MonoBehaviour {
 
     public void TriggerFlash() {
         if (_flashRoutine != null) StopCoroutine(_flashRoutine);
-        _flashRoutine = StartCoroutine(FlashRoutine()); // Coroutine couldn't be started because the the game object 'Enemy 39' is inactive!
+        if (this.gameObject.activeSelf)  // NEW
+            _flashRoutine = StartCoroutine(FlashRoutine()); // Coroutine couldn't be started because the the game object 'Enemy 39' is inactive!
     }
 
     private IEnumerator FlashRoutine() {

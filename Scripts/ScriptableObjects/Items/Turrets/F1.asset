@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: G6
+  m_Name: F1
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: b9381ecb22bd49e478ed6c7125dcc606, type: 3}
+  Icon: {fileID: 21300000, guid: 93224ab36353ccb46b04e40ac3294039, type: 3}
   ID: 1
-  WorldModel: {fileID: 2978063926521663262, guid: 1164c82e1dc13cd41ae9f2f91ad1f0e8, type: 3}
-  NameItem: Evil Eye
-  Price: 10
-  Rarity: 5
+  WorldModel: {fileID: 559414286097667755, guid: abcdf8bc662a7b04c95cf1c55d2051f7, type: 3}
+  NameItem: Blue Eye
+  Price: 4
+  Rarity: 2
   TypeOfItem: 0
   turretType: 6
-  AttackDamage: 4
-  AttackSpeed: 120
-  ProjectileSpeed: 20
-  CriticalChance: 10
-  CriticalDamage: 200
-  CurseChance: 10
-  Range: 20
+  AttackDamage: 2
+  AttackSpeed: 70
+  ProjectileSpeed: 10
+  CriticalChance: 5
+  CriticalDamage: 110
+  CurseChance: 0
+  Range: 15

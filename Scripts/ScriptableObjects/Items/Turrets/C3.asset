@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: C3
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: c5656628a6fd0ca448ded16c6337e3e0, type: 3}
+  Icon: {fileID: 21300000, guid: 4d3632b3b33cb4a439a9688a7aca7525, type: 3}
   ID: 1
   WorldModel: {fileID: 8423115778812472039, guid: 32bafaa3e4455174583ae4e858048b7d, type: 3}
   NameItem: Stormpiercer

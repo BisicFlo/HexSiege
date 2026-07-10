@@ -11,14 +11,26 @@ public class GreedEffect : EffectSO {
 
     public override void OnApply(ItemData itemData) {
         GameEvents.OnShopRerolled += HandleEvent;
+
+        GameEvents.OnDefeat += RemoveAtTheEnd; // NEW
+        GameEvents.OnVictory += RemoveAtTheEnd; // NEW
     }
 
     public override void OnRemove(ItemData itemData) { //Used ?
         GameEvents.OnShopRerolled -= HandleEvent;
+
+        GameEvents.OnDefeat -= RemoveAtTheEnd; // NEW
+        GameEvents.OnVictory -= RemoveAtTheEnd; // NEW
     }
 
     private void HandleEvent() {
         //PlayerData.TakeDamage(LifeCost);
         GameEvents.PlayerHit(null, lifeCost, canBeFatal); // enemy:null
+    }
+
+    private void RemoveAtTheEnd() {  // NEW
+        GameEvents.OnShopRerolled -= HandleEvent;
+        GameEvents.OnDefeat -= HandleEvent; 
+        GameEvents.OnVictory -= HandleEvent; 
     }
 }

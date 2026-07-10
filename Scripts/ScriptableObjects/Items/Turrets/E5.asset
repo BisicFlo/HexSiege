@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: G4
+  m_Name: E5
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 96fc7f1461f065e4096a0637a8ddf9eb, type: 3}
+  Icon: {fileID: 21300000, guid: 573cd458cfaa83f4fa9225b9ef8a20ee, type: 3}
   ID: 1
-  WorldModel: {fileID: 1527380008469945030, guid: 60389b35dd2040e43b73066a1a9678df, type: 3}
-  NameItem: Frost Star
-  Price: 4
-  Rarity: 2
+  WorldModel: {fileID: 0}
+  NameItem: Divine Sword 1
+  Price: 5
+  Rarity: 5
   TypeOfItem: 0
-  turretType: 2
-  AttackDamage: 2
-  AttackSpeed: 90
-  ProjectileSpeed: 10
-  CriticalChance: 10
-  CriticalDamage: 150
+  turretType: 5
+  AttackDamage: 1
+  AttackSpeed: 15
+  ProjectileSpeed: 8
+  CriticalChance: 5
+  CriticalDamage: 140
   CurseChance: 0
   Range: 15

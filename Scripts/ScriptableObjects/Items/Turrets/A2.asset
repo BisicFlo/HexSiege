@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: A2
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 5edc8196cb7f23745b6dc96e4f9c91c0, type: 3}
+  Icon: {fileID: 21300000, guid: 7e122f63d510c7e4689dddbdba1576f0, type: 3}
   ID: 2
   WorldModel: {fileID: 1392619063121621560, guid: 1c33f8de350b53740af7a67247fc00fa, type: 3}
   NameItem: Verdant Crystal

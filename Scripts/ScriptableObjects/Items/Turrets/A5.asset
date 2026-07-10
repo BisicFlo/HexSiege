@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: A5
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 4f85b55b791245e4d92461711e137c2a, type: 3}
+  Icon: {fileID: 21300000, guid: 63d30dcf8bbce524c8bd6d66b51dbf0e, type: 3}
   ID: 5
   WorldModel: {fileID: 7822014846152319201, guid: d72afffd0dd38c84bae7f19cbc02c3b4, type: 3}
   NameItem: Ember Crystal

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd7819116baa224b82e2eaf3f896203, type: 3}
   m_Name: GreedEffect
   m_EditorClassIdentifier: Assembly-CSharp::GreedEffect
-  effectName: 
+  effectName: RerollCostLife1
   canBeFatal: 0
   lifeCost: 1

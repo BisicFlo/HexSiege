@@ -9,6 +9,8 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
 
     public int RerollCost = 2;
 
+    public int ItemChance = 26; // %
+
     [SerializeField] private Text RerollCostText;
 
     #region --------- Inspector Fields ---------
@@ -223,7 +225,7 @@ public class ShopManagerV2 : MonoBehaviour, IScreenManager {
     private void GetAndHandleOneItem(int index ) {
         int rarity = PickRarity(playerData.Level);
 
-        bool isTurret = Random.Range(0, 100) < 80; // 80 % chance
+        bool isTurret = Random.Range(0, 100) < (100 - ItemChance); // ItemChance = 20 -> 80 % chance
 
         if (isTurret || playerData.Level < 3) { // For Turrets  // no item before lvl 3
 

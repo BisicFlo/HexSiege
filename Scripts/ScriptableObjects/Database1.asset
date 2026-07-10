@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3c3b870a08d80dc4e9640d164f9e9286, type: 2}
   - {fileID: 11400000, guid: 4b221dc91af5d4645b91f6fefb2ce61e, type: 2}
   - {fileID: 11400000, guid: eab760882b9ed58469bd7a5455401609, type: 2}
+  - {fileID: 11400000, guid: 40f9461e5772bfb49912de4f99157907, type: 2}
   epicTurretList:
   - {fileID: 11400000, guid: bf98805c895b7ef4f8e784c35299facb, type: 2}
   - {fileID: 11400000, guid: 24493bb4cdf0af54e93bbdcff9cacbdf, type: 2}
@@ -40,11 +41,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af21d7e47629ac44ab8782b9735274ad, type: 2}
   - {fileID: 11400000, guid: 7f609c4cc749ef648b367e43fda2b6e3, type: 2}
   itemList:
-  - {fileID: 11400000, guid: 1c2b5877bad31ca439790d5af8face6f, type: 2}
   - {fileID: 11400000, guid: db8e15305f4133b499c15b3988b81f78, type: 2}
   - {fileID: 11400000, guid: d2fb676b99ce2724587df86b128edac6, type: 2}
   - {fileID: 11400000, guid: ad09e1adf33e63247b7629dc1d99ac9a, type: 2}
   - {fileID: 11400000, guid: d670385599184374ab2faf94713eade2, type: 2}
+  - {fileID: 11400000, guid: 1c2b5877bad31ca439790d5af8face6f, type: 2}
   - {fileID: 11400000, guid: a3781a04ad50f394898da7239112701d, type: 2}
-  - {fileID: 11400000, guid: d8ee7f4ef1ad69e4caea46fe546621a0, type: 2}
+  - {fileID: 11400000, guid: be434891b66bb544faa2db89ef0d3939, type: 2}
+  - {fileID: 11400000, guid: 5e46b577976adcc4e99f1971e4abd46e, type: 2}
+  - {fileID: 11400000, guid: 134c9bac68f7f9f4a9c357c56e612574, type: 2}
+  - {fileID: 11400000, guid: a00cef4b6d35382438a6cccd9c55db01, type: 2}
+  - {fileID: 11400000, guid: 6c1aff3b59251c44f870954c799a63bf, type: 2}
   - {fileID: 11400000, guid: f8decba1e58934542bd5b6b2564d62d6, type: 2}
+  - {fileID: 11400000, guid: 97cb66aa7dc0af84ca6cfcc84db33baa, type: 2}
+  - {fileID: 11400000, guid: 29faa7f5aa6c4904c860d323eef490d9, type: 2}
+  - {fileID: 11400000, guid: 9584f80cc7b2e454ba2cb9df60c4c9fd, type: 2}

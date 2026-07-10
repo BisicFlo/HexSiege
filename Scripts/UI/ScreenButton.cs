@@ -22,7 +22,6 @@ public class ScreenButton : MonoBehaviour {
     }
 
 
-
     private void OnDisable() {
         //Debug.Log(" Removed Listener Screen : " + screenName);
         button.onClick.RemoveAllListeners();

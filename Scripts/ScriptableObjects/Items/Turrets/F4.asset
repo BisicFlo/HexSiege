@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: G2
+  m_Name: F4
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: bf457e16d354e5d48807779dc295bbe9, type: 3}
+  Icon: {fileID: 21300000, guid: 7c7c848f443abb640861be959e48e6b4, type: 3}
   ID: 1
-  WorldModel: {fileID: 5305178360891346598, guid: 37686a3bf0dd51a4eaaadc047d11278f, type: 3}
-  NameItem: Death Eye
-  Price: 6
-  Rarity: 4
+  WorldModel: {fileID: 1527380008469945030, guid: 60389b35dd2040e43b73066a1a9678df, type: 3}
+  NameItem: Frost Star
+  Price: 4
+  Rarity: 2
   TypeOfItem: 0
-  turretType: 6
-  AttackDamage: 1
-  AttackSpeed: 50
+  turretType: 2
+  AttackDamage: 2
+  AttackSpeed: 90
   ProjectileSpeed: 10
-  CriticalChance: 0
-  CriticalDamage: 110
-  CurseChance: 30
-  Range: 20
+  CriticalChance: 10
+  CriticalDamage: 150
+  CurseChance: 0
+  Range: 15

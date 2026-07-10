@@ -12,20 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: F5
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: f4854810465d8374fad98b374f690e41, type: 3}
   ID: 1
-  UIModel: {fileID: 0}
-  WorldModel: {fileID: 0}
-  NameItem: Divine Sword 1
-  Price: 5
-  Rarity: 5
+  WorldModel: {fileID: 8642581732382114138, guid: 7d3eb9a1c4f0d344188a2c92e8966c20, type: 3}
+  NameItem: Void Prism
+  Price: 8
+  Rarity: 4
   TypeOfItem: 0
-  Description: 
-  turretType: 5
-  AttackDamage: 1
-  AttackSpeed: 15
-  ProjectileSpeed: 8
+  turretType: 6
+  AttackDamage: 4
+  AttackSpeed: 120
+  ProjectileSpeed: 10
   CriticalChance: 5
-  CriticalDamage: 140
+  CriticalDamage: 150
   CurseChance: 0
   Range: 15

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
+  m_Name: Heal
+  m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
+  Icon: {fileID: 21300000, guid: 3446a01ba0354fa4083ae08942fc653d, type: 3}
+  ID: 0
+  WorldModel: {fileID: 0}
+  NameItem: Heal
+  Price: 6
+  Rarity: 1
+  TypeOfItem: 1
+  turretType: 7
+  AttackDamage: 0
+  AttackSpeed: 0
+  ProjectileSpeed: 0
+  CriticalChance: 0
+  CriticalDamage: 0
+  CurseChance: 0
+  Range: 0
+  effects:
+  - {fileID: 11400000, guid: d0e01a3508b128d4d821d4e181ff0b61, type: 2}

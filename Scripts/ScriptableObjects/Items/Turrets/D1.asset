@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: D1
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 74a7bda78a346ae4c88f6e624a06a0da, type: 3}
+  Icon: {fileID: 21300000, guid: fa44adb9152cb034fa1c502d6626e0b2, type: 3}
   ID: 1
   WorldModel: {fileID: 6126768805325354964, guid: b84218699e997844998e8ddd6dee9273, type: 3}
   NameItem: Cannon

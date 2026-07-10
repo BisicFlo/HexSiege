@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Green Slime
   StartingSpeed: 4
-  StartingLife: 4
+  StartingLife: 6
   DamageToPlayer: 1
   MoneyWhenKilled: 1
   XpWhenKilled: 1

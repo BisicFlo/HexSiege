@@ -103,6 +103,7 @@ public class Turret : MonoBehaviour {
         Range = new CharacterStat(turretData.Range);
 
         rarity = turretData.Rarity;
+        turretType = turretData.turretType; // New
     }
 
     protected bool IsCritical() {

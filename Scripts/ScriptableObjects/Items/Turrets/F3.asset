@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
-  m_Name: C5
+  m_Name: F3
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 3baa02d988a2bc941ad5326601049134, type: 3}
+  Icon: {fileID: 21300000, guid: 1c45f585da18cd548bd561de2e9e9dc6, type: 3}
   ID: 1
-  WorldModel: {fileID: 7391825831483969891, guid: 73a061a1e1229644db80dddbd617d412, type: 3}
-  NameItem: Kraken Slayer
-  Price: 8
-  Rarity: 4
+  WorldModel: {fileID: 599305214713675627, guid: c06aad6d5624f194096ee0b2eccb1a74, type: 3}
+  NameItem: Frost Eye
+  Price: 6
+  Rarity: 3
   TypeOfItem: 0
-  turretType: 1
-  AttackDamage: 6
-  AttackSpeed: 40
-  ProjectileSpeed: 50
-  CriticalChance: 10
-  CriticalDamage: 200
+  turretType: 6
+  AttackDamage: 3
+  AttackSpeed: 90
+  ProjectileSpeed: 10
+  CriticalChance: 5
+  CriticalDamage: 120
   CurseChance: 0
-  Range: 30
+  Range: 20

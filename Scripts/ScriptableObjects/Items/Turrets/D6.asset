@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: D6
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 52dbc9fb23211104b89726d207e88345, type: 3}
+  Icon: {fileID: 21300000, guid: 060ecbe58ab808243954e371c9dcb921, type: 3}
   ID: 1
   WorldModel: {fileID: 0}
   NameItem: Catapult

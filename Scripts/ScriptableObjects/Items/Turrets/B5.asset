@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: B5
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: a102c223b2c35314e92180c89e9e9e40, type: 3}
+  Icon: {fileID: 21300000, guid: a7854d15b3f3da74c9e7c01a601cd3a3, type: 3}
   ID: 8
   WorldModel: {fileID: 2009056300572063376, guid: de0f0e572f06a994ba00c27d947f098a, type: 3}
   NameItem: Magma Coral

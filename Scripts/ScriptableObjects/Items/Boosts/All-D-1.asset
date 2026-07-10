@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
-  m_Name: AttackSpeed10
+  m_Name: All-D-1
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: 25310d2a030384c4980689b235ddd3b4, type: 3}
+  Icon: {fileID: 21300000, guid: a67d3007481da454884e1e8f812e5b48, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Attack Speed +
+  NameItem: Damage +
   Price: 5
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
-  AttackDamage: 0
-  AttackSpeed: 10
+  AttackDamage: 1
+  AttackSpeed: 0
   ProjectileSpeed: 0
   CriticalChance: 0
   CriticalDamage: 0

@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private InventoryData inventory;
 
-    [SerializeField] private PlayerData playerData;
+    public PlayerData PlayerData;
 
     //[SerializeField] private HealthBar healthBar ; // Used to change HealthBar visual
 
@@ -34,15 +34,15 @@ public class Player : MonoBehaviour {
 
         //SetupPlayerData();
 
-        playerData.Init(); //New
+        PlayerData.Init(); //New
     }
 
     private void HandleOnPlayerHit(Enemy e, int dmg, bool cacanBeFatal) {
 
-        playerData.TakeDamage(dmg);
+        PlayerData.TakeDamage(dmg);
 
-        if (playerData.Health <= 0) {
-            if (!cacanBeFatal) playerData.SetPlayerLife(1);
+        if (PlayerData.Health <= 0) {
+            if (!cacanBeFatal) PlayerData.SetPlayerLife(1);
             else {
                 //defeat
                 UIManager.Instance.ShowScreen(ScreenType.GameOver);

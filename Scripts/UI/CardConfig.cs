@@ -10,7 +10,7 @@ public class CardConfig : MonoBehaviour {
     #region --------- Inspector Fields ---------
     [SerializeField] private ColorData rarityColors; // New
 
-    [Header("Images")]
+    [Header("Cards")]
     [SerializeField] private RectTransform FrontCard;
     [SerializeField] private RectTransform BackCard;
 
@@ -18,6 +18,11 @@ public class CardConfig : MonoBehaviour {
     [SerializeField] private Image MainImage;
     [SerializeField] private Image TypeImage;
     [SerializeField] private Image BackgroundColor;
+
+    [Header("BottomPart")]
+    [SerializeField] private Image MainArea;
+    [SerializeField] private Image SmallArea1;
+    [SerializeField] private Image SmallArea2;
 
     [Header("Texts")]
     [SerializeField] private Text ItemNameFront;
@@ -30,7 +35,6 @@ public class CardConfig : MonoBehaviour {
     [SerializeField] private Button BackCardButton;
     [SerializeField] private Button HelpButton; // Display Text instead of icons 
     public Button BuyButton; // Display Text instead of icons 
-
 
     [Header("Stats Sliders")]
     [SerializeField] private DoubleSliderBar damageSlider;
@@ -53,12 +57,14 @@ public class CardConfig : MonoBehaviour {
 
     [Header("Settings")]
     [SerializeField] private float flipDuration = 0.4f;
+    [SerializeField] private float ItemImageScale = 2f;
+    [SerializeField] private float TurretImageScale = 3.2f; // default
+
+
     [SerializeField] private AnimationCurve flipCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     [Header("Sounds")]
     [SerializeField] private SoundData clickSound; // New
-
-
 
     //[Header("Debug")]
     //[SerializeField] private bool DisplayStats;
@@ -69,7 +75,6 @@ public class CardConfig : MonoBehaviour {
     public Turret turretSelected = null ;
     public TurretBoostData turretBoostSelected = null;
 
-
     #endregion
 
     private TurretStats turretBaseStats = new TurretStats();
@@ -78,24 +83,10 @@ public class CardConfig : MonoBehaviour {
     private bool isFaceUp = true;
     private Coroutine currentFlip;
 
-    // add max to stats : ex MaxDamage = 100
-
-    // if Turret From Shop  / if inspector
-
-    // Shop : clic on card : swap : details + "Buy" 
-
-
-
-    //private void Update() { //temp
-    //    if (DisplayStats) {
-    //        DisplayStats = false;
-    //        MainSetup();
-    //    }
-    //    if (Animate) {
-    //        Animate = false;
-    //        Flip();
-    //    }
-    //}
+    private static Color darkbrown = ColorUtility.TryParseHtmlString("#4D463E", out Color color) ? color : Color.pink;
+    private static Color brown = ColorUtility.TryParseHtmlString("#4B443D", out Color color) ? color : Color.pink;
+    private static Color darkRed = ColorUtility.TryParseHtmlString("#520000", out Color color) ? color : Color.pink;
+    private static Color red = ColorUtility.TryParseHtmlString("#590000", out Color color) ? color : Color.pink;
 
     private void OnEnable() {
         SetupButtonsEvents();
@@ -137,7 +128,10 @@ public class CardConfig : MonoBehaviour {
             ChangeTypeImage(turretDataSelected.turretType);
             ChangeText(turretDataSelected);
             ChangeMainImage(turretDataSelected);
-            
+            MainImage.rectTransform.localScale = new Vector3(TurretImageScale, TurretImageScale, TurretImageScale);
+            SetupColorBottomArea(isTurret: true);
+
+
         }
         else if (turretSelected != null) { // used In Inspector
             ChangeBackgroundColor(turretSelected.rarity);
@@ -145,6 +139,10 @@ public class CardConfig : MonoBehaviour {
             ChangeTypeImage(turretSelected.turretData.turretType);
             ChangeText(turretSelected.turretData);
             ChangeMainImage(turretSelected.turretData);
+            MainImage.rectTransform.localScale = new Vector3(TurretImageScale, TurretImageScale, TurretImageScale);
+            SetupColorBottomArea(isTurret: true);
+
+
 
         }
         else if (turretBoostSelected != null) { // used In Shop with Items
@@ -153,6 +151,10 @@ public class CardConfig : MonoBehaviour {
             ChangeTypeImage(turretBoostSelected.turretType);
             ChangeText(turretBoostSelected);
             ChangeMainImage(turretBoostSelected);
+            MainImage.rectTransform.localScale = new Vector3(ItemImageScale, ItemImageScale, ItemImageScale);
+            SetupColorBottomArea(isTurret: false);
+
+
         }
     }
 
@@ -258,6 +260,23 @@ public class CardConfig : MonoBehaviour {
         BackCard.gameObject.SetActive(false);
         FrontCard.localScale = Vector3.one;
     }
+
+    private void SetupColorBottomArea(bool isTurret) {
+        if (MainArea == null || SmallArea1 == null || SmallArea2 == null) return;
+
+        if (isTurret) {
+            MainArea.color = darkbrown;
+            SmallArea1.color = brown;
+            SmallArea2.color = brown;
+        }
+        else {
+            MainArea.color = darkRed;
+            SmallArea1.color = red;
+            SmallArea2.color = red;
+        }
+
+    }
+
     private IEnumerator FlipRoutine() {
         Transform front ;
         Transform back ;

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b661b8d981e43ae43b4d6abfea0adaec, type: 3}
-  m_Name: Range5
+  m_Name: Plant-CuC-6
   m_EditorClassIdentifier: Assembly-CSharp::TurretBoostData
-  Icon: {fileID: 21300000, guid: 65065a343fbbb2f428cf6d38447d3ac2, type: 3}
+  Icon: {fileID: 21300000, guid: 4677cb5e39e13b84aaf616a39ee816d9, type: 3}
   ID: 0
   WorldModel: {fileID: 0}
-  NameItem: Range +
-  Price: 5
+  NameItem: Curse Chance +
+  Price: 4
   Rarity: 1
   TypeOfItem: 1
-  turretType: 7
+  turretType: 3
   AttackDamage: 0
   AttackSpeed: 0
   ProjectileSpeed: 0
   CriticalChance: 0
   CriticalDamage: 0
-  CurseChance: 0
-  Range: 5
+  CurseChance: 6
+  Range: 0
   effects: []

@@ -44,6 +44,9 @@ public class BuildManagerV2 : MonoBehaviour, IScreenManager {
 
         // 2) Display Quantities
         SetupQuantityOnButton();
+
+        // 3) Stop Tutorial
+
     }
     public void OnScreenClose() {
         // Switch Action Map

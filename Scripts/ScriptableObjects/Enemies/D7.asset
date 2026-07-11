@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Tall Cube
   StartingSpeed: 1
-  StartingLife: 80
+  StartingLife: 70
   DamageToPlayer: 5
   MoneyWhenKilled: 2
   XpWhenKilled: 4

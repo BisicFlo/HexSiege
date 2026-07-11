@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Trophy
   StartingSpeed: 4
-  StartingLife: 120
+  StartingLife: 100
   DamageToPlayer: 1
   MoneyWhenKilled: 5
   XpWhenKilled: 4

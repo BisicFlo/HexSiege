@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Ice Cube
   StartingSpeed: 2
-  StartingLife: 30
+  StartingLife: 25
   DamageToPlayer: 2
   MoneyWhenKilled: 1
   XpWhenKilled: 2

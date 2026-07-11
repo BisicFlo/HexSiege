@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: 'Doom Orb  '
   StartingSpeed: 3
-  StartingLife: 100
+  StartingLife: 80
   DamageToPlayer: 8
-  MoneyWhenKilled: 1
+  MoneyWhenKilled: 3
   XpWhenKilled: 4
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0.20914915, g: 0.2281839, b: 0.2830189, a: 1}

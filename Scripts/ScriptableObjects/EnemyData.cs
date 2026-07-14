@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects/EnemyData")]
@@ -15,5 +16,22 @@ public class EnemyData : ScriptableObject {
     [Header("Effects")]
     public GameObject DeathEffectPrefab = null;
     public Color DeathColor;
+
+
+
+    [Header("Calculated Stats")]
+    [SerializeField] private float threat;  // This will be non-editable in Inspector
+
+
+
+
+    private void OnValidate() {
+        //Debug.Log("onvalidate");
+
+        threat = StartingLife * StartingSpeed + DamageToPlayer;
+
+
+      //  EditorUtility.SetDirty(this);
+    }
 
 }

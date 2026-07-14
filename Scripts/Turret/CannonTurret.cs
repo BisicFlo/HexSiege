@@ -52,6 +52,8 @@ public class CannonTurret : Turret {
 
     protected override void Init() {
         base.Init();
+
+        if (barrelTransform != null && pitchTransform != null) 
         BarrelOffset = barrelTransform.position - pitchTransform.position; // Cannon
 
         if (bulletPrefab != null) bulletArray = CreateStockOf<Projectile>(bulletPrefab, 5);
@@ -75,6 +77,8 @@ public class CannonTurret : Turret {
 
     private void CheckIfTargetIsInSight() { // GetDotProductWithTarget
         if (target == null) return;
+        if (pitchTransform == null) { targetInSight = true; return; }
+
 
         float dotProduct = Vector3.Dot(firePoint.forward, (target.position - firePoint.position).normalized); // normalized !
 
@@ -94,6 +98,8 @@ public class CannonTurret : Turret {
         // _______________________________________
         // 1. Yaw (horizontal rotation) - rotate whole base toward target (flatten Y)
         // _______________________________________
+        if (yawTransform == null) return;
+
         Vector3 directionToTarget = target.position - yawTransform.position;
         directionToTarget.y = 0; // flatten ? ignore height difference
 
@@ -112,6 +118,7 @@ public class CannonTurret : Turret {
         // ______________________________________
 
         if (!targetAlmostInSight) return; // 
+        if (pitchTransform == null) return;
 
         Vector3 toTarget = target.position - pitchTransform.position - BarrelOffset;
 
@@ -183,9 +190,9 @@ public class CannonTurret : Turret {
 
         bool isCritical = IsCritical();
         bool isCursed = IsCursed();
-        int attackDamage = AttackDamage.Value;
+        float attackDamage = AttackDamage.Value;
 
-        if (isCritical) attackDamage *= CriticalDamage.Value;
+        if (isCritical) attackDamage *= CriticalDamage.Value / 100f; // example 140
 
         if (!reloading && needReloadAnimation) { // For Crossbows / bows
             StartCoroutine(ReloadAnimation());
@@ -206,7 +213,7 @@ public class CannonTurret : Turret {
 
             InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
 
-            myBullet.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
+            myBullet.Init(this, target, enemyTargetted, (int)attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
             myBullet.ActivateBulletAndDesactivateImpact();
         }
     }

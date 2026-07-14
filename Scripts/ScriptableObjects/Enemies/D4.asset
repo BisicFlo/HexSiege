@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: D4
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Archive
-  StartingSpeed: 3
-  StartingLife: 50
+  StartingSpeed: 2
+  StartingLife: 1200
   DamageToPlayer: 5
   MoneyWhenKilled: 4
   XpWhenKilled: 4
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 1, g: 0, b: 0.34260082, a: 1}
+  threat: 2405

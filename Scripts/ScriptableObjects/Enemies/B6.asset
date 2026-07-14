@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Black Slime
   StartingSpeed: 6
-  StartingLife: 20
+  StartingLife: 48
   DamageToPlayer: 1
   MoneyWhenKilled: 1
   XpWhenKilled: 1
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0.17610055, g: 0.17610055, b: 0.17610055, a: 1}
+  threat: 289

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Shroomguard
   StartingSpeed: 2
-  StartingLife: 40
+  StartingLife: 600
   DamageToPlayer: 4
   MoneyWhenKilled: 2
   XpWhenKilled: 3
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0.36477977, g: 0.28156513, b: 0.23418862, a: 1}
+  threat: 1204

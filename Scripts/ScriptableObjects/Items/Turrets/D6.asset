@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: 060ecbe58ab808243954e371c9dcb921, type: 3}
   ID: 1
-  WorldModel: {fileID: 0}
+  WorldModel: {fileID: 7623056003525695163, guid: bb76645c6e2515c4d94c0ac1dc440fac, type: 3}
   NameItem: Catapult
-  Price: 2
-  Rarity: 2
+  Price: 6
+  Rarity: 3
   TypeOfItem: 0
   turretType: 1
-  AttackDamage: 5
-  AttackSpeed: 30
+  AttackDamage: 70
+  AttackSpeed: 40
   ProjectileSpeed: 10
   CriticalChance: 10
   CriticalDamage: 200
   CurseChance: 0
   Range: 40
+  dps: 30.8
+  curseTime: 0

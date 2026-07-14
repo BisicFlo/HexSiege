@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Tall Cube
   StartingSpeed: 1
-  StartingLife: 70
+  StartingLife: 1700
   DamageToPlayer: 5
   MoneyWhenKilled: 2
   XpWhenKilled: 4
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0, g: 0.9549904, b: 1, a: 1}
+  threat: 1705

@@ -15,8 +15,8 @@ public class MortarTurret : Turret {
 
     [Header("Mortar")]
     [SerializeField] private GameObject bulletPrefab = null; // Prefab of the projectile 
-    [SerializeField] private float flightTime = 1;   
-    [SerializeField] private float maxHeight = 10;
+    //[SerializeField] private float flightTime = 1;   
+    //[SerializeField] private float maxHeight = 10;
 
 
 
@@ -85,9 +85,9 @@ public class MortarTurret : Turret {
     protected override void Shoot() {
         bool isCritical = IsCritical();
         bool isCursed = IsCursed();
-        int attackDamage = AttackDamage.Value;
+        float attackDamage = AttackDamage.Value;
 
-        if (isCritical) attackDamage *= (int)CriticalDamage.Value;
+        if (isCritical) attackDamage *= CriticalDamage.Value / 100f; // example 140
         //if (IsCursed()) attackDamage = 999; // add animation / visual
 
         MortarBullet myBullet = GetObjectFromIndex<MortarBullet>(bulletArray, bulletIndex);
@@ -103,7 +103,7 @@ public class MortarTurret : Turret {
 
             InstantiateAlternative(myBullet.gameObject, firePoint.position, firePoint.rotation, Vector3.one, null);
 
-            myBullet.Init(this, base.target, enemyTargetted, AttackDamage.Value, ProjectileSpeed.Value, flightTime, maxHeight);
+            myBullet.Init(this, target, enemyTargetted, (int)attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
             myBullet.ActivateBulletAndDesactivateImpact();
         }
     }

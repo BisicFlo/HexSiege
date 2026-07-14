@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: B2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Blue Slime
-  StartingSpeed: 4
-  StartingLife: 6
+  StartingSpeed: 3
+  StartingLife: 67
   DamageToPlayer: 1
   MoneyWhenKilled: 1
   XpWhenKilled: 1
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0, g: 0.869787, b: 1, a: 1}
+  threat: 202

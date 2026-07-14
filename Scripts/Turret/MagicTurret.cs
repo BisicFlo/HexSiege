@@ -115,9 +115,9 @@ public class MagicTurret : Turret {
     protected override void Shoot() {
         bool isCritical = IsCritical();
         bool isCursed = IsCursed();
-        int attackDamage = (int)AttackDamage.Value;
+        float attackDamage = AttackDamage.Value;
 
-        if (isCritical) attackDamage *= CriticalDamage.Value;
+        if (isCritical) attackDamage *= CriticalDamage.Value / 100f; // example 140 : 140%
 
         Projectile myProjectile = GetObjectFromIndex<Projectile>(ProjectileArray, ProjectileIndex);
         ProjectileIndex++;
@@ -136,7 +136,7 @@ public class MagicTurret : Turret {
             Vector3 directionTarget = (target.position - firePoint.position).normalized; // NullReferenceException: Obje...
             InstantiateAlternative(myProjectile.gameObject, firePoint.position, Quaternion.LookRotation(directionTarget, Vector3.up), Vector3.one, null); //firePoint.rotation
 
-            myProjectile.Init(this, target, enemyTargetted, attackDamage, (int)ProjectileSpeed.Value, isCritical, isCursed);
+            myProjectile.Init(this, target, enemyTargetted, (int)attackDamage, (int)ProjectileSpeed.Value, isCritical, isCursed);
             myProjectile.ActivateBulletAndDesactivateImpact();
         }
     }

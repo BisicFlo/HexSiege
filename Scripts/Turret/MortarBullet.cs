@@ -3,23 +3,19 @@ using UnityEngine;
 public class MortarBullet : Projectile {
 
     //[Header("Mortar Settings")]
-    private float flightTime = 1f;      // total duration of flight (tune this)
-    private float maxHeight = 10f;        // peak height above highest of start/end
+    [SerializeField] private float flightTime = 1f;      // total duration of flight (tune this)
+    [SerializeField] private float maxHeight = 10f;        // peak height above highest of start/end
 
     //private Vector3 _lauchDirection;
     private Vector3 startPosition;
     private float timer;
 
 
-    public void Init(Turret turret,Transform target, Enemy enemy, int damage, int speed, float flightTime , float maxHeight) {
-        this.turret = turret;
-        this.target = target;
-        this.enemy = enemy;
-        this.damage = damage;
-        this.speed = speed;       
+    public override void Init(Turret turret, Transform target, Enemy enemy, int damage, int speed, bool isCritical, bool isCursed) {
 
-        this.flightTime = flightTime;
-        this.maxHeight = maxHeight;
+        base.Init(turret, target, enemy, damage, speed, isCritical, isCursed);
+
+
 
         startPosition = this.transform.position;
         timer = 0f;

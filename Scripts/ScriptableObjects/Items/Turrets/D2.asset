@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   Icon: {fileID: 21300000, guid: 9875d5399a5514645b6a772d0e523b73, type: 3}
   ID: 1
-  WorldModel: {fileID: 0}
+  WorldModel: {fileID: 8498910395711626685, guid: bbaee1ff78ccc86499d2e649c7b3b26b, type: 3}
   NameItem: Mortar
-  Price: 2
+  Price: 4
   Rarity: 2
   TypeOfItem: 0
   turretType: 1
-  AttackDamage: 5
+  AttackDamage: 45
   AttackSpeed: 30
   ProjectileSpeed: 10
   CriticalChance: 10
   CriticalDamage: 200
   CurseChance: 0
   Range: 40
+  dps: 14.85
+  curseTime: 0

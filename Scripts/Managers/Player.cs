@@ -37,12 +37,12 @@ public class Player : MonoBehaviour {
         PlayerData.Init(); //New
     }
 
-    private void HandleOnPlayerHit(Enemy e, int dmg, bool cacanBeFatal) {
+    private void HandleOnPlayerHit(Enemy e, int dmg, bool canBeFatal) {
 
         PlayerData.TakeDamage(dmg);
 
         if (PlayerData.Health <= 0) {
-            if (!cacanBeFatal) PlayerData.SetPlayerLife(1);
+            if (!canBeFatal) PlayerData.SetPlayerLife(1);
             else {
                 //defeat
                 UIManager.Instance.ShowScreen(ScreenType.GameOver);

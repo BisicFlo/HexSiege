@@ -23,12 +23,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9542ee932777a984486b2cc419e96457, type: 2}
   - {fileID: 11400000, guid: bbb2665d7d186ca49827939b4516d9a6, type: 2}
   - {fileID: 11400000, guid: f5d81be4464a2074baf1c153a723fc65, type: 2}
+  - {fileID: 11400000, guid: d2219e1d4fd882d4a822fb3ab2ffae07, type: 2}
   rareTurretList:
   - {fileID: 11400000, guid: f8a71585b9c705a49b5e3bcbe74d9aa0, type: 2}
   - {fileID: 11400000, guid: 3c3b870a08d80dc4e9640d164f9e9286, type: 2}
   - {fileID: 11400000, guid: 4b221dc91af5d4645b91f6fefb2ce61e, type: 2}
   - {fileID: 11400000, guid: eab760882b9ed58469bd7a5455401609, type: 2}
   - {fileID: 11400000, guid: 40f9461e5772bfb49912de4f99157907, type: 2}
+  - {fileID: 11400000, guid: 788e5cb02bd46b04b8f7c5236047611c, type: 2}
+  - {fileID: 11400000, guid: 1707a0c1aecd12f459ec6f5ee83ed085, type: 2}
   epicTurretList:
   - {fileID: 11400000, guid: bf98805c895b7ef4f8e784c35299facb, type: 2}
   - {fileID: 11400000, guid: 24493bb4cdf0af54e93bbdcff9cacbdf, type: 2}

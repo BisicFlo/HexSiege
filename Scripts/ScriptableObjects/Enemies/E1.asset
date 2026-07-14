@@ -20,3 +20,4 @@ MonoBehaviour:
   XpWhenKilled: 4
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  threat: 40

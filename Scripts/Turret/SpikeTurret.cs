@@ -33,8 +33,9 @@ public class SpikeTurret : Turret {
     protected override void Shoot() {
         bool isCritical = IsCritical();
         bool isCursed = IsCursed();
-        int attackDamage = AttackDamage.Value;
-        if (isCritical) attackDamage *= (int)CriticalDamage.Value;
+        float attackDamage = AttackDamage.Value;
+
+        if (isCritical) attackDamage *= CriticalDamage.Value / 100f; // example 140
 
         //if (isCursed) Debug.Log("isCursedHit");
         //if (isCritical) Debug.Log("IsCriticalHit");
@@ -52,7 +53,7 @@ public class SpikeTurret : Turret {
         if (target != null) {
             SoundManager.Instance.PlaySFX(shootSound, transform.position); // New
 
-            mySpike.Init(this, target, enemyTargetted, attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
+            mySpike.Init(this, target, enemyTargetted, (int)attackDamage, ProjectileSpeed.Value, isCritical, isCursed);
             mySpike.ActivateSpikeAndDesactivateImpact();//  Redundant  : setActive
 
             mySpike.Erupt(target.position); //new

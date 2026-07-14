@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour {
         impact.SetActive(false);
     }
 
-    public void Init(Turret turret, Transform target, Enemy enemy, int damage, int speed, bool isCritical , bool isCursed) {
+    public virtual void Init(Turret turret, Transform target, Enemy enemy, int damage, int speed, bool isCritical , bool isCursed) {
         this.turret = turret;
         this.target = target;
         this.enemy = enemy;

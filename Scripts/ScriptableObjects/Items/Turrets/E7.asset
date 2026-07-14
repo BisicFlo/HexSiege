@@ -27,3 +27,5 @@ MonoBehaviour:
   CriticalDamage: 140
   CurseChance: 0
   Range: 15
+  dps: 0.153
+  curseTime: 0

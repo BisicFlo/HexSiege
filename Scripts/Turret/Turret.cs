@@ -30,9 +30,9 @@ public class Turret : MonoBehaviour {
     public CharacterStat AttackDamage;
     public CharacterStat AttackSpeed;  // 100 : normal 
     public CharacterStat ProjectileSpeed;
-    public CharacterStat CriticalChance; // 0-100 %
-    public CharacterStat CriticalDamage; //  140 % | ex :  200% / 90%
-    public CharacterStat CurseChance;    // 0-100 %
+    public CharacterStat CriticalChance; // 0-100 
+    public CharacterStat CriticalDamage; // 0-200     | ex :  200% / 90% / 140%
+    public CharacterStat CurseChance;    // 0-100 
     public CharacterStat Range; // ~20
 
     public float timeBetweenUpdateTarget = 0.4f;

@@ -27,6 +27,8 @@ public class SaveManager : MonoBehaviour {
     public PlayerProgress Data { get; private set; }
 
     void Awake() {
+        Debug.Log($"SavePath : {SavePath}");
+
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);

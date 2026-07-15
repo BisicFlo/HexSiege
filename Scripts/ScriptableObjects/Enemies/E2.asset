@@ -16,8 +16,8 @@ MonoBehaviour:
   StartingSpeed: 3
   StartingLife: 480
   DamageToPlayer: 4
-  MoneyWhenKilled: 1
-  XpWhenKilled: 4
+  MoneyWhenKilled: 2
+  XpWhenKilled: 3
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0.5031446, g: 0.3929169, b: 0.17246144, a: 1}
   threat: 1444

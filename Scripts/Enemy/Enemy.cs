@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] private PlayerData playerData;   
 
-    [SerializeField] private EnemyData enemyData;
+    [SerializeField] public EnemyData enemyData; // temp public
 
     [SerializeField] private Transform Visual; // Part holding the renderer    
 
@@ -34,12 +34,13 @@ public class Enemy : MonoBehaviour {
 
     private EnemyHitFlash enemyHitFlash; // For visual Feedback // Setup automatically by GetComponent
 
-    private bool isInvinsible = false; // not used yet
+    private bool isInvincible = false; // not used yet
 
     private GameObject deathEffect = null; //instance of deathEffectPrefab
     private int currentWaypointIndex = 0;
     private Transform target;
     private int currentLife;
+    private bool isDead = false; // prevent calling Die() more than once  
 
     private float precision = 0.2f; // Area used to detect waypoints
     Vector3 direction;
@@ -114,13 +115,14 @@ public class Enemy : MonoBehaviour {
     }
 
     public bool TakeDamage(Turret t, int damage) {
-        //if (t== null) Debug.Log("Turret is Null in : " +  this.gameObject.name);
-        //else Debug.Log("Turret :" + t.gameObject.name);
 
-        if (isInvinsible) return false;
+        if (isInvincible) return false;
 
         currentLife -= damage; // Lower Life
+
         if (currentLife <= 0) {
+            if (isDead) return false;
+            isDead = true;
 
             GameEvents.EnemyKilled(t, this); // new
 
@@ -136,7 +138,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeCurse(Turret t) {
-        if (isInvinsible) return;
+        if (isInvincible) return;
         if (curseSystem == null) return;
 
         if (curseSystem.ApplyCurse()) {

@@ -164,7 +164,7 @@ public class CardConfig : MonoBehaviour {
         turretBaseStats = turret.GetBaseValues();
         turretTotalStats = turret.GetTotalValues();
 
-        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretTotalStats.attackDamage, 20); // 100
+        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretTotalStats.attackDamage, 200); // 100
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretTotalStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretTotalStats.criticalChance, 100);
@@ -179,7 +179,7 @@ public class CardConfig : MonoBehaviour {
 
         turretBaseStats = turretData.GetValues();
 
-        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretBaseStats.attackDamage, 20);
+        ChangeOneSlider(damageSlider, turretBaseStats.attackDamage, turretBaseStats.attackDamage, 200);
         ChangeOneSlider(attackSpeedSlider, turretBaseStats.attackSpeed, turretBaseStats.attackSpeed, 200);
 
         ChangeOneSlider(criticalChanceSlider, turretBaseStats.criticalChance, turretBaseStats.criticalChance, 100);

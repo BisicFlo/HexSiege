@@ -23,9 +23,9 @@ MonoBehaviour:
   AttackDamage: 180
   AttackSpeed: 40
   ProjectileSpeed: 10
-  CriticalChance: 10
+  CriticalChance: 20
   CriticalDamage: 180
   CurseChance: 0
   Range: 40
-  dps: 77.76
+  dps: 83.52
   curseTime: 0

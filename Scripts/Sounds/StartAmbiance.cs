@@ -10,16 +10,16 @@ public class StartAmbiance : MonoBehaviour {
     public bool Debug = false;
     public bool Debug2 = false;
 
-    private void Update() {
-        if (Debug) {
-            Debug = false;
-            PlayMusic();
-        }
-        if (Debug2) {
-            Debug2 = false;
-            PlayMusic2();
-        }
-    }
+    //private void Update() {
+    //    if (Debug) {
+    //        Debug = false;
+    //        PlayMusic();
+    //    }
+    //    if (Debug2) {
+    //        Debug2 = false;
+    //        PlayMusic2();
+    //    }
+    //}
     private void Start() {
         SoundManager.Instance.PlayAmbiance(ambianceSound, fadeDuration: 2f);
     }

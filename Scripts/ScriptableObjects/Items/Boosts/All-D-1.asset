@@ -20,7 +20,7 @@ MonoBehaviour:
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
-  AttackDamage: 1
+  AttackDamage: 10
   AttackSpeed: 0
   ProjectileSpeed: 0
   CriticalChance: 0

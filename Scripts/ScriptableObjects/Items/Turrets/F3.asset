@@ -20,12 +20,12 @@ MonoBehaviour:
   Rarity: 3
   TypeOfItem: 0
   turretType: 6
-  AttackDamage: 40
+  AttackDamage: 44
   AttackSpeed: 90
   ProjectileSpeed: 10
   CriticalChance: 10
   CriticalDamage: 200
   CurseChance: 0
   Range: 20
-  dps: 39.6
+  dps: 43.56
   curseTime: 0

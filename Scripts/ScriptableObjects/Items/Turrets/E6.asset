@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362f45c0c996a641a67be69f91e176d, type: 3}
   m_Name: E6
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  Icon: {fileID: 21300000, guid: 9d466cad868dc1549abb9505bf3c1739, type: 3}
+  Icon: {fileID: 21300000, guid: 3f183aab202ab45498d4a47790f67c64, type: 3}
   ID: 1
-  WorldModel: {fileID: 0}
+  WorldModel: {fileID: 4738105758578785142, guid: 10b21e6bc39b8794fa8a3e635d1a7322, type: 3}
   NameItem: Totem
   Price: 6
   Rarity: 3

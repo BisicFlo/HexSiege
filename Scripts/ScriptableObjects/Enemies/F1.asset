@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   Name: Bomb-X
   StartingSpeed: 4
-  StartingLife: 404
+  StartingLife: 380
   DamageToPlayer: 5
-  MoneyWhenKilled: 2
-  XpWhenKilled: 3
+  MoneyWhenKilled: 1
+  XpWhenKilled: 6
   DeathEffectPrefab: {fileID: 1268957388922802045, guid: 1a6ec84553a9e4d4492ae19132467fec, type: 3}
   DeathColor: {r: 0, g: 1, b: 0.9328177, a: 1}
-  threat: 1621
+  threat: 1525

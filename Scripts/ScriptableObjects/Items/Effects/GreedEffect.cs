@@ -25,7 +25,7 @@ public class GreedEffect : EffectSO {
 
     private void HandleEvent() {
         //PlayerData.TakeDamage(LifeCost);
-        GameEvents.PlayerHit(null, lifeCost, canBeFatal); // enemy:null
+        GameEvents.PlayerHit( e: null, lifeCost, canBeFatal); // enemy:null
     }
 
     private void RemoveAtTheEnd() {  // NEW

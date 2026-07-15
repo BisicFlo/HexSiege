@@ -51,7 +51,7 @@ public class VolumeManager : MonoBehaviour {
 
     private void SetVolume(string parameter, float sliderValue) {
         // Convert 0-1 range to -80dB to 0dB
-        float dB = Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 20;
+        float dB = Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 30; // was : float dB = Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 20;
         masterMixer.SetFloat(parameter, dB);
     }
 

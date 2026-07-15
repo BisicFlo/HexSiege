@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -54,9 +56,48 @@ public class WaveSpawner : MonoBehaviour {
        {{  2,  0,  0,  0,  0 },  // Wave 1
         {  4,  2,  1,  1,  1 }};  // Wave 2
 
+    public bool simulateLvl = false;
+    public List<int> LvlEachWave = new List<int>();
+    public List<int> GoldEachWave = new List<int>();
     // --------------------------------------------------------------
     //   MonoBehaviour
     // --------------------------------------------------------------
+
+    private void OnValidate() {
+        if (!simulateLvl) return;
+
+        int[] xpRequired = { 2, 2, 6, 10, 20, 36, 60, 68, 80 }; // "ReadOnlyCollection" ?
+
+        int xp = 0;
+        int level = 1;
+        int gold = 0;
+        LvlEachWave = new List<int>();
+        GoldEachWave = new List<int>();
+
+        int waveNumber = waves.GetLength(0);
+        int poolNumber = waves.GetLength(1);
+
+        for (int waveIndex = 0; waveIndex < waveNumber; waveIndex++) {
+
+            for (int poolIndex = 0; poolIndex < poolNumber; poolIndex++) {
+
+                if (waves[waveIndex, poolIndex] != 0) {
+                    xp += (EnemiesPrefabsList[poolIndex].GetComponent<Enemy>().enemyData.XpWhenKilled * waves[waveIndex, poolIndex]);
+                    gold += (EnemiesPrefabsList[poolIndex].GetComponent<Enemy>().enemyData.MoneyWhenKilled * waves[waveIndex, poolIndex]);
+                }
+            }
+
+            while (level < 10 && xp >= xpRequired[level - 1]) {
+                xp -= xpRequired[level - 1];
+                level++;
+            }
+
+            LvlEachWave.Add(level);
+            GoldEachWave.Add(gold);
+        }
+    }
+
+
 
     private void Awake() {
         if (Instance != null) Debug.LogWarning("More than one WaveSpawner detected");

@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 0
   WorldModel: {fileID: 0}
   NameItem: Range +
-  Price: 5
+  Price: 4
   Rarity: 1
   TypeOfItem: 1
   turretType: 7
